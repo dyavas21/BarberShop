@@ -15,16 +15,17 @@ return new class extends Migration
     {
         Schema::create('barbers', function (Blueprint $table) {
             $table->id();
-            $table->string('fname')->nullable();
-            $table->string('lname')->nullable();
+            $table->string('fname');
+            $table->string('lname');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->timestamp('email_verified_at');
             $table->string('address')->nullable();
             $table->integer('age')->nullable();
             $table->enum('gender',['male', 'female'])->nullable();
             $table->string('phone')->nullable();
             $table->string('description')->nullable();
             $table->string('certificate')->nullable();
+            $table->string('gambarbarber')->nullable();
             $table->timestamps();
         });
     }

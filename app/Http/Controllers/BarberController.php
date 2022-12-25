@@ -58,12 +58,14 @@ class BarberController extends Controller
     public function barberinsertfoto(Request $request)
     {
         $data = Barber::create($request->all());
-        if($request->hasFile('gambar')){
-            $request->file('gambar')->move('gambarproduk/', $request->file('gambar')->getClientOriginalName());
-            $data->gambar = $request->file('gambar')->getClientOriginalName();
+        if($request->hasFile('gambarbarber')){
+            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
+            $data->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->route('barberprofiledetailupdate');
+        return redirect()->route('barberprofile');
+
+        //barberprofiledetailupdate
     }
 
     

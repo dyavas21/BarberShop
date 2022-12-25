@@ -8,5 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Barber extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'fname',
+        'lname',
+        'email',
+    ];
 }
