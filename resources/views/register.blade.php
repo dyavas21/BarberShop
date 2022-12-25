@@ -55,19 +55,6 @@
                           </div>
                         </div>
                         <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="id_role">Role</label
-                            ><select
-                              class="form-control"
-                              id="id_role" name="user_id"
-                            >
-                            @foreach ($datarole as $tipe)
-                            <option value="{{ $tipe->id }}">{{ $tipe->id }}</option>
-                            @endforeach
-                            </select>
-                          </div>
-                        </div>
-                        <div class="col-md-6">
                           <!-- Form Group (first name)-->
                           <div class="form-group">
                             <label class="small mb-1" for="fname"
