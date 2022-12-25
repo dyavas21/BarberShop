@@ -89,7 +89,7 @@
             <div class="card-body">
                 <div class="row row-cols-auto">
                     <div class="col-lg-2 d-flex flex-row">
-                        <img src="assets/images/team1.jpeg" height="100" class="rounded-circle barber-profile" alt="...">
+                      <img src="{{ asset('gambarbarber/'.$data->gambarbarber)}}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                     </div>
                     <div class="col-lg-4 d-flex flex-row">
                         <div class="mb-3">

@@ -9,13 +9,13 @@
                 <div class="card">
                     <h5 class="card-header">Profile Picture</h5>
                     <div class="card-body">
-                    <img src="assets/images/team1.jpeg" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                    <img src="{{ asset('gambarbarber/'.$data->gambarbarber ) }}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                     <form action="/barber-profile-foto-update" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="d-flex justify-content-center mt-3">
                             <div class="row row-cols-auto justify-content-center">
-                             <input type="file" name="gambar" class="form-control" id="gambar">
-                             <a href="#" class="btn btn-primary mt-3 " type="submit">Upload new image</a>
+                             <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
+                             <button type="submit" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Image</button>
                             </div>
                          </div>
                     </form>

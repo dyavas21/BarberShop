@@ -24,8 +24,8 @@ class LoginController extends Controller
         if(Auth::attempt($request->only('email', 'password'))){
              
 
+            // $role = Role::with('id')->get();
 
-            // if request->has('.....')
             // if($request->$data=='customer'){
             //     return redirect('/');
             // }
@@ -33,7 +33,10 @@ class LoginController extends Controller
             // if($request->$data=='barber'){
             //     return redirect('/barber');
             // }
-          
+
+            // if request->has('.....')
+           
+
             return redirect('/barber');
         }
 
