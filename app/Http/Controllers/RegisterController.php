@@ -36,6 +36,8 @@ class RegisterController extends Controller
             'remember_token' => Str::random(60)
         ]);
 
+        // $userbaru = 1
+
         if($request->id_role==1){
             Customer::create([
                 'fname'=>$request->fname,

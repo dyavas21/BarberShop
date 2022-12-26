@@ -4,6 +4,8 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Role;
+use App\Models\Barber;
+use App\Models\Customer;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -22,6 +24,15 @@ class User extends Authenticatable
 
     public function roleuser(){
         return $this->belongsTo(Role::class, 'id_role', 'id');
+    }
+
+    public function Barber(){
+        return $this->hasMany(Barber::class, 'id', 'id');
+    }
+
+
+    public function Customer(){
+        return $this->hasMany(Customer::class, 'id', 'id');
     }
 
 

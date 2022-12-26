@@ -9,6 +9,8 @@ use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TipeProdukController;
+use App\Http\Controllers\DescriptionController;
+use App\Http\Controllers\BarberDescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,8 +50,18 @@ Route::get('/admin/detele-produk/{id}', [ProdukController::class, 'admindeletepr
 Route::get('/barber', [BarberController::class, 'barber'])->name('barber')->middleware('auth');
 Route::get('/barber-profile', [BarberController::class, 'barberprofile'])->name('barberprofile')->middleware('auth');
 Route::get('/barber-profile-detail', [BarberController::class, 'barberprofiledetail'])->name('barberprofiledetail')->middleware('auth');
+
+Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberprofileinti'])->name('barberprofileinti')->middleware('auth');
+Route::get('/barber-profile-inti-view', [BarberDescriptionController::class, 'barberprofileintiview'])->name('barberprofileintiview')->middleware('auth');
+Route::post('/barber-profile-inti-insert', [BarberDescriptionController::class, 'barberprofileintiinsert'])->name('barberprofileintiinsert')->middleware('auth');
+
 Route::post('/barber-profile-detail-update', [BarberController::class, 'barberprofiledetailupdate'])->name('barberprofiledetailupdate')->middleware('auth');
-Route::post('/barber-profile-foto-update', [BarberController::class, 'barberinsertfoto'])->name('barberinsertfoto')->middleware('auth');
+Route::get('/barber-profile-detail-foto', [BarberController::class, 'barberprofiledetailfoto'])->name('barberprofiledetailfoto')->middleware('auth');
+Route::post('/barber-profile-detail-foto-update', [BarberController::class, 'barberinsertfoto'])->name('barberinsertfoto')->middleware('auth');
+Route::get('/barber-profile-detail-certificate', [BarberController::class, 'barberprofiledetailcertificate'])->name('barberprofiledetailcertificate')->middleware('auth');
+Route::post('/barber-profile-detail-certificate-update', [BarberController::class, 'barberinsertcertificate'])->name('barberinsertcertificate')->middleware('auth');
+
+
 
 
 //login

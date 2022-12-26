@@ -31,8 +31,8 @@ class BarberController extends Controller
         // return view('barber.barber-profile' ,compact('fname'));
     }
 
-     public function barberprofiledetail()
-     {
+    public function barberprofiledetail()
+    {
 
         $id1 = Auth::user()->id;
         $data = Barber::find($id1);
@@ -43,9 +43,10 @@ class BarberController extends Controller
         // $fname = Auth::user()->fname;
         // $lname = Auth::user()->lname;
         // return view('barber.barber-profile-detail' ,compact('email', 'fname', 'lname'));
-     }
+    }
 
-    public function barberprofiledetailupdate(Request $request){
+    public function barberprofiledetailupdate(Request $request)
+    {
         
         $id1 = Auth::user()->id;
         $data = Barber::find($id1);
@@ -55,17 +56,48 @@ class BarberController extends Controller
         return redirect()->route('barberprofile');
     }
 
+    public function barberinsertcertificate(Request $request)
+    {   
+
+        $data = Barber::create([
+            'certificate' => $request->certificate,
+        ]);
+
+        if($request->hasFile('certificate')){
+            $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
+            $data->certificate = $request->file('certificate')->getClientOriginalName();
+            $data->save();
+            // $data->update([
+            //     'certificate' => ['certificate'],
+            //  ]);
+        }
+        return redirect()->route('barberprofile');
+        //barberprofiledetailupdate
+    }
+
     public function barberinsertfoto(Request $request)
     {
-        $data = Barber::create($request->all());
+    
+        $id1 = Auth::user()->id;
+        $data = Barber::find($id1);
+
+
+       $data = Barber::create([
+            'gambarbarber' => $request->gambarbarber,
+        ]);
+
         if($request->hasFile('gambarbarber')){
             $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
             $data->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $data->save();
         }
         return redirect()->route('barberprofile');
-
         //barberprofiledetailupdate
+    }
+
+    public function barberprofiledetailfoto()
+    {
+        return view('barber.barber-profile-detail-photo');
     }
 
     
@@ -77,7 +109,6 @@ class BarberController extends Controller
         //  Barber::create([
         //     'certificate' => $image
         //  ]);
-
     }
 
     public function index()

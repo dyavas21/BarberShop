@@ -1,4 +1,4 @@
-@extends('layouts.header-admin')
+@extends('layouts.header-barber')
 
 @section('content')
         <main>
@@ -101,28 +101,16 @@
     
             <!-- Example DataTable for Dashboard Demo-->
             <div class="card mb-4">
-                <div class="card-header">Tipe Produk</div>
+                <div class="card-header">Insert Photo</div>
                 <div class="card-body">
-                    <form action="/admin-insertproduk" method="POST" enctype="multipart/form-data">
+                    <form action="/barber-profile-detail-foto-update" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group">
-                            <label for="id_type">Tipe Produk</label>
-                            <select class="form-control form-control-solid" name="id_type" id="id_type">                            
-                                @foreach ($datatipe as $tipe)
-                                <option value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                        <div class="form-group"><label for="namaproduk">Nama Produk</label><input class="form-control" id="namaproduk" name="nama_produk" type="text"></div>  
-                        <div class="form-group"><label for="harga">Harga Produk</label><input class="form-control" id="harga" name="harga" type="number"></div>  
-                        <div class="form-group"><label for="stok">Jumlah Stok Produk</label><input class="form-control" id="stok" name="stok" type="number"></div> 
-
-                        <label for="gambar" class="form-label">Upload Gambar Produk</label>
-                        <div class="input-group mb-3">
-                            <input type="file" name="gambar" class="form-control" id="gambar">
-                            <label class="input-group-text" for="gambar">Upload</label>
-                        </div> 
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="row row-cols-auto justify-content-center">
+                             <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
+                             <button type="submit" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Image</button>
+                            </div>
+                         </div>
                     </form>
                 </div>
             </div>

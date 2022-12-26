@@ -39,10 +39,10 @@
                             </div>
                         </h6>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="/barber-profile">
+                        {{-- <a class="dropdown-item" href="/barber-profile">
                             <div class="dropdown-item-icon"><i data-feather="settings"></i></div>
                             Account
-                        </a>
+                        </a> --}}
                         <a class="dropdown-item" href="/logout">
                             <div class="dropdown-item-icon"><i data-feather="log-out"></i></div>
                             Logout
@@ -58,9 +58,11 @@
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="/barber">Dashboard</a>
+                            <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
+                            <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>
                             <a class="nav-link" href="/barber-profile-detail">Edit Profile</a>
-                            <a class="nav-link" href="#">Dashboard</a>
-                           
+                            <a class="nav-link" href="/barber-profile-inti-view">View Inti</a>
+                            
                         </div>
                     </div>
                     <div class="sidenav-footer">
