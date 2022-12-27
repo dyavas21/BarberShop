@@ -59,7 +59,7 @@
                         {{ Auth::user()->fname }}
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="/barber-profile">Profile</a></li>
+                        <li><a class="dropdown-item" href="/customer-profile">Profile</a></li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                             onclick="event.preventDefault();

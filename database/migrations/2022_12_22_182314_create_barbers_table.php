@@ -17,8 +17,6 @@ return new class extends Migration
             $table->increments('id');
             $table->string('fname');
             $table->string('lname');
-            $table->string('email');
-            $table->timestamp('email_verified_at');
             $table->timestamps();
             $table->foreign('id')
             ->references('id')

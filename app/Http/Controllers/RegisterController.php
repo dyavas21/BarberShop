@@ -36,23 +36,21 @@ class RegisterController extends Controller
             'remember_token' => Str::random(60)
         ]);
 
-        // $userbaru = 1
-
-        if($request->id_role==1){
-            Customer::create([
-                'fname'=>$request->fname,
-                'lname'=>$request->lname,
-                'email'=>$request->email,
-            ]);
-        }
+        // if($request->id_role==1){
+        //     Customer::create([
+        //         'fname'=>$request->fname,
+        //         'lname'=>$request->lname,
+        //         'email'=>$request->email,
+        //     ]);
+        // }
         
-        if($request->id_role==2){
-            Barber::create([
-                'fname'=>$request->fname,
-                'lname'=>$request->lname,
-                'email'=>$request->email,
-            ]);
-        }
+        // if($request->id_role==2){
+        //     Barber::create([
+        //         'fname'=>$request->fname,
+        //         'lname'=>$request->lname,
+        //         'email'=>$request->email,
+        //     ]);
+        // }
         return redirect('/login');
     }
 

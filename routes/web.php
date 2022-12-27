@@ -11,6 +11,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TipeProdukController;
 use App\Http\Controllers\DescriptionController;
 use App\Http\Controllers\BarberDescriptionController;
+use App\Http\Controllers\CustomerDescriptionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,11 +24,20 @@ use App\Http\Controllers\BarberDescriptionController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
 //Customer
+Route::get('/customer', [CustomerController::class, 'customer'])->name('customer')->middleware('auth');
+Route::get('/customer-profile', [CustomerController::class, 'customerprofile'])->name('customerprofile')->middleware('auth');
+
+Route::get('/customer-profile-inti', [CustomerDescriptionController::class, 'customerprofileinti'])->name('customerprofileinti')->middleware('auth');
+Route::post('/customer-profile-inti-insert', [CustomerDescriptionController::class, 'customerprofileintiinsert'])->name('customerprofileintiinsert')->middleware('auth');
+Route::get('/customer-profile-inti-view', [CustomerDescriptionController::class, 'customerprofileintiview'])->name('customerprofileintiview')->middleware('auth');
+Route::post('/customer-profile-inti-edit', [CustomerDescriptionController::class, 'customerprofileintiedit'])->name('customerprofileintiedit')->middleware('auth');
+
+
 
 //Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
@@ -52,14 +62,16 @@ Route::get('/barber-profile', [BarberController::class, 'barberprofile'])->name(
 Route::get('/barber-profile-detail', [BarberController::class, 'barberprofiledetail'])->name('barberprofiledetail')->middleware('auth');
 
 Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberprofileinti'])->name('barberprofileinti')->middleware('auth');
-Route::get('/barber-profile-inti-view', [BarberDescriptionController::class, 'barberprofileintiview'])->name('barberprofileintiview')->middleware('auth');
 Route::post('/barber-profile-inti-insert', [BarberDescriptionController::class, 'barberprofileintiinsert'])->name('barberprofileintiinsert')->middleware('auth');
+Route::get('/barber-profile-inti-view', [BarberDescriptionController::class, 'barberprofileintiview'])->name('barberprofileintiview')->middleware('auth');
+Route::post('/barber-profile-inti-edit', [BarberDescriptionController::class, 'barberprofileintiedit'])->name('barberprofileintiedit')->middleware('auth');
 
-Route::post('/barber-profile-detail-update', [BarberController::class, 'barberprofiledetailupdate'])->name('barberprofiledetailupdate')->middleware('auth');
-Route::get('/barber-profile-detail-foto', [BarberController::class, 'barberprofiledetailfoto'])->name('barberprofiledetailfoto')->middleware('auth');
-Route::post('/barber-profile-detail-foto-update', [BarberController::class, 'barberinsertfoto'])->name('barberinsertfoto')->middleware('auth');
-Route::get('/barber-profile-detail-certificate', [BarberController::class, 'barberprofiledetailcertificate'])->name('barberprofiledetailcertificate')->middleware('auth');
-Route::post('/barber-profile-detail-certificate-update', [BarberController::class, 'barberinsertcertificate'])->name('barberinsertcertificate')->middleware('auth');
+
+// Route::post('/barber-profile-detail-update', [BarberController::class, 'barberprofiledetailupdate'])->name('barberprofiledetailupdate')->middleware('auth');
+// Route::get('/barber-profile-detail-foto', [BarberController::class, 'barberprofiledetailfoto'])->name('barberprofiledetailfoto')->middleware('auth');
+// Route::post('/barber-profile-detail-foto-update', [BarberController::class, 'barberinsertfoto'])->name('barberinsertfoto')->middleware('auth');
+// Route::get('/barber-profile-detail-certificate', [BarberController::class, 'barberprofiledetailcertificate'])->name('barberprofiledetailcertificate')->middleware('auth');
+// Route::post('/barber-profile-detail-certificate-update', [BarberController::class, 'barberinsertcertificate'])->name('barberinsertcertificate')->middleware('auth');
 
 
 

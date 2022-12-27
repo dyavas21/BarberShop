@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CustomerDescription;
+use App\Models\User;
+use App\Models\Barber;
+use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\CustomerDescription;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerDescriptionController extends Controller
 {
@@ -12,10 +16,78 @@ class CustomerDescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+     
+     public function customerprofileinti()
     {
-        //
+        $id1 = Auth::user()->id;
+        $data = User::find($id1);
+        return view('customer.profile-inti', compact('data'));
     }
+
+    public function customerprofileintiview(Request $request)
+    {   
+        $id1 = Auth::user()->id;
+        $data = User::find($id1);
+        $data2 = CustomerDescription::find($id1);
+        return view('customer.profile-inti-view', compact('data', 'data2'));
+    }
+
+
+    public function customerprofileintiinsert(Request $request)
+    {   
+        Customer::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
+
+        $datafinal = CustomerDescription::create([
+            'customer_id' => $request->customer_id,
+            'address' => $request->address,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'photo' => $request->photo,
+        ]);
+
+        // $datafinal = Description::create($request->all());
+        if($request->hasFile('photo')){
+            $request->file('photo')->move('photo/', $request->file('photo')->getClientOriginalName());
+            $datafinal->photo = $request->file('photo')->getClientOriginalName();
+            $datafinal->save();
+        }
+        return redirect()->route('customer');
+    }
+
+    public function customerprofileintiedit(Request $request)
+    {
+        $id = Auth::user()->id;
+        $datauser = User::find($id);
+        $databarber = Customer::find($id);
+        $datadesc = CustomerDescription::find($id);
+
+        $datauser->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
+
+        $databarber->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
+
+        $datadesc->update([
+            'address' => $request->address,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'photo' => $request->photo,
+        ]);
+
+        return redirect()->route('customer');
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -132,17 +132,18 @@
                             $no = 1;
                         @endphp
                         @foreach ($data as $row)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $row->fname }} {{ $row->lname }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->gender }}</td>
-                            <td>{{ $row->role }}</td>
-                            <td>{{ $row->created_at->format('d M Y') }}</td>
-                            <td>
-                                <a class="btn btn-danger" href="/admin/detele/{{ $row->id }}">Delete</a>
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>{{ $no++ }}</td>
+                                <td>{{ $row->fname }} {{ $row->lname }}</td>
+                                <td>{{ $row->email }}</td>
+                                <td>{{ $row->gender }}</td>
+                                <td>{{ $row->roleuser->nama_role }}</td>
+                             
+                                <td>{{ $row->created_at->format('d M Y') }}</td>
+                                <td>
+                                    <a class="btn btn-danger" href="/admin/detele/{{ $row->id }}">Delete</a>
+                                </td>
+                            </tr>                
                         @endforeach
                         </tbody>
                     </table>

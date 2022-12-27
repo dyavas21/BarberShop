@@ -5,7 +5,7 @@
 <section class="barber-profile mt-5 mb-5">
     <div class="container mt-5">
         <div class="row row-cols-auto">
-            <div class="col-lg-9">
+            <div class="col-lg">
                 <div class="card">
                     <h5 class="card-header">Account Details</h5>
                     <div class="card-body">
@@ -18,7 +18,22 @@
                                 </select>
                             </div>
                             <div class="row row-cols-auto">
-                                <div class="col-lg-6">                    
+                                <div class="col-lg-6 mb-3">
+                                    <label for="fname">First Name</label>
+                                    <select class="form-control form-control-solid" name="fname" id="fname">                            
+                                        <option value="{{ $data->fname }}">{{ $data->fname }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="lname">Last Name</label>
+                                    <select class="form-control form-control-solid" name="lname" id="lname">                            
+                                        <option value="{{ $data->lname }}">{{ $data->lname }}</option>
+                                    </select>  
+                                </div>
+                            </div>
+                            <div class="row row-cols-auto">
+                                <div class="col-lg-6">   
+                                                    
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
                                         <input type="number" name="age" class="form-control"  id="age">
@@ -29,18 +44,19 @@
                                     </div>  
                                      
                                 </div>
-                                <div class="col-lg-6">
+                                <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
                                         <input type="tel" name="phone" class="form-control" id="phone">
                                     </div>                      
-                                    <div class="mb-3">
-                                        <select class="form-select" name="gender" aria-label="Default select example">
-                                            <option selected>Pilih</option>
-                                            <option value="1">Male</option>
-                                            <option value="2">Female</option>               
-                                        </select>   
-                                    </div>          
+                                    <div class="form-group">
+                                        <label for="gender">Gender</label>
+                                        <select class="form-control form-control" name="gender" id="gender">                            
+                                            <option>Pilih</option>
+                                            <option value="Male">Male</option>
+                                            <option value="Female">Female</option> 
+                                        </select>
+                                    </div> 
                                 </div>
                             </div>
                             <div class="mb-3">

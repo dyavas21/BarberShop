@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use App\Models\Login;
 use Illuminate\Http\Request;
@@ -22,22 +23,37 @@ class LoginController extends Controller
 
     public function loginproses(Request $request){
         if(Auth::attempt($request->only('email', 'password'))){
-             
+                    
+            $role = Auth::user()->roleuser->id;
 
-            // $role = Role::with('id')->get();
+            if($role == 1){
+                return redirect('/customer');
+            }
 
-            // if($request->$data=='customer'){
-            //     return redirect('/');
-            // }
+            if($role == 2){
+                return redirect('/barber');
+            }
 
-            // if($request->$data=='barber'){
+    // switch ($role) {
+    //   case 'admin':
+    //      return redirect('/admin');
+    //      break;
+    //   case 'seller':
+    //      return redirect('/seller_dashboard');
+    //      break; 
+
+    //   default:
+    //      return redirect('/home'); 
+    //      break;
+
+            // if($request->$role!='barber'){
             //     return redirect('/barber');
             // }
 
             // if request->has('.....')
            
 
-            return redirect('/barber');
+            // return redirect('/barber');
         }
 
         return redirect('login');

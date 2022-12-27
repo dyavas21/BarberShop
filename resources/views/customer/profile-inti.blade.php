@@ -1,4 +1,4 @@
-@extends('layouts.header-barber')
+@extends('layouts.header-customer')
 
 @section('content')
 
@@ -9,22 +9,26 @@
                 <div class="card">
                     <h5 class="card-header">Account Details</h5>
                     <div class="card-body">
-                        <form action="/barber-profile-inti-edit" method="POST" enctype="multipart/form-data">
+                        <form action="/customer-profile-inti-insert" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
+                                <label for="customer_id">User</label>
+                                <select class="form-control form-control-solid" name="customer_id" id="customer_id">                            
+                                    <option value="{{ $data->id }}">{{ $data->fname }}</option>
+                                </select>
                             </div>
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
-                                    <div class="mb-3">
-                                        <label for="fname" class="form-label">First Name</label>
-                                        <input type="text" name="fname" class="form-control" id="fname" value="{{ $data->fname }}">
-                                    </div>                                 
+                                    <label for="fname">First Name</label>
+                                    <select class="form-control form-control-solid" name="fname" id="fname">                            
+                                        <option value="{{ $data->fname }}">{{ $data->fname }}</option>
+                                    </select>
                                 </div>
                                 <div class="col-lg-6 mb-3">
-                                    <div class="mb-3">
-                                        <label for="lname" class="form-label">Last Name</label>
-                                        <input type="text" name="lname" class="form-control" value="{{ $data->lname }}"  id="lname">
-                                    </div>                                  
+                                    <label for="lname">Last Name</label>
+                                    <select class="form-control form-control-solid" name="lname" id="lname">                            
+                                        <option value="{{ $data->lname }}">{{ $data->lname }}</option>
+                                    </select>  
                                 </div>
                             </div>
                             <div class="row row-cols-auto">
@@ -32,23 +36,19 @@
                                                     
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" name="age" class="form-control" value="{{ $data2->age }}"  id="age">
-                                    </div>  
-                                    <div class="mb-3">
-                                        <label for="harga" class="form-label">Harga</label>
-                                        <input type="number" name="harga" class="form-control" value="{{ $data2->harga }}"  id="harga">
+                                        <input type="number" name="age" class="form-control"  id="age">
                                     </div>  
                                      
                                 </div>
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" class="form-control" value="{{ $data2->phone }}" id="phone">
+                                        <input type="tel" name="phone" class="form-control" id="phone">
                                     </div>                      
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control" name="gender" id="gender">                            
-                                            <option selected>{{ $data2->gender }}</option>
+                                            <option>Pilih</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
                                         </select>
@@ -57,24 +57,13 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" value="{{ $data2->address }}" name="address" class="form-control" id="alamat" >                       
+                                <input type="text" name="address" class="form-control" id="alamat" >                       
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <input type="text" name="description" value="{{ $data2->description }}" class="form-control" id="alamat">                       
-                            </div>
-                            <img src="{{ asset('barber1/'.$data2->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                            <label for="gambarbarber" class="form-label">Upload Foto Anda</label>
+                            <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
-                                <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>  
-                            <img src="{{ asset('barber2/'.$data2->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                            <label for="sertif" class="form-label">Upload Sertifikat Anda</label>
-                            <div class="input-group mb-3">
-                                <input type="file" name="certificate" class="form-control" id="inputGroupFile02">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>  
+                                <input type="file" name="photo" class="form-control" id="photo">
+                                <label class="input-group-text" for="photo">Upload</label>
+                            </div>   
                             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
                             <!-- Modal -->
                                 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
