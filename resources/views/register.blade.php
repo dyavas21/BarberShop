@@ -43,14 +43,13 @@
                       <div class="form-row">
                         <div class="col-md-6">
                           <div class="form-group">
-                            <label for="id_role">Role</label
+                            <label for="role">Role</label
                             ><select
                               class="form-control"
-                              id="id_role" name="id_role"
+                              id="role" name="role"
                             >
-                            @foreach ($datarole as $tipe)
-                            <option value="{{ $tipe->id }}">{{ $tipe->nama_role }}</option>
-                            @endforeach
+                              <option>Customer</option>
+                              <option>Barber</option> 
                             </select>
                           </div>
                         </div>
