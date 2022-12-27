@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Barber;
 use Illuminate\Http\Request;
 use App\Models\BarberDescription;
@@ -17,23 +18,28 @@ class BarberDescriptionController extends Controller
 
 
 
-      public function barberprofileinti()
+    public function barberprofileinti()
     {
         $id1 = Auth::user()->id;
-        $data = Barber::find($id1);
+        $data = User::find($id1);
         return view('barber.profile-inti', compact('data'));
     }
 
     public function barberprofileintiview(Request $request)
     {   
         $id1 = Auth::user()->id;
-        $datainti = BarberDescription::find($id1);
-        return view('barber.profile-inti-view', compact('datainti'));
+        $data = User::find($id1);
+        $data2 = BarberDescription::find($id1);
+        return view('barber.profile-inti-view', compact('data', 'data2'));
     }
 
 
     public function barberprofileintiinsert(Request $request)
     {   
+        Barber::create([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
 
         $datafinal = BarberDescription::create([
             'barber_id' => $request->barber_id,
@@ -46,6 +52,7 @@ class BarberDescriptionController extends Controller
             'gambarbarber' => $request->gambarbarber,
             'harga' => $request->harga,
         ]);
+
         // $datafinal = Description::create($request->all());
         if($request->hasFile('gambarbarber', 'certificate')){
             $request->file('gambarbarber')->move('barber1/', $request->file('gambarbarber')->getClientOriginalName());
@@ -56,7 +63,44 @@ class BarberDescriptionController extends Controller
         }
         return redirect()->route('barber');
     }
+
+    public function barberprofileintiedit(Request $request)
+    {
+        $id = Auth::user()->id;
+        $datauser = User::find($id);
+        $databarber = Barber::find($id);
+        $datadesc = BarberDescription::find($id);
+
+        $datauser->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
+
+        $databarber->update([
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+        ]);
+
+        $datadesc->update([
+            'address' => $request->address,
+            'age' => $request->age,
+            'gender' => $request->gender,
+            'phone' => $request->phone,
+            'description' => $request->description,
+            'certificate' => $request->certificate,
+            'gambarbarber' => $request->gambarbarber,
+            'harga' => $request->harga,
+        ]);
+
+        return redirect()->route('barber');
+    }
+
     
+
+
+    
+
+
     
     public function index()
     {

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('id_role')->nullable();
+            $table->unsignedInteger('id_role');
             $table->string('fname');
             $table->string('lname');
             $table->string('email')->unique();
@@ -23,6 +23,9 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->foreign('id_role')
+            ->references('id')
+            ->on('roles');
         });
     }
 

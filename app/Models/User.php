@@ -31,8 +31,12 @@ class User extends Authenticatable
     }
 
 
+    // public function Customer(){
+    //     return $this->hasMany(Customer::class, 'id', 'id');
+    // }
+
     public function Customer(){
-        return $this->hasMany(Customer::class, 'id', 'id');
+        return $this->belongsTo(Customer::class, 'id', 'id');
     }
 
 

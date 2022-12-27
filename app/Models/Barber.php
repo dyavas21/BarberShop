@@ -21,7 +21,7 @@ class Barber extends Model
         return $this->hasOne(BarberDescription::class, 'barber_id', 'id');
     }
 
-    public function user(){
+    public function userBarber(){
         return $this->belongsTo(User::class);
     }
 }

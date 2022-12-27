@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,25 +17,18 @@ class CustomerController extends Controller
 
     public function customer()
     {
-        return view('customer.customer');
+        return view('index');
     }
 
 
     public function customerprofile()
     {
         $id1 = Auth::user()->id;
-        $data = Customer::find($id1);
+        $data = User::find($id1);
         
-        return view('customer.customer-profile' ,compact('data'));
+        return view('customer.profile' ,compact('data'));
         // $fname = Auth::user()->fname;
         // return view('barber.barber-profile' ,compact('fname'));
-    }
-
-
-
-    public function index()
-    {
-        //
     }
 
     /**

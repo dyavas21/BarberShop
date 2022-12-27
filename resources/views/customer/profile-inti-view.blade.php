@@ -1,4 +1,4 @@
-@extends('layouts.header-barber')
+@extends('layouts.header-customer')
 
 @section('content')
 
@@ -9,7 +9,7 @@
                 <div class="card">
                     <h5 class="card-header">Account Details</h5>
                     <div class="card-body">
-                        <form action="/barber-profile-inti-edit" method="POST" enctype="multipart/form-data">
+                        <form action="/customer-profile-inti-edit" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                             </div>
@@ -34,10 +34,6 @@
                                         <label for="age" class="form-label">Umur</label>
                                         <input type="number" name="age" class="form-control" value="{{ $data2->age }}"  id="age">
                                     </div>  
-                                    <div class="mb-3">
-                                        <label for="harga" class="form-label">Harga</label>
-                                        <input type="number" name="harga" class="form-control" value="{{ $data2->harga }}"  id="harga">
-                                    </div>  
                                      
                                 </div>
                                 <div class="col-lg-6">                        
@@ -59,20 +55,10 @@
                                 <label for="alamat" class="form-label">Alamat</label>
                                 <input type="text" value="{{ $data2->address }}" name="address" class="form-control" id="alamat" >                       
                             </div>
-                            <div class="mb-3">
-                                <label for="description" class="form-label">Description</label>
-                                <input type="text" name="description" value="{{ $data2->description }}" class="form-control" id="alamat">                       
-                            </div>
-                            <img src="{{ asset('barber1/'.$data2->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                            <label for="gambarbarber" class="form-label">Upload Foto Anda</label>
+                            <img src="{{ asset('photo/'.$data2->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
-                                <label class="input-group-text" for="inputGroupFile02">Upload</label>
-                            </div>  
-                            <img src="{{ asset('barber2/'.$data2->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                            <label for="sertif" class="form-label">Upload Sertifikat Anda</label>
-                            <div class="input-group mb-3">
-                                <input type="file" name="certificate" class="form-control" id="inputGroupFile02">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>  
                             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
