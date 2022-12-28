@@ -12,23 +12,23 @@
                         <form action="/barber-profile-inti-insert" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="barber_id">User</label>
-                                <select class="form-control form-control-solid" name="barber_id" id="barber_id">                            
-                                    <option value="{{ $data->id }}">{{ $data->fname }}</option>
+                                <label for="barber_desc_id">Barber ke </label>
+                                <select class="form-control form-control-solid" name="barber_desc_id" id="barber_desc_id">                            
+                                    <option value="{{ $data->barber_id }}">{{ $data->barber_id }}</option>
                                 </select>
                             </div>
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
                                     <label for="fname">First Name</label>
                                     <select class="form-control form-control-solid" name="fname" id="fname">                            
-                                        <option value="{{ $data->fname }}">{{ $data->fname }}</option>
+                                        <option>{{ $data->fname }} {{ $data->lname }}</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="lname">Last Name</label>
-                                    <select class="form-control form-control-solid" name="lname" id="lname">                            
-                                        <option value="{{ $data->lname }}">{{ $data->lname }}</option>
-                                    </select>  
+                                    <select class="form-control form-control-solid" name="lname" id="fname">                            
+                                        <option>{{ $data->lname }} {{ $data->lname }}</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="row row-cols-auto">

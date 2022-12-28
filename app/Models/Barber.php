@@ -14,11 +14,15 @@ class Barber extends Model
     //     'lname',
     //     'email',
     // ];
-    protected $guarded = [];
+    protected $primaryKey = 'id_barber';
+    protected $fillable = [
+        'id_barber','barber_id', 'fname', 'lname'
+    ];
+ 
 
 
-    public function description(){
-        return $this->hasOne(BarberDescription::class, 'barber_id', 'id');
+    public function descriptionBarber(){
+        return $this->hasOne(BarberDescription::class, 'barber_id', 'id_barber');
     }
 
     public function userBarber(){

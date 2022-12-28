@@ -9,7 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Role extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'id_role','nama_role'
+    ];
+    protected $primaryKey = 'id_role';
 
     public function user(){
         return $this->belongsTo(User::class);

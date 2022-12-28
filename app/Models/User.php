@@ -20,11 +20,20 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $guarded = [];
+    protected $fillable = [
+        'id_user','role_id', 'fname', 'lname', 'email', 'email_verified_at', 'password', 'remember_token'
+    ];
+    protected $primaryKey = 'id_user';
+
+    // public function roleuser(){
+    //     return $this->belongsTo(Role::class, 'id_user', 'id_role');
+    // }
 
     public function roleuser(){
-        return $this->belongsTo(Role::class, 'id_role', 'id');
+        return $this->belongsTo(Role::class, 'role_id', 'id_role');
     }
+
+
 
     public function Barber(){
         return $this->hasMany(Barber::class, 'id', 'id');

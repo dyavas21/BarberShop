@@ -15,10 +15,7 @@ class BarberController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function barber()
-     {
-         return view('barber.barber');
-     }
+
 
 
     public function barberprofile()

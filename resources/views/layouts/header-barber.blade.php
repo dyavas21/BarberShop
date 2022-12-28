@@ -57,11 +57,14 @@
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="/barber">Dashboard</a>
-                            <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
-                            <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>
-                            <a class="nav-link" href="/barber-profile-inti-view">View & Edit Profile</a>
-                            
+                            @if (is_null($data))
+                                <a class="nav-link" href="/barber">Dashboard</a>   
+                                <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>  
+                            @else 
+                                <a class="nav-link" href="/barber">Dashboard</a> 
+                                <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
+                                <a class="nav-link" href="/barber-profile-inti-view">View & Edit Profile</a>
+                            @endif
                         </div>
                     </div>
                     <div class="sidenav-footer">

@@ -11,7 +11,7 @@
             <div class="card-body">
                 <div class="row row-cols-auto">
                     <div class="col-lg-2 d-flex flex-row">
-                        <img src="{{ asset('photo/'.$data->Customer->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                        {{-- <img src="{{ asset('photo/'.$data->Customer->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."> --}}
                     </div>
                     <div class="col-lg-4 d-flex flex-row">
                         <div class="mb-3">

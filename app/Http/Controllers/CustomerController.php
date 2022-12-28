@@ -21,16 +21,6 @@ class CustomerController extends Controller
     }
 
 
-    public function customerprofile()
-    {
-        $id1 = Auth::user()->id;
-        $data = User::find($id1);
-        
-        return view('customer.profile' ,compact('data'));
-        // $fname = Auth::user()->fname;
-        // return view('barber.barber-profile' ,compact('fname'));
-    }
-
     /**
      * Show the form for creating a new resource.
      *

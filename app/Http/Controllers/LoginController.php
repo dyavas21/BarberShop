@@ -24,14 +24,14 @@ class LoginController extends Controller
     public function loginproses(Request $request){
         if(Auth::attempt($request->only('email', 'password'))){
                     
-            $role = Auth::user()->roleuser->id;
+            $role = Auth::user()->roleuser->id_role;
 
             if($role == 1){
-                return redirect('/customer');
+                return redirect('customer');
             }
 
             if($role == 2){
-                return redirect('/barber');
+                return redirect('barber');
             }
 
     // switch ($role) {

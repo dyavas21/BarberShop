@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('id_role');
+            $table->bigIncrements('id_user');
+            $table->unsignedBigInteger('role_id');
             $table->string('fname');
             $table->string('lname');
             $table->string('email')->unique();
@@ -23,8 +23,8 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
-            $table->foreign('id_role')
-            ->references('id')
+            $table->foreign('role_id')
+            ->references('id_role')
             ->on('roles');
         });
     }

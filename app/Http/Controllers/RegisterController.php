@@ -26,8 +26,8 @@ class RegisterController extends Controller
 
     public function registeruser(Request $request){
 
-        User::create([
-            'id_role' => $request->id_role,
+        $data = User::create([
+            'role_id' => $request->role_id,
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
@@ -36,21 +36,23 @@ class RegisterController extends Controller
             'remember_token' => Str::random(60)
         ]);
 
-        // if($request->id_role==1){
-        //     Customer::create([
-        //         'fname'=>$request->fname,
-        //         'lname'=>$request->lname,
-        //         'email'=>$request->email,
-        //     ]);
-        // }
+        $idbaru = $data->id_user;
+
+        if($request->role_id==1){
+            Customer::create([
+                'fname'=>$request->fname,
+                'lname'=>$request->lname,
+                'customer_id'=>$idbaru,
+            ]);
+        }
         
-        // if($request->id_role==2){
-        //     Barber::create([
-        //         'fname'=>$request->fname,
-        //         'lname'=>$request->lname,
-        //         'email'=>$request->email,
-        //     ]);
-        // }
+        if($request->role_id==2){
+            Barber::create([
+                'fname'=>$request->fname,
+                'lname'=>$request->lname,
+                'barber_id'=>$idbaru,
+            ]);
+        }
         return redirect('/login');
     }
 

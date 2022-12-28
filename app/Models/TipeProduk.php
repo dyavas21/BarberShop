@@ -8,5 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TipeProduk extends Model
 {
     use HasFactory;
-    protected $guarded = [];
+    protected $fillable = [
+        'id_tipe_produk','nama'
+    ];
+    protected $primaryKey = 'id_tipe_produk';
 }

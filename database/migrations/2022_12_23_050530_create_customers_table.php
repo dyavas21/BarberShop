@@ -14,17 +14,17 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id_customer');
+            $table->unsignedBigInteger('customer_id');
             $table->string('fname');
             $table->string('lname');
             $table->timestamps();
-            $table->foreign('id')
-            ->references('id')
+            $table->foreign('customer_id')
+            ->references('id_user')
             ->on('users')
             ->onDelete('cascade');
         });
     }
-
     /**
      * Reverse the migrations.
      *

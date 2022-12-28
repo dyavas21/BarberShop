@@ -7,14 +7,14 @@
         <div class="row row-cols-auto">
             <div class="col-lg">
                 <div class="card">
-                    <h5 class="card-header">Account Details</h5>
+                    <h5 class="card-header">Lengkapi Profile</h5>
                     <div class="card-body">
                         <form action="/customer-profile-inti-insert" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
-                                <label for="customer_id">User</label>
-                                <select class="form-control form-control-solid" name="customer_id" id="customer_id">                            
-                                    <option value="{{ $data->id }}">{{ $data->fname }}</option>
+                                <label for="customer_desc_id">User ke</label>
+                                <select class="form-control form-control-solid" name="customer_desc_id" id="customer_desc_id">                            
+                                    <option value="{{ $data->customer_id }}">{{ $data->customer_id }}</option>
                                 </select>
                             </div>
                             <div class="row row-cols-auto">
@@ -32,19 +32,11 @@
                                 </div>
                             </div>
                             <div class="row row-cols-auto">
-                                <div class="col-lg-6">   
-                                                    
+                                <div class="col-lg-6">                                                       
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
                                         <input type="number" name="age" class="form-control"  id="age">
                                     </div>  
-                                     
-                                </div>
-                                <div class="col-lg-6">                        
-                                    <div class="mb-3">
-                                        <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" class="form-control" id="phone">
-                                    </div>                      
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control" name="gender" id="gender">                            
@@ -52,7 +44,13 @@
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
                                         </select>
-                                    </div> 
+                                    </div>                                      
+                                </div>
+                                <div class="col-lg-6">                        
+                                    <div class="mb-3">
+                                        <label for="phone" class="form-label">No Handphone</label>
+                                        <input type="tel" name="phone" class="form-control" id="phone">
+                                    </div>                      
                                 </div>
                             </div>
                             <div class="mb-3">

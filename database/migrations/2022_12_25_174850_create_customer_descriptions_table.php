@@ -14,16 +14,16 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customer_descriptions', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedInteger('customer_id');
+            $table->bigIncrements('id_customer_description');
+            $table->unsignedBigInteger('customer_desc_id');
             $table->string('address');
             $table->integer('age');
             $table->enum('gender',['male', 'female']);
             $table->string('phone');
             $table->string('photo');
             $table->timestamps();
-            $table->foreign('customer_id')
-                ->references('id')
+            $table->foreign('customer_desc_id')
+                ->references('id_customer')
                 ->on('customers')
                 ->onDelete('cascade');
         });

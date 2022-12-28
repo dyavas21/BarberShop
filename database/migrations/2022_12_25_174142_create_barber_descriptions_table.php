@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('barber_descriptions', function (Blueprint $table) {
-            $table->id('id');
-            $table->unsignedInteger('barber_id');
+            $table->bigIncrements('id_barber_description');
+            $table->unsignedBigInteger('barber_desc_id');
             $table->string('address');
             $table->integer('age');
             $table->enum('gender',['male', 'female']);
@@ -25,8 +25,8 @@ return new class extends Migration
             $table->string('certificate');
             $table->string('gambarbarber');
             $table->timestamps();
-            $table->foreign('barber_id')
-                ->references('id')
+            $table->foreign('barber_desc_id')
+                ->references('id_barber')
                 ->on('barbers')
                 ->onDelete('cascade');
         });

@@ -17,13 +17,24 @@ class CustomerDescriptionController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    
+    public function customer()
+    {   $id = Auth::user()->id_user;
+        $data = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        return view('customer.customer', compact('data'));
+    }
 
-     
-     public function customerprofileinti()
+    public function customerprofileinti()
     {
-        $id1 = Auth::user()->id;
-        $data = User::find($id1);
+        $id = Auth::user()->id_user;
+        $data = Customer::where('customer_id', '=', $id)->first();
         return view('customer.profile-inti', compact('data'));
+    }
+        
+    public function customerprofile()
+    {   $id = Auth::user()->id_user;
+        $data = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        return view('customer.profile', compact('data'));
     }
 
     public function customerprofileintiview(Request $request)
@@ -34,16 +45,10 @@ class CustomerDescriptionController extends Controller
         return view('customer.profile-inti-view', compact('data', 'data2'));
     }
 
-
     public function customerprofileintiinsert(Request $request)
     {   
-        Customer::create([
-            'fname' => $request->fname,
-            'lname' => $request->lname,
-        ]);
-
         $datafinal = CustomerDescription::create([
-            'customer_id' => $request->customer_id,
+            'customer_desc_id' => $request->customer_desc_id,
             'address' => $request->address,
             'age' => $request->age,
             'gender' => $request->gender,
