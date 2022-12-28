@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Barber;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BarberController extends Controller
 {
@@ -13,28 +14,103 @@ class BarberController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+
+
+
+    public function barberprofile()
     {
-        $users = User::all();
-        // dd($users);
-
-        foreach ($users as $key) {
-            Barber::create([
-                'fname'=>$key->fname,
-                'lname'=>$key->lname,
-                'email'=>$key->email,
-            ]);
-            
-        }
-
-        // return view('barber.barber-profile', compact('data'));
+        $id1 = Auth::user()->id;
+        $data = Barber::find($id1);
+        
+        return view('barber.profile' ,compact('data'));
+        // $fname = Auth::user()->fname;
+        // return view('barber.barber-profile' ,compact('fname'));
     }
 
-    public function editBarber(){
+    public function barberprofiledetail()
+    {
 
-        $data = Barber::find($id);
-        dd($data);
-        // return view('barber.barber-profile-detail');
+        $id1 = Auth::user()->id;
+        $data = Barber::find($id1);
+
+        return view('barber.barber-profile-detail' ,compact('data'));
+        // return view('barber.barber-profile-detail', compact('data'));
+        // $email = Auth::user()->email;
+        // $fname = Auth::user()->fname;
+        // $lname = Auth::user()->lname;
+        // return view('barber.barber-profile-detail' ,compact('email', 'fname', 'lname'));
+    }
+
+    public function barberprofiledetailupdate(Request $request)
+    {
+        
+        $id1 = Auth::user()->id;
+        $data = Barber::find($id1);
+
+        $data->update($request->all());
+
+        return redirect()->route('barberprofile');
+    }
+
+    public function barberinsertcertificate(Request $request)
+    {   
+
+        $data = Barber::create([
+            'certificate' => $request->certificate,
+        ]);
+
+        if($request->hasFile('certificate')){
+            $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
+            $data->certificate = $request->file('certificate')->getClientOriginalName();
+            $data->save();
+            // $data->update([
+            //     'certificate' => ['certificate'],
+            //  ]);
+        }
+        return redirect()->route('barberprofile');
+        //barberprofiledetailupdate
+    }
+
+    public function barberinsertfoto(Request $request)
+    {
+    
+        $id1 = Auth::user()->id;
+        $data = Barber::find($id1);
+
+
+       $data = Barber::create([
+            'gambarbarber' => $request->gambarbarber,
+        ]);
+
+        if($request->hasFile('gambarbarber')){
+            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
+            $data->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
+            $data->save();
+        }
+        return redirect()->route('barberprofile');
+        //barberprofiledetailupdate
+    }
+
+    public function barberprofiledetailfoto()
+    {
+        return view('barber.barber-profile-detail-photo');
+    }
+
+    
+    public function store(Request $request)
+    {
+        //  $file_name = $request->image->getClientOriginalName();
+        //  $image = $request->image->storeAs('barberfoto', $file_name);
+
+        //  Barber::create([
+        //     'certificate' => $image
+        //  ]);
+    }
+
+    public function index()
+    {
+        //
     }
 
     /**
@@ -53,10 +129,7 @@ class BarberController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
-    }
+
 
     /**
      * Display the specified resource.

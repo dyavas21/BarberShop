@@ -9,10 +9,19 @@
                 <div class="card">
                     <h5 class="card-header">Profile Picture</h5>
                     <div class="card-body">
-                    <img src="assets/images/team1.jpeg" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                    <div class="d-flex justify-content-center mt-3">
-                        <a href="#" class="btn btn-primary">Upload new image</a>
-                    </div>
+                        
+                    <img src="{{ asset('gambarbarber/'.$data->gambarbarber ) }}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                    <form action="/barber-profile-foto-update" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="d-flex justify-content-center mt-3">
+                            <div class="row row-cols-auto justify-content-center">
+                             <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
+                             <button type="submit" class="btn btn-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">Upload Image</button>
+                            </div>
+                         </div>
+                    </form>
+                    
+               
                     </div>
                   </div>
             </div>
@@ -20,35 +29,36 @@
                 <div class="card">
                     <h5 class="card-header">Account Details</h5>
                     <div class="card-body">
-                        <form>
+                        <form action="/barber-profile-detail-update" method="POST" enctype="multipart/form-data">
+                            @csrf
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="email" class="form-label">Email address</label>
-                                        <input type="email" class="form-control" id="email" aria-describedby="emailHelp" disabled>                       
+                                        <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" value="{{ $data->email }}" disabled>                       
                                     </div>
                                     <div class="mb-3">
                                         <label for="fname" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" id="fname">
+                                        <input type="text" class="form-control" name="fname" value="{{ $data->fname }}" id="fname">
                                     </div> 
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" class="form-control" id="age">
+                                        <input type="number" name="age" class="form-control" value="{{ $data->age }}" id="age">
                                     </div>  
                                      
                                 </div>
                                 <div class="col-lg-6">
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" class="form-control" id="phone">
+                                        <input type="tel" name="phone" class="form-control" value="{{ $data->phone }}" id="phone">
                                     </div>                     
                                     <div class="mb-5">
                                         <label for="lname" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" id="lname">
+                                        <input type="text" name="lname" class="form-control" value="{{ $data->lname }}" id="lname">
                                     </div>   
                                     <div class="mb-3">
-                                        <select class="form-select" aria-label="Default select example">
-                                            <option selected>Gender</option>
+                                        <select class="form-select" name="gender" aria-label="Default select example">
+                                            <option selected>{{ $data->gender }}</option>
                                             <option value="1">Male</option>
                                             <option value="2">Female</option>               
                                         </select>   
@@ -57,11 +67,15 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" class="form-control" id="alamat">                       
+                                <input type="text" name="address" class="form-control" id="alamat" value="{{ $data->address }}">                       
                             </div>
-                            <label for="alamat" class="form-label">Upload Sertifikat Anda</label>
+                            <div class="mb-3">
+                                <label for="description" class="form-label">Description</label>
+                                <input type="text" name="description" class="form-control" id="alamat" value="{{ $data->description }}">                       
+                            </div>
+                            <label for="sertif" class="form-label">Upload Sertifikat Anda</label>
                             <div class="input-group mb-3">
-                                <input type="file" class="form-control" id="inputGroupFile02">
+                                <input type="file" name="certificate" class="form-control" id="inputGroupFile02">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>  
                             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
@@ -78,7 +92,7 @@
                                         </div>
                                         <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                        <button type="button" class="btn btn-primary" type="submit">Save changes</button>
                                         </div>
                                     </div>
                                     </div>

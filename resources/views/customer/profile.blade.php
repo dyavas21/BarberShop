@@ -1,4 +1,4 @@
-@extends('layouts.header-barber')
+@extends('layouts.header-customer')
 
 @section('content')
 
@@ -11,12 +11,12 @@
             <div class="card-body">
                 <div class="row row-cols-auto">
                     <div class="col-lg-2 d-flex flex-row">
-                        <img src="assets/images/team1.jpeg" height="100" class="rounded-circle barber-profile" alt="...">
+                        {{-- <img src="{{ asset('photo/'.$data->Customer->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."> --}}
                     </div>
                     <div class="col-lg-4 d-flex flex-row">
                         <div class="mb-3">
-                            <h4>Ramadhani Al Amin</h4>
-                            <h6>Tukang Cukur Profesional</h6>    
+                            <h4>{{ $data->fname }}</h4>
+                            <h6>{{ $data->roleuser->nama_role }}</h6>    
                             <h6>Bogor, West Java, Indonesia</h6>    
                             <h6>100 Transaksi selesai</h6>                        
                         </div>

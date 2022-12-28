@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CustomerController extends Controller
 {
@@ -12,9 +14,21 @@ class CustomerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+
+    public function customer()
     {
-        //
+        return view('index');
+    }
+
+
+    public function customerprofile()
+    {
+        $id = Auth::user()->id;
+        $data = User::where('user_id',$id)->first();
+        
+        return view('customer.profile' ,compact('data'));
+        // $fname = Auth::user()->fname;
+        // return view('barber.barber-profile' ,compact('fname'));
     }
 
     /**
@@ -24,9 +38,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        $data = Customer::all();
-        dd($data);
-        return view('customer');
+        //
     }
 
     /**

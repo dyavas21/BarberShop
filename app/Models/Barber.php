@@ -2,12 +2,30 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\BarberDescription;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Barber extends Model
 {
     use HasFactory;
+    // protected $fillable = [
+    //     'fname',
+    //     'lname',
+    //     'email',
+    // ];
+    protected $primaryKey = 'id_barber';
+    protected $fillable = [
+        'id_barber','barber_id', 'fname', 'lname'
+    ];
+ 
 
-    protected $guarded = [];
+
+    public function description(){
+        return $this->hasOne(BarberDescription::class, 'barber_id', 'id_barber');
+    }
+
+    public function userBarber(){
+        return $this->belongsTo(User::class);
+    }
 }
