@@ -18,27 +18,36 @@ class BarberDescriptionController extends Controller
 
     
     public function barber()
-    {
-        return view('barber.barber');
+    {   $id = Auth::user()->id_user;
+        $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        return view('barber.barber', compact('data'));
     }
 
     public function barberprofileinti()
     {
         $id = Auth::user()->id_user;
-        $data = Barber::where('barber_id',$id)->first();
+        $data = Barber::where('barber_id', '=', $id)->first();
+       
+        // Barber::where(function ($data) {
+        //     $data->where('barber_id', '=', $id);
+        // });
         return view('barber.profile-inti', compact('data'));
     }
 
-    public function barberprofileintiview(Request $request)
+
+    public function barberprofileintiview()
     {   
         // $id1 = Auth::user()->id;
         // $data = User::find($id1);
         // $data2 = BarberDescription::find($id1);
-
-
+        
         $id = Auth::user()->id_user;
-        $data = Barber::where('barber_id',$id)->first();
-        $data2 = User::find($id);
+        $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $data2 = Barber::where('barber_id', '=', $id)->first();
+        // BarberDescription::where(function ($data) {
+        //     $data->where('barber_desc_id', '=', $id);
+        // });
+        // $data2 = User::find($id);
 
         return view('barber.profile-inti-view', compact('data', 'data2'));
     }
@@ -71,10 +80,10 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileintiedit(Request $request)
     {
-        $id = Auth::user()->id;
-        $datauser = User::find($id);
-        $databarber = Barber::find($id);
-        $datadesc = BarberDescription::find($id);
+        $id = Auth::user()->id_user;
+        $datauser = User::where('id_user', '=', $id)->first();
+        $databarber = Barber::where('barber_id', '=', $id)->first();
+        $datadesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
 
         $datauser->update([
             'fname' => $request->fname,
@@ -96,6 +105,14 @@ class BarberDescriptionController extends Controller
             'gambarbarber' => $request->gambarbarber,
             'harga' => $request->harga,
         ]);
+
+        if($request->hasFile('gambarbarber', 'certificate')){
+            $request->file('gambarbarber')->move('barber1/', $request->file('gambarbarber')->getClientOriginalName());
+            $request->file('certificate')->move('barber2/', $request->file('certificate')->getClientOriginalName());
+            $datadesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
+            $datadesc->certificate = $request->file('certificate')->getClientOriginalName();
+            $datadesc->save();
+        }
 
         return redirect()->route('barber');
     }

@@ -19,9 +19,15 @@
                             </div>
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
-                                    <label for="fname">Name</label>
+                                    <label for="fname">First Name</label>
                                     <select class="form-control form-control-solid" name="fname" id="fname">                            
                                         <option>{{ $data->fname }} {{ $data->lname }}</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 mb-3">
+                                    <label for="lname">Last Name</label>
+                                    <select class="form-control form-control-solid" name="lname" id="fname">                            
+                                        <option>{{ $data->lname }} {{ $data->lname }}</option>
                                     </select>
                                 </div>
                             </div>

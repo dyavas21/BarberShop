@@ -21,7 +21,7 @@ class Barber extends Model
  
 
 
-    public function description(){
+    public function descriptionBarber(){
         return $this->hasOne(BarberDescription::class, 'barber_id', 'id_barber');
     }
 
