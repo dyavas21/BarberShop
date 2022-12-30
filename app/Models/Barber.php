@@ -19,10 +19,8 @@ class Barber extends Model
         'id_barber','barber_id', 'fname', 'lname'
     ];
  
-
-
     public function descriptionBarber(){
-        return $this->hasOne(BarberDescription::class, 'barber_id', 'id_barber');
+        return $this->hasOne(BarberDescription::class, 'barber_desc_id', 'barber_id');
     }
 
     public function userBarber(){

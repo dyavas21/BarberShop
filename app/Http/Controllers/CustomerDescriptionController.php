@@ -21,6 +21,11 @@ class CustomerDescriptionController extends Controller
     public function customer()
     {   $id = Auth::user()->id_user;
         $data = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+
+
+        // $data2 = Customer::find($id);
+        // $data3 = $data2->customer_id;
+
         return view('customer.customer', compact('data'));
     }
 
@@ -39,16 +44,19 @@ class CustomerDescriptionController extends Controller
 
     public function customerprofileintiview(Request $request)
     {   
-        $id1 = Auth::user()->id;
-        $data = User::find($id1);
-        $data2 = CustomerDescription::find($id1);
+        $id = Auth::user()->id_user;
+        $data2 = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $data = Customer::where('customer_id', '=', $id)->first();
         return view('customer.profile-inti-view', compact('data', 'data2'));
     }
 
     public function customerprofileintiinsert(Request $request)
     {   
+        
+        $id = Auth::user()->id_user;
+
         $datafinal = CustomerDescription::create([
-            'customer_desc_id' => $request->customer_desc_id,
+            'customer_desc_id' => $id,
             'address' => $request->address,
             'age' => $request->age,
             'gender' => $request->gender,
@@ -67,10 +75,10 @@ class CustomerDescriptionController extends Controller
 
     public function customerprofileintiedit(Request $request)
     {
-        $id = Auth::user()->id;
-        $datauser = User::find($id);
-        $databarber = Customer::find($id);
-        $datadesc = CustomerDescription::find($id);
+        $id = Auth::user()->id_user;
+        $datauser = User::where('id_user', '=', $id)->first();
+        $databarber = Customer::where('customer_id', '=', $id)->first();
+        $datadesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
 
         $datauser->update([
             'fname' => $request->fname,
@@ -89,6 +97,12 @@ class CustomerDescriptionController extends Controller
             'phone' => $request->phone,
             'photo' => $request->photo,
         ]);
+
+        if($request->hasFile('photo')){
+            $request->file('photo')->move('photo/', $request->file('photo')->getClientOriginalName());
+            $datadesc->photo = $request->file('photo')->getClientOriginalName();
+            $datadesc->save();
+        }
 
         return redirect()->route('customer');
     }

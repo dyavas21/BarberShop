@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Dashboard - SB Admin Pro</title>
+        <title>Dashboard - Barber Admin</title>
         <link rel="stylesheet" href="assets/css/style.css" />
         <link href="/assets/css/admin-styles.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -17,7 +17,7 @@
     </head>
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow navbar-dark bg-dark" id="sidenavAccordion">
-            <a class="navbar-brand" href="index.html">SB Admin Pro</a>
+            <a class="navbar-brand" href="/barber">Barber Admin</a>
             <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <form class="form-inline mr-auto d-none d-md-block">
                 <div class="input-group input-group-joined input-group-solid">
@@ -29,13 +29,24 @@
             </form>
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-caret mr-2 dropdown-user">
-                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"></a>
+                    @if (is_null($data))
+                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"></a>
+                    @else 
+                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('barber1/'.$data->gambarbarber ) }}"></a>                        
+                    @endif
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                         <h6 class="dropdown-header d-flex align-items-center">
-                            <img class="dropdown-user-img" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            {{-- <img class="dropdown-user-img" width="40" height="40" src="https://source.unsplash.com/QAB-WJcbgJk/60x60 {{ or asset('barber1/'.$data->gambarbarber)}}"> --}}  
+                        @if (is_null($data))
+                            <img class="dropdown-user-img" width="40" height="40" src="https://source.unsplash.com/QAB-WJcbgJk/60x60 ">
+                        @else 
+                            <img class="dropdown-user-img" width="40" height="40" src="{{ asset('barber1/'.$data->gambarbarber ) }}">
+                        @endif
                             <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">Valerie Luna</div>
-                                <div class="dropdown-user-details-email">vluna@aol.com</div>
+                                {{-- http://127.0.0.1:8000/barber1/team3.jpeg 
+                                http://127.0.0.1:8000/team3.jpeg  --}}
+                                <div class="dropdown-user-details-name">{{ $data2->fname }} {{ $data2->lname }}</div>
+                                <div class="dropdown-user-details-email">{{ $data2->email }}</div>
                             </div>
                         </h6>
                         <div class="dropdown-divider"></div>
@@ -70,7 +81,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">Valerie Luna</div>
+                            <div class="sidenav-footer-title">{{ $data2->fname }} {{ $data2->lname }}</div>
                         </div>
                     </div>
                 </nav>

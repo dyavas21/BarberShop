@@ -7,6 +7,8 @@ use App\Models\Admin;
 use App\Models\Barber;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Models\BarberDescription;
+use App\Models\CustomerDescription;
 
 class AdminController extends Controller
 {
@@ -25,7 +27,11 @@ class AdminController extends Controller
 
         $data3 = Customer::all();
 
-        return view('admin.admin',compact('data', 'data2', 'data3'));
+        $data4 = BarberDescription::all();
+
+        $data5 = CustomerDescription::all();
+
+        return view('admin.admin',compact('data', 'data2', 'data3', 'data4', 'data5'));
     }
 
     public function admindelete($id){

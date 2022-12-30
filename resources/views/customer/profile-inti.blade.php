@@ -11,12 +11,12 @@
                     <div class="card-body">
                         <form action="/customer-profile-inti-insert" method="POST" enctype="multipart/form-data">
                             @csrf
-                            <div class="form-group">
+                            {{-- <div class="form-group">
                                 <label for="customer_desc_id">User ke</label>
                                 <select class="form-control form-control-solid" name="customer_desc_id" id="customer_desc_id">                            
                                     <option value="{{ $data->customer_id }}">{{ $data->customer_id }}</option>
                                 </select>
-                            </div>
+                            </div> --}}
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
                                     <label for="fname">First Name</label>

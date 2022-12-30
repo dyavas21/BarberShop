@@ -18,15 +18,7 @@ class BarberController extends Controller
 
 
 
-    public function barberprofile()
-    {
-        $id1 = Auth::user()->id;
-        $data = Barber::find($id1);
-        
-        return view('barber.profile' ,compact('data'));
-        // $fname = Auth::user()->fname;
-        // return view('barber.barber-profile' ,compact('fname'));
-    }
+
 
     public function barberprofiledetail()
     {
