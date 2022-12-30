@@ -49,10 +49,14 @@
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
+                            @if (is_null($data))
                             <a class="nav-link" href="/customer">Dashboard</a>
-                            <a class="nav-link" href="/customer-profile">Profile</a>
                             <a class="nav-link" href="/customer-profile-inti">Lengkapi Profile Inti</a>
-                            <a class="nav-link" href="/customer-profile-inti-view">View & Edit Profile</a>                                                    
+                        @else 
+                            <a class="nav-link" href="/customer">Dashboard</a> 
+                            <a class="nav-link" href="/customer-profile">Profile</a>
+                            <a class="nav-link" href="/customer-profile-inti-view">View & Edit Profile</a>  
+                        @endif                  
                         </div>
                     </div>
                     <div class="sidenav-footer">

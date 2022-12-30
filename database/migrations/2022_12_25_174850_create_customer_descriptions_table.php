@@ -23,9 +23,10 @@ return new class extends Migration
             $table->string('photo');
             $table->timestamps();
             $table->foreign('customer_desc_id')
-                ->references('id_customer')
+                ->references('customer_id')
                 ->on('customers')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

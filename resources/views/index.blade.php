@@ -181,60 +181,71 @@
         </div>
     </section>
 
+
     <section class="barber text-center mt-5">
         <div class="container">
             <h1>Our Barber</h1>
+            {{-- @php
+              $final = $data == null;
+               dd($data);
+            @endphp --}}
             <p>Beberapa jasa barber yang kami siapkan untuk anda</p>
-            <div class="row row-cols-auto">
-                <div class="col-lg-2 mt-2">
-                    <div class="card">
-                        <h1>Filter</h1>
+            <div class="row row-cols-auto d-flex justify-content-center">
+                @if ($data || $data2 == null)
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
+                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
+                        <div class="card-body">
+                        <h5 class="card-title">None</h5>
+                        <p class="card-text">None</p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-10 mt-2">
-                   <div class="row row-cols-auto d-flex justify-content-center">
-                        <div class="col">
-                            <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                                <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">Ramadhani Al Amin</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="/barber-profile" class="btn btn-primary">Detail</a>
-                                </div>
-                            </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
+                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
+                        <div class="card-body">
+                        <h5 class="card-title">None</h5>
+                        <p class="card-text">None</p>
                         </div>
-                        <div class="col">
-                            <div class="card jarak d-block mx-auto" style="width: 18rem;">
-                                <img src="assets/images/team2.jpeg" class="card-img-top rounded-circle" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="card jarak d-block mx-auto" style="width: 18rem;">
-                                <img src="assets/images/team3.jpeg" class="card-img-top rounded-circle" alt="...">
-                                <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="btn btn-primary">Detail</a>
-                                </div>
-                            </div>
-                        </div>
-                   </div>
-                   <nav aria-label="Page navigation example">
-                    <ul class="pagination justify-content-center mt-3">
-                      <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                    </ul>
-                  </nav>
+                    </div>
                 </div>
-                
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
+                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
+                        <div class="card-body">
+                        <h5 class="card-title">None</h5>
+                        <p class="card-text">None</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
+                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
+                        <div class="card-body">
+                        <h5 class="card-title">None</h5>
+                        <p class="card-text">None</p>
+                        </div>
+                    </div>
+                </div>
+                @else
+                    @foreach ($data as $item)
+                    <div class="col">
+                        <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                            <img src="{{ asset('barber1/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle" alt="...">
+                            <div class="card-body">
+                            <h5 class="card-title">{{ $item->fname }}</h5>
+                            <p class="card-text">{{ $item->descriptionBarber->description }}</p>
+                            <a href="/barber-profile" class="btn btn-primary">Detail</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                @endif
             </div>
         </div>
     </section>

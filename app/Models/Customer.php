@@ -16,7 +16,7 @@ class Customer extends Model
     protected $primaryKey = 'id_customer';
 
     public function descriptionCustomer(){
-        return $this->hasOne(CustomerDescription::class, 'customer_id', 'id_customer');
+        return $this->belongsTo(CustomerDescription::class, 'customer_id', 'id_customer');
     }
 
     public function userCustomer(){

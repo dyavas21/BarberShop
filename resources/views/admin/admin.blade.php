@@ -110,7 +110,6 @@
                                 <th>No</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
-                                <th>Gender</th>
                                 <th>Role</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Actions</th>
@@ -121,29 +120,65 @@
                                 <th>No</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
-                                <th>Gender</th>
                                 <th>Role</th>
                                 <th>Tanggal Dibuat</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
                         <tbody>
-                            @php
+                        @php
                             $no = 1;
+                            // $data[0]->descc->gender;
+                            // dd($data);
+                            // $data4->gender;                            
                         @endphp
                         @foreach ($data as $row)
-                            <tr>
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $row->fname }} {{ $row->lname }}</td>
+                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->roleuser->nama_role }}</td>
+                            <td>{{ $row->created_at->format('d M Y') }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
+                            </td>
+                        </tr>    
+                        {{-- @if ($row->role_id == 1)
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $row->fname }} {{ $row->lname }}</td>
+                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->roleuser->nama_role }}</td>
+                            <td>{{ $row->descc->gender }}</td>
+                            <td>{{ $row->created_at->format('d M Y') }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
+                            </td>
+                        </tr>      
+                        @elseif($row->role_id == 2) 
+                        <tr>
+                            <td>{{ $no++ }}</td>
+                            <td>{{ $row->fname }} {{ $row->lname }}</td>
+                            <td>{{ $row->email }}</td>
+                            <td>{{ $row->roleuser->nama_role }}</td>
+                            <td>{{ $row->descb->gender }}</td>
+                            <td>{{ $row->created_at->format('d M Y') }}</td>
+                            <td>
+                                <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
+                            </td>
+                        </tr>   --}}
+                       
+                            {{-- <tr>
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->fname }} {{ $row->lname }}</td>
-                                <td>{{ $row->email }}</td>
-                                <td>{{ $row->gender }}</td>
+                                <td>{{ $row->email }}</td>                            
                                 <td>{{ $row->roleuser->nama_role }}</td>
                              
                                 <td>{{ $row->created_at->format('d M Y') }}</td>
                                 <td>
-                                    <a class="btn btn-danger" href="/admin/detele/{{ $row->id }}">Delete</a>
+                                    <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
                                 </td>
-                            </tr>                
+                            </tr>                  --}}
                         @endforeach
                         </tbody>
                     </table>

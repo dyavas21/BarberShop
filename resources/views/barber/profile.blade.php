@@ -89,11 +89,11 @@
             <div class="card-body">
                 <div class="row row-cols-auto">
                     <div class="col-lg-2 d-flex flex-row">
-                      <img src="{{ asset('gambarbarber/'.$data->gambarbarber)}}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                      <img src="{{ asset('barber1/'.$data2->gambarbarber)}}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                     </div>
                     <div class="col-lg-4 d-flex flex-row">
                         <div class="mb-3">
-                            <h4>{{ $data->fname }}</h4>
+                            <h4>{{ $data->fname }} {{ $data->lname }}</h4>
                             <h6>Tukang Cukur Profesional</h6>    
                             <h6>Bogor, West Java, Indonesia</h6>    
                             <h6>100 Transaksi selesai</h6>                        
@@ -116,7 +116,7 @@
             <div class="card-body">
                 <div class="row row-cols-auto">
                     <div class="col-lg-4">
-                        <img src="{{ asset('storage/thumbnail/'.$data->product) }}" height="100" class="rounded-circle barber-profile" alt="...">
+                        <img src="{{ asset('barber2/'.$data2->certificate) }}" height="100" class="rounded-circle barber-profile" alt="...">
                     </div>
                     <div class="col-lg-4">
                         {{-- <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="..."> --}}
@@ -133,7 +133,7 @@
         <div class="card">
             <h5 class="card-header">Deskripsi</h5>
             <div class="card-body">
-                <h6>{{ $data->description }}</h6>
+                <h6>{{ $data2->description }}</h6>
             </div>
         </div>
     </div>

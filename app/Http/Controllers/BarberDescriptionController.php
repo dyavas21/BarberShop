@@ -20,18 +20,31 @@ class BarberDescriptionController extends Controller
     public function barber()
     {   $id = Auth::user()->id_user;
         $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        return view('barber.barber', compact('data'));
+        $data2 = User::where('id_user', '=', $id)->first();
+        return view('barber.barber', compact('data', 'data2'));
+    }
+
+    public function barberprofile()
+    {
+        $id = Auth::user()->id_user;
+        $data = Barber::where('barber_id', '=', $id)->first();
+        $data2 = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        
+        return view('barber.profile' ,compact('data', 'data2'));
+        // $fname = Auth::user()->fname;
+        // return view('barber.barber-profile' ,compact('fname'));
     }
 
     public function barberprofileinti()
     {
         $id = Auth::user()->id_user;
         $data = Barber::where('barber_id', '=', $id)->first();
+        $data2 = User::where('id_user', '=', $id)->first();
        
         // Barber::where(function ($data) {
         //     $data->where('barber_id', '=', $id);
         // });
-        return view('barber.profile-inti', compact('data'));
+        return view('barber.profile-inti', compact('data', 'data2'));
     }
 
 
@@ -55,8 +68,11 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileintiinsert(Request $request)
     {   
+
+        $id = Auth::user()->id_user;
+
         $datafinal = BarberDescription::create([
-            'barber_desc_id' => $request->barber_desc_id,
+            'barber_desc_id' => $id,
             'address' => $request->address,
             'age' => $request->age,
             'gender' => $request->gender,

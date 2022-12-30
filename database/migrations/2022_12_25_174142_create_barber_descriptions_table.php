@@ -26,9 +26,10 @@ return new class extends Migration
             $table->string('gambarbarber');
             $table->timestamps();
             $table->foreign('barber_desc_id')
-                ->references('id_barber')
+                ->references('barber_id')
                 ->on('barbers')
-                ->onDelete('cascade');
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
         });
     }
 

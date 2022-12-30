@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarberController;
@@ -27,6 +28,8 @@ use App\Http\Controllers\CustomerDescriptionController;
 // Route::get('/', function () {
 //     return view('index');
 // });
+//Home
+Route::get('/', [HomeController::class, 'index'])->name('index');
 
 
 
@@ -41,10 +44,10 @@ Route::get('/customer-profile-inti-view', [CustomerDescriptionController::class,
 Route::post('/customer-profile-inti-edit', [CustomerDescriptionController::class, 'customerprofileintiedit'])->name('customerprofileintiedit')->middleware('auth');
 
 //Barber
-Route::get('/barber-profile', [BarberController::class, 'barberprofile'])->name('barberprofile')->middleware('auth');
+
 Route::get('/barber-profile-detail', [BarberController::class, 'barberprofiledetail'])->name('barberprofiledetail')->middleware('auth');
 
-
+Route::get('/barber-profile', [BarberDescriptionController::class, 'barberprofile'])->name('barberprofile')->middleware('auth');
 Route::get('/barber', [BarberDescriptionController::class, 'barber'])->name('barber')->middleware('auth');
 Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberprofileinti'])->name('barberprofileinti')->middleware('auth');
 Route::post('/barber-profile-inti-insert', [BarberDescriptionController::class, 'barberprofileintiinsert'])->name('barberprofileintiinsert')->middleware('auth');
