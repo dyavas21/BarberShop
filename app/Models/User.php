@@ -58,15 +58,6 @@ class User extends Authenticatable
     //     return $this->hasMany(BarberDescription::class, 'barber_desc_id','id_user');
     // }
 
-    public function descb(){
-        return $this->belongsTo(BarberDescription::class, 'id_user', 'barber_desc_id');
-    }
-
-    public function descc(){
-        return $this->belongsTo(CustomerDescription::class, 'id_user', 'customer_desc_id');
-    }
-
-
     /**
      * The attributes that should be hidden for serialization.
      *

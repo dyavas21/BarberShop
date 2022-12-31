@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Barber;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use App\Models\BarberDescription;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,10 @@ class BarberDescriptionController extends Controller
     {   $id = Auth::user()->id_user;
         $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
         $data2 = User::where('id_user', '=', $id)->first();
-        return view('barber.barber', compact('data', 'data2'));
+
+        $data3 = Barber::all();
+        $data4 = Pemesanan::all();
+        return view('barber.barber', compact('data', 'data2', 'data3', 'data4'));
     }
 
     public function barberprofile()

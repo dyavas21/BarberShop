@@ -10,11 +10,13 @@ class Produk extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_produk','id_type', 'nama_produk', 'harga', 'stok', 'gambar'
+        'id_produk','tipe_id', 'nama_produk', 'harga', 'stok', 'gambar'
     ];
+
     protected $primaryKey = 'id_produk';
 
+
     public function tipeproduk(){
-        return $this->belongsTo(TipeProduk::class, 'id_type', 'id_produk');
+        return $this->belongsTo(TipeProduk::class, 'tipe_id', 'id_tipe_produk');
     }
 }

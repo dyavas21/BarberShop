@@ -15,11 +15,16 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->bigIncrements('id_produk');
-            $table->integer('id_type')->nullable();
+            $table->unsignedBigInteger('tipe_id');
             $table->string('nama_produk');
             $table->integer('harga');
             $table->integer('stok');
-            $table->string('gambar')->nullable();
+            $table->string('gambar');
+            $table->foreign('tipe_id')
+            ->references('id_tipe_produk')
+            ->on('tipe_produks')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
             $table->timestamps();
         });
     }
