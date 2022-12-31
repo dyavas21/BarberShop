@@ -34,7 +34,6 @@
                 <span class="navbar-toggler-icon"></span>
               </button>
               <div class="collapse navbar-collapse" id="navbarSupportedContent">
-               
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                       <a class="nav-link active" aria-current="page" href="/">Home</a>
@@ -83,12 +82,7 @@
       <div class="text-box text-center">
         <div class="position-absolute top-50 start-50 translate-middle">
             <h1>Get a Good Cut.</h1>
-            <p>Because hair is the crown of every person.</p>
-            @guest
-            @else
-              <p>Hello there, {{ Auth::user()->fname }}</p>
-            @endguest
-            
+            <p>Because hair is the crown of every person.</p> 
                 {{-- if (isset($_SESSION["useruid"])) {
                   echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
                 } --}}
@@ -185,70 +179,43 @@
     <section class="barber text-center mt-5">
         <div class="container">
             <h1>Our Barber</h1>
-            {{-- @php
-              $final = $data == null;
-               dd($data);
-            @endphp --}}
             <p>Beberapa jasa barber yang kami siapkan untuk anda</p>
+            @if ($data2->first() == null)
+            <div class="col">
+                <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                    <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                    <div class="card-body">
+                    <h5 class="card-title">No Barber Available Right Now</h5>
+                    {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                    {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                    </div>
+                </div>
+            </div>
+            @else
             <div class="row row-cols-auto d-flex justify-content-center">
-                @if ($data || $data2 == null)
-                <div class="col">
-                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
-                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
-                        <div class="card-body">
-                        <h5 class="card-title">None</h5>
-                        <p class="card-text">None</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
-                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
-                        <div class="card-body">
-                        <h5 class="card-title">None</h5>
-                        <p class="card-text">None</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
-                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
-                        <div class="card-body">
-                        <h5 class="card-title">None</h5>
-                        <p class="card-text">None</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60 " height="100" width="100" class="card-img-top rounded-circle" alt="...">
-                        {{-- <img src="assets/images/team1.jpeg" class="card-img-top rounded-circle" alt="..."> --}}
-                        <div class="card-body">
-                        <h5 class="card-title">None</h5>
-                        <p class="card-text">None</p>
-                        </div>
-                    </div>
-                </div>
-                @else
-                    @foreach ($data as $item)
-                    <div class="col">
-                        <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                            <img src="{{ asset('barber1/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle" alt="...">
-                            <div class="card-body">
-                            <h5 class="card-title">{{ $item->fname }}</h5>
-                            <p class="card-text">{{ $item->descriptionBarber->description }}</p>
-                            <a href="/barber-profile" class="btn btn-primary">Detail</a>
+                @foreach ($data as $item)
+                    @foreach ($data2 as $item2)
+                        @if ($item->barber_id == $item2->barber_desc_id)
+                        <div class="col">
+                            <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                                <img src="{{ asset('barber1/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                                <div class="card-body">
+                                <h5 class="card-title">{{ $item->fname }}</h5>
+                                <p class="card-text">{{ $item->descriptionBarber->description }}</p>
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        @else
+                        @endif
                     @endforeach
-                @endif
-            </div>
+                @endforeach
+            </div> 
+            @endif
         </div>
     </section>
+
+
 
     <section class="product text-center mt-5">
         <div class="container">
@@ -256,32 +223,51 @@
             <p>
            Beberapa produk dengan kualitas yang bagus kami tawarkan untuk kebutuhan rambut anda.
             </p>
-            <div class="row row-cols-1 row-cols-md-3 g-4">
+            @if ($data3->first() == null)
+            <div class="row row-cols-auto d-flex justify-content-between align-items-center">
+                <div class="col">
+                    <div class="card h-100 border border-0 ">
+                        <div class="card-body text-center {{--facilities-body  --}}">
+                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >    
+                            <h6>No Product Avaible Right Now</h6>
+                            {{-- <h6>{{ $item->nama_produk }}</h6> --}}
+                        </div>
+                      </div>
+                </div> 
                 <div class="col">
                     <div class="card h-100 border border-0">
-                        <div class="card-body text-center facilities-body">
-                            <img src="/assets/images/product1.jpeg" />
-                            <h3>Powder</h3>
+                        <div class="card-body text-center">
+                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                            <h6>No Product Avaible Right Now</h6>
+                            {{-- <h6>{{ $item->nama_produk }}</h6> --}}
+                        </div>
+                      </div>
+                </div> 
+                <div class="col">
+                    <div class="card h-100 border border-0">
+                        <div class="card-body text-center">
+                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                            <h6>No Product Avaible Right Now</h6>
+                            {{-- <h6>{{ $item->nama_produk }}</h6> --}}
+                        </div>
+                      </div>
+                </div> 
+            </div>
+            @else
+            <div class="row row-cols-auto d-flex justify-content-center">
+                @foreach ($data3 as $item)
+                <div class="col">
+                    <div class="card h-100 border border-0">
+                        <div class="card-body text-center">
+                            <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" alt="" >    
+                            <h3>{{ $item->tipeproduk->nama }}</h3>
+                            <h6>{{ $item->nama_produk }}</h6>
                         </div>
                       </div>
                 </div>
-                <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center facilities-body">
-                            <img src="/assets/images/product2.jpeg" />
-                            <h3>Wax</h3>
-                        </div>
-                      </div>
-                </div>
-                <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center facilities-body">
-                            <img src="/assets/images/product3.jpeg" />
-                            <h3>Serum</h3>
-                        </div>
-                      </div>
-                  </div>
+                @endforeach    
               </div>
+            @endif
            </div>
         </div>
     </section>

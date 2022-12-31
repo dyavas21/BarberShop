@@ -144,7 +144,7 @@
                                     <img src="{{ asset('gambarproduk/'.$row->gambar ) }}" alt="" style="width: 40px">    
                                 </td>                            
                                 <td>
-                                    <a class="btn btn-danger" href="/admin/detele-produk/{{ $row->id }}">Delete</a>
+                                    <a class="btn btn-danger" href="/admin/detele-produk/{{ $row->id_produk }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

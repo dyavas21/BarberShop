@@ -25,11 +25,13 @@ use App\Http\Controllers\CustomerDescriptionController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
+
+
 //Home
 Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/barber-detail/{id}', [HomeController::class, 'barberdetail'])->name('barberdetail');
+Route::get('/barber-book/{id}', [HomeController::class, 'barberbook'])->name('barberbook')->middleware('auth');
+Route::post('/barber-bookinsert', [HomeController::class, 'barberbookinsert'])->name('barberbookinsert')->middleware('auth');
 
 
 

@@ -106,10 +106,10 @@
                     <form action="/admin-insertproduk" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="id_type">Tipe Produk</label>
-                            <select class="form-control form-control-solid" name="id_type" id="id_type">                            
+                            <label for="tipe_id">Tipe Produk</label>
+                            <select class="form-control form-control-solid" name="tipe_id" id="tipe_id">                            
                                 @foreach ($datatipe as $tipe)
-                                <option value="{{ $tipe->id }}">{{ $tipe->nama }}</option>
+                                <option value="{{ $tipe->id_tipe_produk }}">{{ $tipe->nama }}</option>
                                 @endforeach
                             </select>
                         </div>

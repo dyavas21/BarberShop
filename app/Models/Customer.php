@@ -14,10 +14,11 @@ class Customer extends Model
         'id_customer','customer_id', 'fname', 'lname'
     ];
     protected $primaryKey = 'id_customer';
-
+     
     public function descriptionCustomer(){
-        return $this->belongsTo(CustomerDescription::class, 'customer_id', 'id_customer');
+        return $this->hasOne(CustomerDescription::class, 'customer_desc_id', 'customer_id');
     }
+
 
     public function userCustomer(){
         return $this->belongsTo(User::class);

@@ -27,7 +27,14 @@ class ProdukController extends Controller
 
     public function admininsertproduk(Request $request)
     {
-        $data = Produk::create($request->all());
+        $data = Produk::create([
+            'tipe_id' => $request->tipe_id,
+            'nama_produk' => $request->nama_produk,
+            'harga' => $request->harga,
+            'stok' => $request->stok,
+            'gambar' => $request->gambar,
+        ]);
+
         if($request->hasFile('gambar')){
             $request->file('gambar')->move('gambarproduk/', $request->file('gambar')->getClientOriginalName());
             $data->gambar = $request->file('gambar')->getClientOriginalName();

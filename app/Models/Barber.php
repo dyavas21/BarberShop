@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Pemesanan;
 use App\Models\BarberDescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -25,5 +26,9 @@ class Barber extends Model
 
     public function userBarber(){
         return $this->belongsTo(User::class);
+    }
+
+    public function pemesananBarber(){
+        return $this->hasOne(Pemesanan::class, 'pemesanan_id_barber', 'barber_id');
     }
 }

@@ -74,7 +74,7 @@
                             @else 
                                 <a class="nav-link" href="/barber">Dashboard</a> 
                                 <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
-                                <a class="nav-link" href="/barber-profile-inti-view">View & Edit Profile</a>
+                                <a class="nav-link" href="/barber-profile-inti-view">Edit Profile</a>
                             @endif
                         </div>
                     </div>
