@@ -36,10 +36,10 @@ return new class extends Migration
         });
         
         Schema::create('order_product', function (Blueprint $table) {
-            $table->unsignedInteger('order_id');
+            $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id_order')->on('orders');
-            $table->unsignedInteger('product_id');
-            $table->foreign('product_id')->references('id_produk')->on('products');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id_produk')->on('produks');
             $table->integer('quantity');
         });
 

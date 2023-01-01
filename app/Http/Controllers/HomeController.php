@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Barber;
 use App\Models\Produk;
 use App\Models\Customer;
@@ -93,13 +94,25 @@ class HomeController extends Controller
         $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
         // $dataUser = User::where('id_user', '=', $id2)->first();
 
-        $product = Produk::all();
-        return view('product-cart', compact('product', 'dataUser'));
+        $products = Produk::all();
+        return view('product-cart', compact('products', 'dataUser', 'dataCustomer'));
     }
 
     public function productcartpost(Request $request)
     {
+        $order = Order::create([
+            'customer_name' => $request->customer_name,
+            'customer_email' => $request->customer_email,
+        ]);
 
+        $products = $request->input('products', []);
+        $quantities = $request->input('quantities', []);
+        for ($product=0; $product < count($products); $product++) {
+            if ($products[$product] != '') {
+                $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
+            }
+        }
+        return redirect()->route('customer');
     }
 
 
