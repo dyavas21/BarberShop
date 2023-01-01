@@ -28,7 +28,11 @@ use App\Http\Controllers\CustomerDescriptionController;
 
 
 //Home
-Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/logged', [HomeController::class, 'indexwithlogin'])->name('indexwithlogin')->middleware('auth');;
+Route::get('/', [HomeController::class, 'indexwithoutlogin'])->name('indexwithoutlogin');
+Route::get('/product', [HomeController::class, 'product'])->name('product');
+Route::get('/product-cart', [HomeController::class, 'productcart'])->name('productcart');
+Route::post('/product-cart-post', [HomeController::class, 'productcartpost'])->name('productcartpost');
 Route::get('/barber-detail/{id}', [HomeController::class, 'barberdetail'])->name('barberdetail');
 Route::get('/barber-book/{id}', [HomeController::class, 'barberbook'])->name('barberbook')->middleware('auth');
 Route::post('/barber-bookinsert', [HomeController::class, 'barberbookinsert'])->name('barberbookinsert')->middleware('auth');
@@ -36,9 +40,6 @@ Route::post('/barber-bookinsert', [HomeController::class, 'barberbookinsert'])->
 
 
 //Customer
-Route::get('/customer-profile', [CustomerDescriptionController::class, 'customerprofile'])->name('customerprofile')->middleware('auth');
-
-
 Route::get('/customer', [CustomerDescriptionController::class, 'customer'])->name('customer')->middleware('auth');
 Route::get('/customer-profile-inti', [CustomerDescriptionController::class, 'customerprofileinti'])->name('customerprofileinti')->middleware('auth');
 Route::post('/customer-profile-inti-insert', [CustomerDescriptionController::class, 'customerprofileintiinsert'])->name('customerprofileintiinsert')->middleware('auth');
@@ -55,6 +56,14 @@ Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberp
 Route::post('/barber-profile-inti-insert', [BarberDescriptionController::class, 'barberprofileintiinsert'])->name('barberprofileintiinsert')->middleware('auth');
 Route::get('/barber-profile-inti-view', [BarberDescriptionController::class, 'barberprofileintiview'])->name('barberprofileintiview')->middleware('auth');
 Route::post('/barber-profile-inti-edit', [BarberDescriptionController::class, 'barberprofileintiedit'])->name('barberprofileintiedit')->middleware('auth');
+Route::get('/barber-change-status-proceed/{id}', [BarberDescriptionController::class, 'barberchangestatusproceed'])->name('barberchangestatusproceed')->middleware('auth');
+Route::get('/barber-change-status-pending/{id}', [BarberDescriptionController::class, 'barberchangestatuspending'])->name('barberchangestatuspending')->middleware('auth');
+Route::get('/barber-change-status-reject/{id}', [BarberDescriptionController::class, 'barberchangestatusreject'])->name('barberchangestatusreject')->middleware('auth');
+
+
+
+
+
 
 //Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');

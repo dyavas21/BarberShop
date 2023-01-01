@@ -17,13 +17,13 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label for="fname" class="form-label">First Name</label>
-                                        <input type="text" name="fname" class="form-control" id="fname" value="{{ $data->fname }}">
+                                        <input type="text" name="fname" class="form-control" id="fname" value="{{ $dataCustomer->fname }}">
                                     </div>                                 
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label for="lname" class="form-label">Last Name</label>
-                                        <input type="text" name="lname" class="form-control" value="{{ $data->lname }}"  id="lname">
+                                        <input type="text" name="lname" class="form-control" value="{{ $dataCustomer->lname }}"  id="lname">
                                     </div>                                  
                                 </div>
                             </div>
@@ -32,19 +32,19 @@
                                                     
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" name="age" class="form-control" value="{{ $data2->age }}"  id="age">
+                                        <input type="number" name="age" class="form-control" value="{{ $dataCustomerDesc->age }}"  id="age">
                                     </div>  
                                      
                                 </div>
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" class="form-control" value="{{ $data2->phone }}" id="phone">
+                                        <input type="tel" name="phone" class="form-control" value="{{ $dataCustomerDesc->phone }}" id="phone">
                                     </div>                      
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control" name="gender" id="gender">                            
-                                            <option selected>{{ $data2->gender }}</option>
+                                            <option selected>{{ $dataCustomerDesc->gender }}</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
                                         </select>
@@ -53,9 +53,9 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" value="{{ $data2->address }}" name="address" class="form-control" id="alamat" >                       
+                                <input type="text" value="{{ $dataCustomerDesc->address }}" name="address" class="form-control" id="alamat" >                       
                             </div>
-                            <img src="{{ asset('photo/'.$data2->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <img src="{{ asset('photo/'.$dataCustomerDesc->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">

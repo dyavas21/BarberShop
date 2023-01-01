@@ -21,13 +21,13 @@
                                 <div class="col-lg-6 mb-3">
                                     <label for="fname">First Name</label>
                                     <select class="form-control form-control-solid" name="fname" id="fname">                            
-                                        <option value="{{ $data->fname }}">{{ $data->fname }}</option>
+                                        <option value="{{ $dataCustomer->fname }}">{{ $dataCustomer->fname }}</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="lname">Last Name</label>
                                     <select class="form-control form-control-solid" name="lname" id="lname">                            
-                                        <option value="{{ $data->lname }}">{{ $data->lname }}</option>
+                                        <option value="{{ $dataCustomer->lname }}">{{ $dataCustomer->lname }}</option>
                                     </select>  
                                 </div>
                             </div>

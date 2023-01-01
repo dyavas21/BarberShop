@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Barber;
 use App\Models\Customer;
+use App\Models\Pemesanan;
 use Illuminate\Http\Request;
 use App\Models\CustomerDescription;
 use Illuminate\Support\Facades\Auth;
@@ -20,34 +21,31 @@ class CustomerDescriptionController extends Controller
     
     public function customer()
     {   $id = Auth::user()->id_user;
-        $data = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+        $dataCustomer = Customer::where('customer_id', '=', $id)->get();
+        $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
 
-
-        // $data2 = Customer::find($id);
-        // $data3 = $data2->customer_id;
-
-        return view('customer.customer', compact('data'));
+        return view('customer.customer', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan'));
     }
 
     public function customerprofileinti()
     {
         $id = Auth::user()->id_user;
-        $data = Customer::where('customer_id', '=', $id)->first();
-        return view('customer.profile-inti', compact('data'));
-    }
+        $dataCustomer = Customer::where('customer_id', '=', $id)->first();
+        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+        return view('customer.profile-inti', compact('dataCustomer', 'dataUser', 'dataCustomerDesc'));
         
-    public function customerprofile()
-    {   $id = Auth::user()->id_user;
-        $data = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        return view('customer.profile', compact('data'));
     }
 
     public function customerprofileintiview(Request $request)
     {   
         $id = Auth::user()->id_user;
-        $data2 = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        $data = Customer::where('customer_id', '=', $id)->first();
-        return view('customer.profile-inti-view', compact('data', 'data2'));
+        $dataUser = User::where('id_user', '=', $id)->first();
+        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $dataCustomer = Customer::where('customer_id', '=', $id)->first();
+        return view('customer.profile-inti-view', compact('dataCustomer', 'dataCustomerDesc', 'dataUser'));
     }
 
     public function customerprofileintiinsert(Request $request)

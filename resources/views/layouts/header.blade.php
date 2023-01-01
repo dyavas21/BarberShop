@@ -3,7 +3,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Detail Barber {{ $dataBarber->fname }}</title>
+    {{-- <title>Detail Barber {{ $dataBarber->fname }}</title> --}}
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -21,6 +21,11 @@
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/font-awesome.css">
     <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
+
+
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8d774616-db7c-4e02-96cc-529007c6d5bb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
   <body>
@@ -45,7 +50,7 @@
                         <a class="nav-link" aria-current="page" href="/contact">Contact</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/catalog">Catalogue</a>
+                        <a class="nav-link" aria-current="page" href="/product">Product</a>
                       </li>
                       @guest
                       <li class="nav-item">
@@ -57,7 +62,15 @@
                           {{ Auth::user()->fname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          <li><a class="dropdown-item" href="/customer-profile">Profile</a></li>
+                          @if ($dataUser->role_id == 1)
+                          <li>
+                              <a class="dropdown-item" href="/customer">Profile</a>
+                          </li>
+                          @elseif($dataUser->role_id == 2)
+                          <li>
+                              <a class="dropdown-item" href="/barber">Profile</a>
+                          </li>
+                          @endif
                           <li>
                               <a class="dropdown-item" href="/logout">Logout</a>
                           </li>                       

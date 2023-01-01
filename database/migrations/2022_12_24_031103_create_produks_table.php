@@ -27,6 +27,22 @@ return new class extends Migration
             ->onUpdate('cascade');
             $table->timestamps();
         });
+
+        Schema::create('orders', function (Blueprint $table) {
+            $table->bigIncrements('id_order');
+            $table->string('customer_name');
+            $table->string('customer_email')->nullable();
+            $table->timestamps();
+        });
+        
+        Schema::create('order_product', function (Blueprint $table) {
+            $table->unsignedInteger('order_id');
+            $table->foreign('order_id')->references('id_order')->on('orders');
+            $table->unsignedInteger('product_id');
+            $table->foreign('product_id')->references('id_produk')->on('products');
+            $table->integer('quantity');
+        });
+
     }
 
     /**

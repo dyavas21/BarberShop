@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Admin;
 use App\Models\Barber;
+use App\Models\Produk;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\BarberDescription;
@@ -21,22 +22,24 @@ class AdminController extends Controller
     {
         // $data = User::all();
         // dd($data);
-        $data = User::all();
+        $dataUser = User::all();
 
-        $data2 = Barber::all();
+        $dataBarber = Barber::all();
 
-        $data3 = Customer::all();
+        $dataCustomer = Customer::all();
 
-        $data4 = BarberDescription::all();
+        $dataBarberDesc = BarberDescription::all();
 
-        $data5 = CustomerDescription::all();
+        $dataCustomerDesc = CustomerDescription::all();
 
-        return view('admin.admin',compact('data', 'data2', 'data3', 'data4', 'data5'));
+        $dataProduk = Produk::all();
+
+        return view('admin.admin',compact('dataUser', 'dataBarber', 'dataCustomer', 'dataBarberDesc', 'dataCustomerDesc', 'dataProduk'));
     }
 
     public function admindelete($id){
-        $data = User::find($id);
-        $data->delete();
+        $datadataUser = User::find($id);
+        $datadataUser->delete();
         return redirect()->route('admin');
     }
 
