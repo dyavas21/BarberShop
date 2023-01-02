@@ -17,13 +17,13 @@
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label for="fname" class="form-label">First Name</label>
-                                        <input type="text" name="fname" class="form-control" id="fname" value="{{ $data2->fname }}">
+                                        <input type="text" name="fname" class="form-control" id="fname" value="{{ $dataBarber->fname }}">
                                     </div>                                 
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <div class="mb-3">
                                         <label for="lname" class="form-label">Last Name</label>
-                                        <input type="text" name="lname" class="form-control" value="{{ $data2->lname }}"  id="lname">
+                                        <input type="text" name="lname" class="form-control" value="{{ $dataBarber->lname }}"  id="lname">
                                     </div>                                  
                                 </div>
                             </div>
@@ -32,23 +32,23 @@
                                                     
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" name="age" class="form-control" value="{{ $data->age }}"  id="age">
+                                        <input type="number" name="age" class="form-control" value="{{ $dataBarberDesc->age }}"  id="age">
                                     </div>  
                                     <div class="mb-3">
                                         <label for="harga" class="form-label">Harga</label>
-                                        <input type="number" name="harga" class="form-control" value="{{ $data->harga }}"  id="harga">
+                                        <input type="number" name="harga" class="form-control" value="{{ $dataBarberDesc->harga }}"  id="harga">
                                     </div>  
                                      
                                 </div>
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" class="form-control" value="{{ $data->phone }}" id="phone">
+                                        <input type="tel" name="phone" class="form-control" value="{{ $dataBarberDesc->phone }}" id="phone">
                                     </div>                      
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control" name="gender" id="gender">                            
-                                            <option selected>{{ $data->gender }}</option>
+                                            <option selected>{{ $dataBarberDesc->gender }}</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
                                         </select>
@@ -57,19 +57,19 @@
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" value="{{ $data->address }}" name="address" class="form-control" id="alamat" >                       
+                                <input type="text" value="{{ $dataBarberDesc->address }}" name="address" class="form-control" id="alamat" >                       
                             </div>
                             <div class="mb-3">
                                 <label for="description" class="form-label">Description</label>
-                                <input type="text" name="description" value="{{ $data->description }}" class="form-control" id="alamat">                       
+                                <input type="text" name="description" value="{{ $dataBarberDesc->description }}" class="form-control" id="alamat">                       
                             </div>
-                            <img src="{{ asset('barber1/'.$data->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <img src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="gambarbarber" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>  
-                            <img src="{{ asset('barber2/'.$data->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <img src="{{ asset('barber2/'.$dataBarberDesc->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="sertif" class="form-label">Upload Sertifikat Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="certificate" class="form-control" id="inputGroupFile02">

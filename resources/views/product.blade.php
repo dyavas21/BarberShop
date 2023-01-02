@@ -1,63 +1,36 @@
-@extends('layouts.header-customer')
+@extends('layouts.header')
 
 @section('content')
 
-<section class="barber-profile mt-5 mb-5">
-
-
+<section class="team text-center mt-5 mb-5">
     <div class="container mt-5">
-        <div class="card">
-            <h5 class="card-header">Profile</h5>
-            <div class="card-body">
-                <div class="row row-cols-auto">
-                    <div class="col-lg-2 d-flex flex-row">
-                        {{-- <img src="{{ asset('photo/'.$data->Customer->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."> --}}
-                    </div>
-                    <div class="col-lg-4 d-flex flex-row">
-                        <div class="mb-3">
-                            <h4>{{ $data->fname }}</h4>
-                            <h6>{{ $data->roleuser->nama_role }}</h6>    
-                            <h6>Bogor, West Java, Indonesia</h6>    
-                            <h6>100 Transaksi selesai</h6>                        
-                        </div>
-                    </div>
-                    <div class="col-lg-6 d-flex flex-row-reverse">
-                        <div class="mb-3">
-                            <h4>Rating 4.9</h4>                              
-                            <a class="btn btn-primary" href="/barber-profile-detail">Edit Profile</a>                                                           
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <h1>Produk</h1>
+        <p>
+       Berikut informasi mengenai produk yang ada.
+        </p>
+
     </div>
 
     <div class="container mt-5">
-        <div class="card">
-            <h5 class="card-header">Sertifikat</h5>
-            <div class="card-body">
-                <div class="row row-cols-auto">
-                    <div class="col-lg-4">
-                        <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="...">
-                    </div>
-                    <div class="col-lg-4">
-                        <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="...">
-                    </div>
-                    <div class="col-lg-4">
-                        <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="...">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-5">
-        <div class="card">
-            <h5 class="card-header">Deskripsi</h5>
-            <div class="card-body">
-                <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore corporis sint dicta cumque sed quaerat vitae facere. Architecto ratione laborum quaerat culpa provident reprehenderit, odit iste esse placeat inventore neque, alias soluta fugit labore cumque minima, molestiae exercitationem ipsam optio? Ipsum praesentium aliquam possimus, eius iusto sunt cumque saepe id accusantium architecto nam voluptates dolore consequatur quo hic corrupti? In aperiam eligendi neque dolor. Dolorem totam, nihil vel quidem reprehenderit consequuntur voluptas modi fuga debitis id dolorum iure cupiditate nesciunt eum sed error sit unde iusto doloremque possimus. Modi earum corrupti nam harum quod voluptas quibusdam eveniet mollitia officia eius.</h6>
-            </div>
-        </div>
+      <div class="row">
+        @foreach ($product as $item)
+        <div class="col-md-12 order-md-2 mb-4">
+          <ul class="list-group mb-3 sticky-top">
+              <li class="list-group-item d-flex justify-content-between lh-condensed">
+                <img src="{{ asset('gambarproduk/'.$item->gambar)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
+                  <div class="d-block me-auto mt-3">
+                      <h6 class="my-0">{{ $item->nama_produk }}</h6>
+                      <small class="text-muted">{{ $item->stok }}</small>
+                  </div>
+                  <span class="text-muted mt-3">Rp {{ $item->harga }}</span>
+              </li>
+          </ul>
+        </div> 
+        @endforeach
+      </div>
+      <div class="d-flex flex-row-reverse">
+        <a href="/product-cart" class="btn btn-primary">Beli Produk</a>
+      </div>
     </div>
 
     <div class="container mt-5">
@@ -176,14 +149,14 @@
                 </div>
               </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+            {{-- <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
-            </button>
+            </button> --}}
         </div>
     </div>
 </section>

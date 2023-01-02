@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('phone');
             $table->string('invoice');
+            $table->unsignedBigInteger('status_id')->default('1');
             $table->timestamps();
             $table->foreign('pemesanan_id_cust')
             ->references('customer_id')
@@ -32,6 +33,11 @@ return new class extends Migration
             $table->foreign('pemesanan_id_barber')
             ->references('barber_id')
             ->on('barbers')
+            ->onDelete('cascade')
+            ->onUpdate('cascade');
+            $table->foreign('status_id')
+            ->references('id_status')
+            ->on('statuses')
             ->onDelete('cascade')
             ->onUpdate('cascade');
         });

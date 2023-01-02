@@ -21,13 +21,21 @@
             <button class="btn btn-icon btn-primary order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-caret mr-2 dropdown-user">
+                    @if (is_null($dataCustomerDesc))
                     <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"></a>
+                    @else
+                    <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('photo/'.$dataCustomerDesc->photo ) }}"></a>
+                    @endif
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                         <h6 class="dropdown-header d-flex align-items-center">
+                            @if (is_null($dataCustomerDesc))
                             <img class="dropdown-user-img" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                            @else
+                            <img class="dropdown-user-img" src="{{ asset('photo/'.$dataCustomerDesc->photo ) }}">                        
+                            @endif
                             <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">Valerie Luna</div>
-                                <div class="dropdown-user-details-email">vluna@aol.com</div>
+                                <div class="dropdown-user-details-name">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                                <div class="dropdown-user-details-email">{{ $dataUser->email }}</div>
                             </div>
                         </h6>
                         <div class="dropdown-divider"></div>
@@ -49,12 +57,13 @@
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
-                            @if (is_null($data))
+                            @if (is_null($dataCustomerDesc))
+                            <a class="nav-link" href="/logged">Home</a>
                             <a class="nav-link" href="/customer">Dashboard</a>
                             <a class="nav-link" href="/customer-profile-inti">Lengkapi Profile Inti</a>
                         @else 
+                            <a class="nav-link" href="/logged">Home</a>
                             <a class="nav-link" href="/customer">Dashboard</a> 
-                            <a class="nav-link" href="/customer-profile">Profile</a>
                             <a class="nav-link" href="/customer-profile-inti-view">View & Edit Profile</a>  
                         @endif                  
                         </div>
@@ -62,7 +71,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">Valerie Luna</div>
+                            <div class="sidenav-footer-title">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
                         </div>
                     </div>
                 </nav>

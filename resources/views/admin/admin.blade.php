@@ -35,7 +35,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Total User</div>
-                                <div class="text-lg font-weight-bold">{{ $data->count() }}</div>
+                                <div class="text-lg font-weight-bold">{{ $dataUser->count() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="calendar"></i>
                         </div>
@@ -52,7 +52,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Barber</div>
-                                <div class="text-lg font-weight-bold">{{ $data2->count() }}</div>
+                                <div class="text-lg font-weight-bold">{{ $dataBarber->count() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
                         </div>
@@ -69,7 +69,7 @@
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
                                 <div class="text-white-75 small">Customer</div>
-                                <div class="text-lg font-weight-bold">{{ $data3->count() }}</div>
+                                <div class="text-lg font-weight-bold">{{ $dataCustomer->count() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="check-square"></i>
                         </div>
@@ -85,8 +85,8 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Pending Requests</div>
-                                <div class="text-lg font-weight-bold">17</div>
+                                <div class="text-white-75 small">Produk</div>
+                                <div class="text-lg font-weight-bold">{{ $dataProduk->count() }}</div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="message-circle"></i>
                         </div>
@@ -103,7 +103,7 @@
         <div class="card mb-4">
             <div class="card-header">Personnel Management</div>
             <div class="card-body">
-                <div class="datatable">  
+                <div class="datatable">
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                         <thead>
                             <tr>
@@ -127,12 +127,9 @@
                         </tfoot>
                         <tbody>
                         @php
-                            $no = 1;
-                            // $data[0]->descc->gender;
-                            // dd($data);
-                            // $data4->gender;                            
+                            $no = 1;                        
                         @endphp
-                        @foreach ($data as $row)
+                        @foreach ($dataUser as $row)
                         <tr>
                             <td>{{ $no++ }}</td>
                             <td>{{ $row->fname }} {{ $row->lname }}</td>

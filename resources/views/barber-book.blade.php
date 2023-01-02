@@ -19,27 +19,6 @@
                     </div>
                     <span class="text-muted">Rp {{ $dataBarber->descriptionBarber->harga }}</span>
                 </li>
-                {{-- <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Second product</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$8</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between lh-condensed">
-                    <div>
-                        <h6 class="my-0">Third item</h6>
-                        <small class="text-muted">Brief description</small>
-                    </div>
-                    <span class="text-muted">$5</span>
-                </li>
-                <li class="list-group-item d-flex justify-content-between bg-light">
-                    <div class="text-success">
-                        <h6 class="my-0">Promo code</h6>
-                        <small>EXAMPLECODE</small>
-                    </div>
-                    <span class="text-success">-$5</span>
-                </li> --}}
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Total (IDR)</span>
                     <strong>Rp {{ $dataBarber->descriptionBarber->harga }}</strong>
@@ -51,6 +30,18 @@
             <form action="/barber-bookinsert" method="POST" enctype="multipart/form-data" class="needs-validation" novalidate="">
               @csrf
                 <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label for="pemesanan_id_cust" class="form-label">ID Customer</label>
+                    <select class="form-select" aria-label="Default select example" name="pemesanan_id_cust">
+                      <option value="{{ $dataCustomer->customer_id }}" selected>{{ $dataCustomer->customer_id }}</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="pemesanan_id_barber" class="form-label">ID Barber</label>
+                    <select class="form-select" name="pemesanan_id_barber" aria-label="Default select example">
+                      <option value="{{ $dataBarber->barber_id }}" selected>{{ $dataBarber->barber_id }}</option>
+                    </select>
+                  </div>
                     <div class="col-md-6 mb-3">
                       <label for="fname" class="form-label">First Name</label>
                       <input type="text" class="form-control" name="fname" value="{{ $dataCustomer->fname }}" id="fname" required>
@@ -60,18 +51,6 @@
                       <label for="lname" class="form-label">Last Name</label>
                       <input type="text" class="form-control" name="lname" value="{{ $dataCustomer->lname }}" id="fname" required>
                         <div class="invalid-feedback"> Valid last name is required. </div>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <label for="pemesanan_id_cust" class="form-label">ID Customer</label>
-                      <select class="form-select" aria-label="Default select example" name="pemesanan_id_cust">
-                        <option value="{{ $dataCustomer->customer_id }}" selected>{{ $dataCustomer->customer_id }}</option>
-                      </select>
-                    </div>
-                    <div class="col-md-6 mb-3">
-                      <label for="pemesanan_id_barber" class="form-label">ID Barber</label>
-                      <select class="form-select" name="pemesanan_id_barber" aria-label="Default select example">
-                        <option value="{{ $dataBarber->barber_id }}" selected>{{ $dataBarber->barber_id }}</option>
-                      </select>
                     </div>
                 </div>
                 <div class="mb-3">

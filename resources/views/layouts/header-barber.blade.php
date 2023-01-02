@@ -29,24 +29,24 @@
             </form>
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-caret mr-2 dropdown-user">
-                    @if (is_null($data))
+                    @if (is_null($dataBarberDesc))
                         <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"></a>
                     @else 
-                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('barber1/'.$data->gambarbarber ) }}"></a>                        
+                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}"></a>                        
                     @endif
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                         <h6 class="dropdown-header d-flex align-items-center">
                             {{-- <img class="dropdown-user-img" width="40" height="40" src="https://source.unsplash.com/QAB-WJcbgJk/60x60 {{ or asset('barber1/'.$data->gambarbarber)}}"> --}}  
-                        @if (is_null($data))
+                        @if (is_null($dataBarberDesc))
                             <img class="dropdown-user-img" width="40" height="40" src="https://source.unsplash.com/QAB-WJcbgJk/60x60 ">
                         @else 
-                            <img class="dropdown-user-img" width="40" height="40" src="{{ asset('barber1/'.$data->gambarbarber ) }}">
+                            <img class="dropdown-user-img" width="40" height="40" src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}">
                         @endif
                             <div class="dropdown-user-details">
                                 {{-- http://127.0.0.1:8000/barber1/team3.jpeg 
                                 http://127.0.0.1:8000/team3.jpeg  --}}
-                                <div class="dropdown-user-details-name">{{ $data2->fname }} {{ $data2->lname }}</div>
-                                <div class="dropdown-user-details-email">{{ $data2->email }}</div>
+                                <div class="dropdown-user-details-name">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                                <div class="dropdown-user-details-email">{{ $dataUser->email }}</div>
                             </div>
                         </h6>
                         <div class="dropdown-divider"></div>
@@ -68,10 +68,12 @@
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
-                            @if (is_null($data))
+                            @if (is_null($dataBarberDesc))
+                                <a class="nav-link" href="/">Home</a>   
                                 <a class="nav-link" href="/barber">Dashboard</a>   
                                 <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>  
                             @else 
+                                <a class="nav-link" href="/logged">Home</a>  
                                 <a class="nav-link" href="/barber">Dashboard</a> 
                                 <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
                                 <a class="nav-link" href="/barber-profile-inti-view">Edit Profile</a>
@@ -81,7 +83,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">{{ $data2->fname }} {{ $data2->lname }}</div>
+                            <div class="sidenav-footer-title">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
                         </div>
                     </div>
                 </nav>
@@ -104,6 +106,16 @@
                 </footer>
             </div>
         </div>
+
+        <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
+        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+        <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+        <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        <script src="assets/vendor/php-email-form/validate.js"></script>
+        <script src="assets/js/main.js"></script>
+
+
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="assets/js/scripts.js"></script>
@@ -116,8 +128,8 @@
         <script src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
         <script src="assets/js/date-range-picker-demo.js"></script>
-
         <script src="assets/js/sb-customizer.js"></script>
+        
         <sb-customizer project="sb-admin-pro"></sb-customizer>
     </body>
 </html>

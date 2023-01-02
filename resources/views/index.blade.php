@@ -25,7 +25,6 @@
     <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8d774616-db7c-4e02-96cc-529007c6d5bb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
   <body>
-
     <section class="header">
         <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
             <div class="container mt-3">
@@ -45,9 +44,8 @@
                         <a class="nav-link" aria-current="page" href="/contact">Contact</a>
                       </li>
                       <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/catalog">Catalogue</a>
+                        <a class="nav-link" aria-current="page" href="/product">Product</a>
                       </li>
-
                        @guest
                       <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/login">Login</a>
@@ -58,19 +56,17 @@
                         {{ Auth::user()->fname }}
                       </a>
                       <ul class="dropdown-menu dropdown-menu-dark">
-                        <li><a class="dropdown-item" href="/customer-profile">Profile</a></li>
+                        @if ($dataUser->role_id == 1)
                         <li>
-                            <a class="dropdown-item" href="/logout"
-                            {{-- onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();" --}}
-                                          >
-                                          Logout
-                             {{-- {{ __('Logout') }} --}}
-                        </a>
-                        {{-- {{ route('logout') }} --}}
-                        {{-- <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                             @csrf
-                        </form> --}}
+                            <a class="dropdown-item" href="/customer">Profile</a>
+                        </li>
+                        @elseif($dataUser->role_id == 2)
+                        <li>
+                            <a class="dropdown-item" href="/barber">Profile</a>
+                        </li>
+                        @endif
+                        <li>
+                            <a class="dropdown-item" href="/logout">Logout</a>
                         </li>                       
                       </ul>
                     </li>
@@ -79,6 +75,9 @@
               </div>
             </div>
           </nav>
+          {{-- @php
+          dd($dataBarber);
+      @endphp --}}
       <div class="text-box text-center">
         <div class="position-absolute top-50 start-50 translate-middle">
             <h1>Get a Good Cut.</h1>
@@ -91,6 +90,10 @@
         </div>
       </div>
     </section>
+
+    {{-- @php
+        dd($dataUser->role_id);
+    @endphp --}}
 
     <section class="package text-center pt-5">
        <div class="container">
@@ -180,7 +183,7 @@
         <div class="container">
             <h1>Our Barber</h1>
             <p>Beberapa jasa barber yang kami siapkan untuk anda</p>
-            @if ($data2->first() == null)
+            @if ($dataBarberDesc->first() == null)
             <div class="col">
                 <div class="card jarak d-block mx-auto " style="width: 18rem;">
                     <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
@@ -193,8 +196,8 @@
             </div>
             @else
             <div class="row row-cols-auto d-flex justify-content-center">
-                @foreach ($data as $item)
-                    @foreach ($data2 as $item2)
+                @foreach ($dataBarber as $item)
+                    @foreach ($dataBarberDesc as $item2)
                         @if ($item->barber_id == $item2->barber_desc_id)
                         <div class="col">
                             <div class="card jarak d-block mx-auto " style="width: 18rem;">
@@ -223,7 +226,7 @@
             <p>
            Beberapa produk dengan kualitas yang bagus kami tawarkan untuk kebutuhan rambut anda.
             </p>
-            @if ($data3->first() == null)
+            @if ($dataProduk->first() == null)
             <div class="row row-cols-auto d-flex justify-content-between align-items-center">
                 <div class="col">
                     <div class="card h-100 border border-0 ">
@@ -255,7 +258,7 @@
             </div>
             @else
             <div class="row row-cols-auto d-flex justify-content-center">
-                @foreach ($data3 as $item)
+                @foreach ($dataProduk as $item)
                 <div class="col">
                     <div class="card h-100 border border-0">
                         <div class="card-body text-center">

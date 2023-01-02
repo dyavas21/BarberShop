@@ -19,36 +19,73 @@ class BarberDescriptionController extends Controller
 
     
     public function barber()
-    {   $id = Auth::user()->id_user;
-        $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        $data2 = User::where('id_user', '=', $id)->first();
+    {   
+        $id = Auth::user()->id_user;
+        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+        $dataBarber = Barber::where('barber_id', '=', $id)->get();
+        $dataPemesanan = Pemesanan::where('pemesanan_id_barber', '=', $id)->get();
 
-        $data3 = Barber::all();
-        $data4 = Pemesanan::all();
-        return view('barber.barber', compact('data', 'data2', 'data3', 'data4'));
+        return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan'));
+    }
+
+    public function barberchangestatusproceed($id)
+    {   
+        $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
+        
+        $status_id = 2;
+
+        Pemesanan::where('id_pemesanan', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('barber');
+    }
+
+    public function barberchangestatusreject($id)
+    {   
+        $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
+        
+        $status_id = 3;
+
+        Pemesanan::where('id_pemesanan', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('barber');
+    }
+
+    public function barberchangestatuspending($id)
+    {   
+        $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
+        
+        $status_id = 1;
+
+        Pemesanan::where('id_pemesanan', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('barber');
     }
 
     public function barberprofile()
     {
         $id = Auth::user()->id_user;
-        $data = Barber::where('barber_id', '=', $id)->first();
-        $data2 = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $dataBarber = Barber::where('barber_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+      
         
-        return view('barber.profile' ,compact('data', 'data2'));
-        // $fname = Auth::user()->fname;
-        // return view('barber.barber-profile' ,compact('fname'));
+        return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser'));
     }
 
     public function barberprofileinti()
     {
         $id = Auth::user()->id_user;
-        $data = Barber::where('barber_id', '=', $id)->first();
-        $data2 = User::where('id_user', '=', $id)->first();
+        $dataBarber = Barber::where('barber_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
        
         // Barber::where(function ($data) {
         //     $data->where('barber_id', '=', $id);
         // });
-        return view('barber.profile-inti', compact('data', 'data2'));
+        return view('barber.profile-inti', compact('dataBarber', 'dataUser'));
     }
 
 
@@ -59,14 +96,15 @@ class BarberDescriptionController extends Controller
         // $data2 = BarberDescription::find($id1);
         
         $id = Auth::user()->id_user;
-        $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        $data2 = Barber::where('barber_id', '=', $id)->first();
+        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $dataBarber = Barber::where('barber_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
         // BarberDescription::where(function ($data) {
         //     $data->where('barber_desc_id', '=', $id);
         // });
         // $data2 = User::find($id);
 
-        return view('barber.profile-inti-view', compact('data', 'data2'));
+        return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser'));
     }
 
 
@@ -89,8 +127,8 @@ class BarberDescriptionController extends Controller
 
         // $datafinal = Description::create($request->all());
         if($request->hasFile('gambarbarber', 'certificate')){
-            $request->file('gambarbarber')->move('barber1/', $request->file('gambarbarber')->getClientOriginalName());
-            $request->file('certificate')->move('barber2/', $request->file('certificate')->getClientOriginalName());
+            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
+            $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
             $datafinal->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $datafinal->certificate = $request->file('certificate')->getClientOriginalName();
             $datafinal->save();
@@ -101,21 +139,21 @@ class BarberDescriptionController extends Controller
     public function barberprofileintiedit(Request $request)
     {
         $id = Auth::user()->id_user;
-        $datauser = User::where('id_user', '=', $id)->first();
-        $databarber = Barber::where('barber_id', '=', $id)->first();
-        $datadesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+        $dataBarber = Barber::where('barber_id', '=', $id)->first();
+        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
 
-        $datauser->update([
+        $dataUser->update([
             'fname' => $request->fname,
             'lname' => $request->lname,
         ]);
 
-        $databarber->update([
+        $dataBarber->update([
             'fname' => $request->fname,
             'lname' => $request->lname,
         ]);
 
-        $datadesc->update([
+        $dataBarberDesc->update([
             'address' => $request->address,
             'age' => $request->age,
             'gender' => $request->gender,
@@ -127,22 +165,15 @@ class BarberDescriptionController extends Controller
         ]);
 
         if($request->hasFile('gambarbarber', 'certificate')){
-            $request->file('gambarbarber')->move('barber1/', $request->file('gambarbarber')->getClientOriginalName());
-            $request->file('certificate')->move('barber2/', $request->file('certificate')->getClientOriginalName());
-            $datadesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
-            $datadesc->certificate = $request->file('certificate')->getClientOriginalName();
-            $datadesc->save();
+            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
+            $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
+            $dataBarberDesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
+            $dataBarberDesc->certificate = $request->file('certificate')->getClientOriginalName();
+            $dataBarberDesc->save();
         }
 
         return redirect()->route('barber');
     }
-
-    
-
-
-    
-
-
     
     public function index()
     {
