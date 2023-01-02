@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Admin;
+use App\Models\Order;
 use App\Models\Barber;
 use App\Models\Produk;
 use App\Models\Customer;
@@ -37,10 +38,20 @@ class AdminController extends Controller
         return view('admin.admin',compact('dataUser', 'dataBarber', 'dataCustomer', 'dataBarberDesc', 'dataCustomerDesc', 'dataProduk'));
     }
 
-    public function admindelete($id){
+    public function admindelete($id)
+    {
         $datadataUser = User::find($id);
         $datadataUser->delete();
         return redirect()->route('admin');
+    }
+
+    public function produkterjual()
+    {
+        // $orders = Order::with('products')->get();
+        $orders = Order::all();
+        $orders = $orders->load('products');
+
+        return view('admin.produkterjual', compact('orders'));
     }
 
     /**

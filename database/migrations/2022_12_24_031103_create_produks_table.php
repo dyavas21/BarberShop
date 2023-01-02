@@ -35,11 +35,11 @@ return new class extends Migration
             $table->timestamps();
         });
         
-        Schema::create('order_product', function (Blueprint $table) {
+        Schema::create('order_produk', function (Blueprint $table) {
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id_order')->on('orders');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id_produk')->on('produks');
+            $table->unsignedBigInteger('produk_id_produk');
+            $table->foreign('produk_id_produk')->references('id_produk')->on('produks');
             $table->integer('quantity');
         });
 

@@ -171,7 +171,10 @@
                             </a>
                             <a class="nav-link" href="/admin-produk">
                                 Tambah Produk                                
-                            </a>                        
+                            </a>   
+                            <a class="nav-link" href="/admin-produkterjual">
+                                Produk Terjual                                
+                            </a>                       
                         </div>
                     </div>
                     <div class="sidenav-footer">
