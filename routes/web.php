@@ -68,6 +68,7 @@ Route::get('/barber-change-status-reject/{id}', [BarberDescriptionController::cl
 //Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::get('/admin/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete');
+Route::get('/admin-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual');
 
 
 // Tipe Produk
