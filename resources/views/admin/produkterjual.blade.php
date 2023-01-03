@@ -110,9 +110,12 @@
                                 <th>No</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Tanggal Dibuat</th>
-                                <th>Actions</th>
+                                <th>Nama Produk</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Invoice</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tfoot>
@@ -120,38 +123,69 @@
                                 <th>No</th>
                                 <th>Full Name</th>
                                 <th>Email</th>
-                                <th>Role</th>
-                                <th>Tanggal Dibuat</th>
-                                <th>Actions</th>
+                                <th>Nama Produk</th>
+                                <th>Jumlah</th>
+                                <th>Harga</th>
+                                <th>Invoice</th>
+                                <th>Status</th>
+                                <th>Action</th>
                             </tr>
                         </tfoot>
                         <tbody>
                         @php
-                            $no = 1;   
-                            dd($orders[0]->products);
-                            
+                            $no = 1;                               
                         @endphp
                             @foreach($orders as $order)
                             <tr data-entry-id="{{ $order->id_order }}">
                                 <td>
-                                    {{ $order->id_order ?? '' }}
+                                    {{ $no++ }}
                                 </td>
                                 <td>
-                                    {{ $order->customer_name ?? '' }}
+                                    {{ $order->fname}} {{ $order->lname}}
                                 </td>
                                 <td>
-                                    {{ $order->customer_email ?? '' }}
+                                    {{ $order->email ?? '' }}
                                 </td>
                                 <td>
                                     <ul>
                                     @foreach($order->products as $item)
-                                        <li>{{ $item->nama_produk }} ({{ $item->pivot->quantity }} x RP {{ $item->harga }})</li>
+                                        <li>{{ $item->nama_produk }}</li>
                                     @endforeach
                                     </ul>
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-primary">KEREN</a>
+                                    <ul>
+                                    @foreach($order->products as $item)
+                                        <li>{{ $item->pivot->quantity }}</li>
+                                    @endforeach
+                                    </ul>
                                 </td>
+                                <td>
+                                    {{ $order->detailinvoice->harga_total }}
+                                </td>
+                                <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" width="100" height="100"></td>
+                                <td style="text-align:center">
+                                    @if ($order->status_id == 1)
+                                        <a href="" class="btn btn-sm btn-warning">Pending</a>
+                                    @elseif($order->status_id == 2)
+                                        <a href="" class="btn btn-sm btn-success">Accepted</a>
+                                    @elseif($order->status_id == 3)
+                                        <a href="" class="btn btn-sm btn-danger">Rejected</a>
+                                    @endif
+                                </td>  
+                                <td>
+                                    <div class="btn-group">
+                                    <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                      Change Status
+                                    </button>
+                                    <ul class="dropdown-menu">
+                                      {{-- <li><a class="dropdown-item" action href="{{ url('barber-change-status-proceed/'.$item->status_id) }}">Proceed</a></li> --}}
+                                      <li><a class="dropdown-item" href="admin-produk-status-accepted/{{ $order->id }}">Proceed</a></li>
+                                      <li><a class="dropdown-item" href="admin-produk-status-reject/{{ $order->id }}">Cancel</a></li>
+                                      <li><a class="dropdown-item" href="admin-produk-status-pending/{{ $order->id }}">Pending</a></li>
+                                    </ul>                                            
+                                  </div>
+                                </td>        
                             </tr>
                         @endforeach
                         </tbody>
@@ -162,3 +196,48 @@
     </div>
 </main>
 @endsection
+
+
+{{-- @php
+$no = 1;
+@endphp
+@if ($orders == null)
+@else
+@foreach ($orders as $order)
+<tr>     
+    <td>{{ $no++ }}</td>                       
+    <td>
+        <ul>                                           
+            @foreach ($order->products as $item)
+                <li style="list-style-type: none">{{ $item->nama_produk }}</li>
+            @endforeach
+        </ul>
+    </td>
+    <td>
+        <ul>                                           
+            @foreach ($order->products as $item)
+                <li style="list-style-type: none">{{ $item->pivot->quantity }}</li>
+            @endforeach
+        </ul>
+    </td>
+    <td>
+        <ul>                                           
+            @foreach ($order->products as $item)
+                <li style="list-style-type: none">{{ number_format($item->harga, 2) }}</li>
+            @endforeach
+        </ul>
+    </td>
+    <td>{{ number_format($order->detailinvoice->harga_total, 2) }}</td>
+    <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" style="width: 40px"></td>
+    <td style="text-align:center">
+        @if ($order->status_id == 1)
+            <a href="" class="btn btn-sm btn-warning">Pending</a>
+        @elseif($order->status_id == 2)
+            <a href="" class="btn btn-sm btn-success">Accepted</a>
+        @elseif($order->status_id == 3)
+            <a href="" class="btn btn-sm btn-danger">Rejected</a>
+        @endif
+    </td>  
+</tr>   
+@endforeach                  
+@endif --}}

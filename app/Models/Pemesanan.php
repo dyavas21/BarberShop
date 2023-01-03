@@ -6,6 +6,7 @@ use App\Models\Barber;
 use App\Models\Status;
 use App\Models\Customer;
 use App\Models\BarberDescription;
+use App\Models\CustomerDescription;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -29,6 +30,10 @@ class Pemesanan extends Model
 
     public function barbdescpem(){
         return $this->belongsTo(BarberDescription::class, 'pemesanan_id_barber', 'barber_desc_id');
+    }
+
+    public function custdescpem(){
+        return $this->belongsTo(CustomerDescription::class, 'pemesanan_id_custmer', 'customer_desc_id');
     }
 
     public function statuspem(){

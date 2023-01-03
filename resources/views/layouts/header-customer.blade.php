@@ -65,6 +65,7 @@
                             <a class="nav-link" href="/logged">Home</a>
                             <a class="nav-link" href="/customer">Dashboard</a> 
                             <a class="nav-link" href="/customer-profile-inti-view">View & Edit Profile</a>  
+                            <a class="nav-link" href="/customer-product">Product Dibeli</a>  
                         @endif                  
                         </div>
                     </div>

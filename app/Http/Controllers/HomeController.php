@@ -7,6 +7,8 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\Barber;
 use App\Models\Produk;
+use App\Models\Invoice;
+use App\Models\Product;
 use App\Models\Customer;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
@@ -29,7 +31,7 @@ class HomeController extends Controller
         $dataBarberfind = Barber::find($id);
         $dataBarber= Barber::all();
         $dataBarberDesc = BarberDescription::all();
-        $dataProduk = Produk::all();
+        $dataProduk = Product::all();
         return view('index', compact('dataBarber', 'dataBarberDesc', 'dataProduk', 'dataUser', 'dataBarberfind'));
     }
 
@@ -37,7 +39,7 @@ class HomeController extends Controller
     {
         $dataBarber = Barber::all();
         $dataBarberDesc = BarberDescription::all();
-        $dataProduk = Produk::all();
+        $dataProduk = Product::all();
         return view('index', compact('dataProduk', 'dataBarberDesc', 'dataBarber'));
     }
 
@@ -84,7 +86,7 @@ class HomeController extends Controller
     public function product(){
         $id2 = Auth::user()->id_user;
         $dataUser = User::find($id2);
-        $product = Produk::all();
+        $product = Product::all();
         return view('product', compact('product', 'dataUser'));
     }
 
@@ -94,15 +96,17 @@ class HomeController extends Controller
         $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
         // $dataUser = User::where('id_user', '=', $id2)->first();
 
-        $products = Produk::all();
+        $products = Product::all();
         return view('product-cart', compact('products', 'dataUser', 'dataCustomer'));
     }
 
     public function productcartpost(Request $request)
     {
         $order = Order::create([
-            'customer_name' => $request->customer_name,
-            'customer_email' => $request->customer_email,
+            'order_id_cust' => $request->order_id_cust,
+            'fname' => $request->fname,
+            'lname' => $request->lname,
+            'email' => $request->email,
         ]);
 
         $products = $request->input('products', []);
@@ -111,6 +115,37 @@ class HomeController extends Controller
             if ($products[$product] != '') {
                 $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
             }
+        }
+        return redirect()->route('productcarttotal');
+    }
+
+    public function productcarttotal()
+    {
+        $id2 = Auth::user()->id_user;
+        $dataUser = User::find($id2);
+        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+
+        $orders = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '!=', 2)->where('order_id_cust', '=', $id2)->where('status_id', '!=', 3)->get();
+
+        $ordersnew = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '=', 1)->first();
+
+        return view('product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew'));
+    }
+
+
+    public function productcarttotalpost(Request $request)
+    {
+        $orderpost = Invoice::create([
+            'customer_id' => $request->customer_id,
+            'order_id' => $request->order_id,
+            'invoice' => $request->invoice,
+            'harga_total' => $request->harga_total,
+        ]);
+
+        if($request->hasFile('invoice')){
+            $request->file('invoice')->move('invoiceproduct/', $request->file('invoice')->getClientOriginalName());
+            $orderpost->invoice = $request->file('invoice')->getClientOriginalName();
+            $orderpost->save();
         }
         return redirect()->route('customer');
     }

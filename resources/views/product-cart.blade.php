@@ -13,25 +13,24 @@
           <div class="card-body">
             <div class="row">
               <div class="col-md-6 mb-3">
-                <label for="pemesanan_id_cust" class="form-label">ID Customer</label>
-                <select class="form-select" aria-label="Default select example" name="pemesanan_id_cust">
+                <label for="order_id_cust" class="form-label">ID Customer</label>
+                <select class="form-select" aria-label="Default select example" name="order_id_cust">
                   <option value="{{ $dataCustomer->customer_id }}" selected>{{ $dataCustomer->customer_id }}</option>
                 </select>
               </div>
-              {{-- <div class="col-md-6 mb-3">
-                <label for="pemesanan_id_barber" class="form-label">ID Barber</label>
-                <select class="form-select" name="pemesanan_id_barber" aria-label="Default select example">
-                  <option value="{{ $dataBarber->barber_id }}" selected>{{ $dataBarber->barber_id }}</option>
-                </select>
-              </div> --}}
+              <div class="col-md-6 mb-3">
+                <label for="fname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lname" value="{{ $dataCustomer->lname }}" id="lname" required>
+                  <div class="invalid-feedback"> Valid first name is required. </div>
+              </div>
                 <div class="col-md-6 mb-3">
                   <label for="fname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" name="customer_name" value="{{ $dataCustomer->fname }}" id="fname" required>
+                  <input type="text" class="form-control" name="fname" value="{{ $dataCustomer->fname }}" id="fname" required>
                     <div class="invalid-feedback"> Valid first name is required. </div>
                 </div>
                 <div class="col-md-6 mb-3">
                   <label for="lname" class="form-label">Email</label>
-                  <input type="text" class="form-control" name="customer_email" value="{{ $dataUser->email }}" id="fname" required>
+                  <input type="text" class="form-control" name="email" value="{{ $dataUser->email }}" id="email" required>
                     <div class="invalid-feedback"> Valid last name is required. </div>
                 </div>
             </div>
@@ -48,14 +47,14 @@
                               <select name="products[]" class="form-control">
                                   <option value="">-- choose product --</option>
                                   @foreach ($products as $product)
-                                      <option value="{{ $product->id_produk }}">
+                                      <option value="{{ $product->id }}">
                                           {{ $product->nama_produk }} (Rp{{ number_format($product->harga, 2) }})
                                       </option>
                                   @endforeach
                               </select>
                           </td>
                           <td>
-                              <input type="number" name="quantities[]" class="form-control" value="1" />
+                              <input type="number" name="quantities[]" class="form-control" value="1"/>
                           </td>
                       </tr>
                       <tr id="product1"></tr>

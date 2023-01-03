@@ -7,6 +7,7 @@ use App\Models\Admin;
 use App\Models\Order;
 use App\Models\Barber;
 use App\Models\Produk;
+use App\Models\Product;
 use App\Models\Customer;
 use Illuminate\Http\Request;
 use App\Models\BarberDescription;
@@ -33,7 +34,7 @@ class AdminController extends Controller
 
         $dataCustomerDesc = CustomerDescription::all();
 
-        $dataProduk = Produk::all();
+        $dataProduk = Product::all();
 
         return view('admin.admin',compact('dataUser', 'dataBarber', 'dataCustomer', 'dataBarberDesc', 'dataCustomerDesc', 'dataProduk'));
     }
@@ -47,11 +48,45 @@ class AdminController extends Controller
 
     public function produkterjual()
     {
-        // $orders = Order::with('products')->get();
-        $orders = Order::all();
-        $orders = $orders->load('products');
+        $orders = Order::with('products')->get();
 
         return view('admin.produkterjual', compact('orders'));
+    }
+
+    public function adminstatusproceed($id)
+    {   
+        $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
+        
+        $status_id = 2;
+
+        Order::where('id', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('produkterjual');
+    }
+
+    public function adminstatusreject($id)
+    {   
+        $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
+        
+        $status_id = 3;
+
+        Order::where('id', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('produkterjual');
+    }
+
+    public function adminstatuspending($id)
+    {   
+        $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
+        
+        $status_id = 1;
+
+        Order::where('id', $id)->update([
+            'status_id'=> $status_id
+        ]);
+        return redirect()->route('produkterjual');
     }
 
     /**
