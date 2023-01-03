@@ -63,13 +63,13 @@
                                 <label for="description" class="form-label">Description</label>
                                 <input type="text" name="description" value="{{ $dataBarberDesc->description }}" class="form-control" id="alamat">                       
                             </div>
-                            <img src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <img src="{{ asset('gambarbarber/'.$dataBarberDesc->gambarbarber ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="gambarbarber" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>  
-                            <img src="{{ asset('barber2/'.$dataBarberDesc->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
+                            <img src="{{ asset('certificate/'.$dataBarberDesc->certificate ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="sertif" class="form-label">Upload Sertifikat Anda</label>
                             <div class="input-group mb-3">
                                 <input type="file" name="certificate" class="form-control" id="inputGroupFile02">

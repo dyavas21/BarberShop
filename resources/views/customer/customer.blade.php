@@ -149,8 +149,7 @@
                                 <th>Name Barber</th>
                                 <th>Alamat Barber</th>
                                 <th>No Handphone</th>     
-                                <th>Harga</th> 
-                                <th>Invoice</th>     
+                                <th>Harga</th>    
                                 <th>Status</th>    
                             </tr>
                         </thead>
@@ -159,8 +158,7 @@
                                 <th>Name Customer</th>
                                 <th>Alamat Barber</th>
                                 <th>No Handphone</th>   
-                                <th>Harga</th> 
-                                <th>Invoice</th>   
+                                <th>Harga</th>  
                                 <th>Status</th>      
                             </tr>
                         </tfoot>
@@ -172,8 +170,7 @@
                                         <td>{{ $item->barbpem->fname }} {{ $item->barbpem->lname }}</td>
                                         <td>{{ $item->barbdescpem->address }}</td>
                                         <td>{{ $item->barbdescpem->phone }}</td>  
-                                        <td>{{ $item->barbdescpem->harga }}</td>   
-                                        <td> <img width="100" height="100" src="{{ asset('invoice/'.$item->invoice ) }}"></td>           
+                                        <td>{{ number_format($item->barbdescpem->harga, 2) }}</td>                                          
                                         <td style="text-align:center">
                                             @if ($item->statuspem->id_status == 1)
                                                 <a href="" class="btn btn-sm btn-warning">{{ $item->statuspem->nama_status }}</a>

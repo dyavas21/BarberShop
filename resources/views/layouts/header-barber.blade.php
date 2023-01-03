@@ -32,7 +32,7 @@
                     @if (is_null($dataBarberDesc))
                         <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="https://source.unsplash.com/QAB-WJcbgJk/60x60"></a>
                     @else 
-                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}"></a>                        
+                        <a class="btn btn-icon btn-transparent-dark dropdown-toggle" id="navbarDropdownUserImage" href="javascript:void(0);" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" src="{{ asset('gambarbarber/'.$dataBarberDesc->gambarbarber ) }}"></a>                        
                     @endif
                     <div class="dropdown-menu dropdown-menu-right border-0 shadow animated--fade-in-up" aria-labelledby="navbarDropdownUserImage">
                         <h6 class="dropdown-header d-flex align-items-center">
@@ -40,7 +40,7 @@
                         @if (is_null($dataBarberDesc))
                             <img class="dropdown-user-img" width="40" height="40" src="https://source.unsplash.com/QAB-WJcbgJk/60x60 ">
                         @else 
-                            <img class="dropdown-user-img" width="40" height="40" src="{{ asset('barber1/'.$dataBarberDesc->gambarbarber ) }}">
+                            <img class="dropdown-user-img" width="40" height="40" src="{{ asset('gambarbarber/'.$dataBarberDesc->gambarbarber ) }}">
                         @endif
                             <div class="dropdown-user-details">
                                 {{-- http://127.0.0.1:8000/barber1/team3.jpeg 

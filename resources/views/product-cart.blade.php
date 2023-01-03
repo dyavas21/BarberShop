@@ -19,20 +19,20 @@
                 </select>
               </div>
               <div class="col-md-6 mb-3">
-                <label for="fname" class="form-label">Last Name</label>
-                <input type="text" class="form-control" name="lname" value="{{ $dataCustomer->lname }}" id="lname" required>
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" name="email" value="{{ $dataUser->email }}" id="email" required>
+                  <div class="invalid-feedback"> Valid last name is required. </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" class="form-control" name="fname" value="{{ $dataCustomer->fname }}" id="fname" required>
                   <div class="invalid-feedback"> Valid first name is required. </div>
               </div>
-                <div class="col-md-6 mb-3">
-                  <label for="fname" class="form-label">First Name</label>
-                  <input type="text" class="form-control" name="fname" value="{{ $dataCustomer->fname }}" id="fname" required>
-                    <div class="invalid-feedback"> Valid first name is required. </div>
-                </div>
-                <div class="col-md-6 mb-3">
-                  <label for="lname" class="form-label">Email</label>
-                  <input type="text" class="form-control" name="email" value="{{ $dataUser->email }}" id="email" required>
-                    <div class="invalid-feedback"> Valid last name is required. </div>
-                </div>
+              <div class="col-md-6 mb-3">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" class="form-control" name="lname" value="{{ $dataCustomer->lname }}" id="lname" required>
+                  <div class="invalid-feedback"> Valid first name is required. </div>
+              </div>    
             </div>
               <table class="table" id="products_table">
                   <thead>
@@ -68,8 +68,10 @@
               </div>
           </div>
       </div>
-      <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="d-flex flex-row-reverse">
+            <div class="">
+              <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+            </div>
       </div>
   </form>
 </div>

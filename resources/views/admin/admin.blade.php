@@ -99,12 +99,12 @@
             </div>
         </div> 
 
-        <!-- Example DataTable for Dashboard Demo-->
         <div class="card mb-4">
             <div class="card-header">Personnel Management</div>
             <div class="card-body">
                 <div class="datatable">
                     <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                        
                         <thead>
                             <tr>
                                 <th>No</th>
@@ -127,20 +127,20 @@
                         </tfoot>
                         <tbody>
                         @php
-                            $no = 1;                        
+                            $no = 1;                               
                         @endphp
-                        @foreach ($dataUser as $row)
-                        <tr>
-                            <td>{{ $no++ }}</td>
-                            <td>{{ $row->fname }} {{ $row->lname }}</td>
-                            <td>{{ $row->email }}</td>
-                            <td>{{ $row->roleuser->nama_role }}</td>
-                            <td>{{ $row->created_at->format('d M Y') }}</td>
-                            <td>
-                                <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
-                            </td>
-                        </tr>                        
-                        @endforeach
+                            @foreach ($dataUser as $row)
+                                <tr>
+                                    <td>{{ $no++ }}</td>
+                                    <td>{{ $row->fname }} {{ $row->lname }}</td>
+                                    <td>{{ $row->email }}</td>
+                                    <td>{{ $row->roleuser->nama_role }}</td>
+                                    <td>{{ $row->created_at->format('d M Y') }}</td>
+                                    <td>
+                                        <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
+                                    </td>
+                                </tr>                        
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

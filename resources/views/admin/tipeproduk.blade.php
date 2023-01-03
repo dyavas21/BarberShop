@@ -110,7 +110,7 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->nama }}</td>                               
                                 <td>
-                                    <a class="btn btn-danger" href="/admin/detele-tipe/{{ $row->id }}">Delete</a>
+                                    <a class="btn btn-danger" href="/admin/detele-tipe/{{ $row->id_tipe_produk }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

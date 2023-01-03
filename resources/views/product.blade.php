@@ -19,10 +19,11 @@
               <li class="list-group-item d-flex justify-content-between lh-condensed">
                 <img src="{{ asset('gambarproduk/'.$item->gambar)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
                   <div class="d-block me-auto mt-3">
-                      <h6 class="my-0">{{ $item->nama_produk }}</h6>
+                    <h6 class="my-0 mb-3">{{ $item->tipeproduk->nama }}</h6>
+                      <h6 class="my-0 mb-3">{{ $item->nama_produk }}</h6>
                       <small class="text-muted">{{ $item->stok }}</small>
                   </div>
-                  <span class="text-muted mt-3">Rp {{ $item->harga }}</span>
+                  <span class="text-muted mt-3">Rp {{ number_format($item->harga, 2) }}</span>
               </li>
           </ul>
         </div> 

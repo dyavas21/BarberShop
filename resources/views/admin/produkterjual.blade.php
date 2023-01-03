@@ -34,8 +34,14 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Total User</div>
-                                {{-- <div class="text-lg font-weight-bold">{{ $dataUser->count() }}</div> --}}
+                                <div class="text-white-75 small">Transaksi Berlangsung</div>
+                                <div class="text-lg font-weight-bold">
+                                    @if (is_null($orders))
+                                        0
+                                    @else
+                                        {{ $orders->count() }}
+                                    @endif
+                                </div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="calendar"></i>
                         </div>
@@ -46,13 +52,24 @@
                     </div>
                 </div>
             </div>
+            @php
+            $dataPending = $orders->where('status_id', '==', '1')->count();
+            @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-warning text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Barber</div>
-                                {{-- <div class="text-lg font-weight-bold">{{ $dataBarber->count() }}</div> --}}
+                                <div class="text-white-75 small">Transaksi Pending</div>
+                                <div class="text-lg font-weight-bold">
+                                    @if (is_null($orders))
+                                    0
+                                    @elseif ($dataPending == null)
+                                    0
+                                    @else
+                                    {{ $dataPending }}
+                                    @endif   
+                                </div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="dollar-sign"></i>
                         </div>
@@ -63,13 +80,24 @@
                     </div>
                 </div>
             </div>
+            @php
+               $dataSetuju = $orders->where('status_id', '==', '2')->count();
+            @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-success text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Customer</div>
-                                {{-- <div class="text-lg font-weight-bold">{{ $dataCustomer->count() }}</div> --}}
+                                <div class="text-white-75 small">Transaksi Diterima</div>
+                                <div class="text-lg font-weight-bold">
+                                    @if (is_null($orders))
+                                    0
+                                    @elseif ($dataSetuju == null)
+                                    0
+                                    @else
+                                    {{ $dataSetuju }}
+                                    @endif                   
+                                </div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="check-square"></i>
                         </div>
@@ -80,13 +108,24 @@
                     </div>
                 </div>
             </div>
+            @php
+            $dataDitolak = $orders->where('status_id', '==', '3')->count();
+            @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-danger text-white mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Produk</div>
-                                {{-- <div class="text-lg font-weight-bold">{{ $dataProduk->count() }}</div> --}}
+                                <div class="text-white-75 small">Transaksi Ditolak</div>
+                                <div class="text-lg font-weight-bold">
+                                    @if (is_null($orders))
+                                    0
+                                    @elseif ($dataDitolak == null)
+                                    0
+                                    @else
+                                    {{ $dataDitolak }}
+                                    @endif  
+                                </div>
                             </div>
                             <i class="feather-xl text-white-50" data-feather="message-circle"></i>
                         </div>
@@ -97,7 +136,7 @@
                     </div>
                 </div>
             </div>
-        </div> 
+        </div>
 
         <!-- Example DataTable for Dashboard Demo-->
         <div class="card mb-4">
@@ -149,19 +188,19 @@
                                 <td>
                                     <ul>
                                     @foreach($order->products as $item)
-                                        <li>{{ $item->nama_produk }}</li>
+                                        <li style="list-style-type: none">{{ $item->nama_produk }}</li>
                                     @endforeach
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
                                     @foreach($order->products as $item)
-                                        <li>{{ $item->pivot->quantity }}</li>
+                                        <li style="list-style-type: none">{{ $item->pivot->quantity }}</li>
                                     @endforeach
                                     </ul>
                                 </td>
                                 <td>
-                                    {{ $order->detailinvoice->harga_total }}
+                                   Rp {{ number_format($order->detailinvoice->harga_total, 2) }}
                                 </td>
                                 <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" width="100" height="100"></td>
                                 <td style="text-align:center">
@@ -196,48 +235,3 @@
     </div>
 </main>
 @endsection
-
-
-{{-- @php
-$no = 1;
-@endphp
-@if ($orders == null)
-@else
-@foreach ($orders as $order)
-<tr>     
-    <td>{{ $no++ }}</td>                       
-    <td>
-        <ul>                                           
-            @foreach ($order->products as $item)
-                <li style="list-style-type: none">{{ $item->nama_produk }}</li>
-            @endforeach
-        </ul>
-    </td>
-    <td>
-        <ul>                                           
-            @foreach ($order->products as $item)
-                <li style="list-style-type: none">{{ $item->pivot->quantity }}</li>
-            @endforeach
-        </ul>
-    </td>
-    <td>
-        <ul>                                           
-            @foreach ($order->products as $item)
-                <li style="list-style-type: none">{{ number_format($item->harga, 2) }}</li>
-            @endforeach
-        </ul>
-    </td>
-    <td>{{ number_format($order->detailinvoice->harga_total, 2) }}</td>
-    <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" style="width: 40px"></td>
-    <td style="text-align:center">
-        @if ($order->status_id == 1)
-            <a href="" class="btn btn-sm btn-warning">Pending</a>
-        @elseif($order->status_id == 2)
-            <a href="" class="btn btn-sm btn-success">Accepted</a>
-        @elseif($order->status_id == 3)
-            <a href="" class="btn btn-sm btn-danger">Rejected</a>
-        @endif
-    </td>  
-</tr>   
-@endforeach                  
-@endif --}}

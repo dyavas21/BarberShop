@@ -8,11 +8,11 @@
         <div class="col-md-4 order-md-2 mb-4">
             <h4 class="d-flex justify-content-between align-items-center mb-3">
                 <span class="text-muted">Your cart</span>
-                <span class="badge badge-secondary badge-pill">3</span>
+                {{-- <span class="badge badge-secondary badge-pill">3</span> --}}
             </h4>
             <ul class="list-group mb-3 sticky-top">
                 <li class="list-group-item d-flex justify-content-between lh-condensed">
-                  <img src="{{ asset('barber1/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="40" width="40" class="rounded-circle d-block me-auto barber-profile" alt="...">
+                  <img src="{{ asset('gambarbarber/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="40" width="40" class="rounded-circle d-block me-auto barber-profile" alt="...">
                     <div class="d-block me-auto">
                         <h6 class="my-0">Barber name</h6>
                         <small class="text-muted">{{ $dataBarber->fname }} {{ $dataBarber->lname }}</small>

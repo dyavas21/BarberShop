@@ -93,9 +93,6 @@
             <p>
                 Malang, East Java 65153
             </p>
-            <p>
-              <a href="/team">Our Team</a>
-            </p>
                 <div class="icons">
                     <i class="fab fa-facebook"></i>
                     <i class="fab fa-youtube"></i>

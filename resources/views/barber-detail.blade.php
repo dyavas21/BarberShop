@@ -12,7 +12,7 @@
             <h5 class="card-header">Profile</h5>
             <div class="card-body">
                 <div class=" d-flex justify-content-between lh-condensed">
-                    <img src="{{ asset('barber1/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
+                    <img src="{{ asset('gambarbarber/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
                       <div class="d-block me-auto">
                           <h6>{{ $dataBarber->fname }} {{ $dataBarber->lname }}</h6>
                             <h6 class="text-muted my-0">{{ $dataBarber->descriptionBarber->gender }}</small>    
@@ -52,15 +52,9 @@
         <div class="card">
             <h5 class="card-header">Sertifikat</h5>
             <div class="card-body">
-                <div class="row row-cols-auto">
-                    <div class="col-lg-4">
-                        <img src="{{ asset('barber2/'.$dataBarber->descriptionBarber->certificate) }}" height="100" class="rounded-circle barber-profile" alt="...">
-                    </div>
-                    <div class="col-lg-4">
-                        {{-- <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="..."> --}}
-                    </div>
-                    <div class="col-lg-4">
-                        {{-- <img src="assets/images/cv.jpeg" height="100" class="rounded-circle barber-profile" alt="..."> --}}
+                <div class="row row-cols-auto d-flex">
+                    <div class="col-lg-12">
+                        <img src="{{ asset('certificate/'.$dataBarber->descriptionBarber->certificate) }}" height="200" class="mx-auto" alt="...">
                     </div>
                 </div>
             </div>

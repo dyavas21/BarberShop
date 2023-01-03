@@ -36,10 +36,10 @@
                             <div class="mr-3">
                                 <div class="text-white-75 small">Transaksi Berlangsung</div>
                                 <div class="text-lg font-weight-bold">
-                                    @if (is_null($dataPemesanan))
+                                    @if (is_null($orders))
                                         0
                                     @else
-                                        {{ $dataPemesanan->count() }}
+                                        {{ $orders->count() }}
                                     @endif
                                 </div>
                             </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             @php
-            $dataPending = $dataPemesanan->where('status_id', '==', '1')->count();
+            $dataPending = $orders->where('status_id', '==', '1')->count();
             @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-warning text-white mb-4">
@@ -62,7 +62,7 @@
                             <div class="mr-3">
                                 <div class="text-white-75 small">Transaksi Pending</div>
                                 <div class="text-lg font-weight-bold">
-                                    @if (is_null($dataPemesanan))
+                                    @if (is_null($orders))
                                     0
                                     @elseif ($dataPending == null)
                                     0
@@ -81,7 +81,7 @@
                 </div>
             </div>
             @php
-               $dataSetuju = $dataPemesanan->where('status_id', '==', '2')->count();
+               $dataSetuju = $orders->where('status_id', '==', '2')->count();
             @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-success text-white mb-4">
@@ -90,7 +90,7 @@
                             <div class="mr-3">
                                 <div class="text-white-75 small">Transaksi Diterima</div>
                                 <div class="text-lg font-weight-bold">
-                                    @if (is_null($dataPemesanan))
+                                    @if (is_null($orders))
                                     0
                                     @elseif ($dataSetuju == null)
                                     0
@@ -109,7 +109,7 @@
                 </div>
             </div>
             @php
-            $dataDitolak = $dataPemesanan->where('status_id', '==', '3')->count();
+            $dataDitolak = $orders->where('status_id', '==', '3')->count();
             @endphp
             <div class="col-xxl-3 col-lg-6">
                 <div class="card bg-danger text-white mb-4">
@@ -118,7 +118,7 @@
                             <div class="mr-3">
                                 <div class="text-white-75 small">Transaksi Ditolak</div>
                                 <div class="text-lg font-weight-bold">
-                                    @if (is_null($dataPemesanan))
+                                    @if (is_null($orders))
                                     0
                                     @elseif ($dataDitolak == null)
                                     0
@@ -192,11 +192,11 @@
                                     <td>
                                         <ul>                                           
                                             @foreach ($order->products as $item)
-                                                <li style="list-style-type: none">{{ number_format($item->harga, 2) }}</li>
+                                                <li style="list-style-type: none">Rp {{ number_format($item->harga, 2) }}</li>
                                             @endforeach
                                         </ul>
                                     </td>
-                                    <td>{{ number_format($order->detailinvoice->harga_total, 2) }}</td>
+                                    <td>Rp {{ number_format($order->detailinvoice->harga_total, 2) }}</td>
                                     <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" style="width: 40px"></td>
                                     <td style="text-align:center">
                                         @if ($order->status_id == 1)

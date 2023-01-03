@@ -50,6 +50,15 @@ class AdminController extends Controller
     {
         $orders = Order::with('products')->get();
 
+        // $id = Auth::user()->id_user;
+        // $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        // $dataUser = User::where('id_user', '=', $id)->first();
+        // $dataCustomer = Customer::where('customer_id', '=', $id)->get();
+        // $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
+
+        // $invoice = Invoice::where('customer_id', '=', $id)->get();
+        // $orders = Order::where('order_id_cust', '=', $id)->get();
+
         return view('admin.produkterjual', compact('orders'));
     }
 

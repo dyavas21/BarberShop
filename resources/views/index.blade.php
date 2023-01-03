@@ -201,7 +201,7 @@
                         @if ($item->barber_id == $item2->barber_desc_id)
                         <div class="col">
                             <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                                <img src="{{ asset('barber1/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                                <img src="{{ asset('gambarbarber/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
                                 <div class="card-body">
                                 <h5 class="card-title">{{ $item->fname }}</h5>
                                 <p class="card-text">{{ $item->descriptionBarber->description }}</p>
@@ -262,7 +262,7 @@
                 <div class="col">
                     <div class="card h-100 border border-0">
                         <div class="card-body text-center">
-                            <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" alt="" >    
+                            <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >    
                             <h3>{{ $item->tipeproduk->nama }}</h3>
                             <h6>{{ $item->nama_produk }}</h6>
                         </div>
