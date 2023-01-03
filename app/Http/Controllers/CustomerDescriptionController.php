@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Order;
 use App\Models\Barber;
+use App\Models\Invoice;
 use App\Models\Customer;
 use App\Models\Pemesanan;
 use Illuminate\Http\Request;
@@ -20,7 +22,8 @@ class CustomerDescriptionController extends Controller
 
     
     public function customer()
-    {   $id = Auth::user()->id_user;
+    {   
+        $id = Auth::user()->id_user;
         $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
         $dataCustomer = Customer::where('customer_id', '=', $id)->get();
@@ -103,6 +106,20 @@ class CustomerDescriptionController extends Controller
         }
 
         return redirect()->route('customer');
+    }
+
+    public function customerproduct()
+    {
+        $id = Auth::user()->id_user;
+        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+        $dataUser = User::where('id_user', '=', $id)->first();
+        $dataCustomer = Customer::where('customer_id', '=', $id)->get();
+        $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
+
+        $invoice = Invoice::where('customer_id', '=', $id)->get();
+        $orders = Order::where('order_id_cust', '=', $id)->get();
+
+        return view('customer.product', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'invoice', 'orders'));
     }
 
 

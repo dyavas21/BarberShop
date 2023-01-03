@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\BarberController;
 use App\Http\Controllers\LogoutController;
-use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\TipeProdukController;
@@ -25,19 +25,17 @@ use App\Http\Controllers\CustomerDescriptionController;
 |
 */
 
-
-
 //Home
 Route::get('/logged', [HomeController::class, 'indexwithlogin'])->name('indexwithlogin')->middleware('auth');;
 Route::get('/', [HomeController::class, 'indexwithoutlogin'])->name('indexwithoutlogin');
 Route::get('/product', [HomeController::class, 'product'])->name('product');
 Route::get('/product-cart', [HomeController::class, 'productcart'])->name('productcart');
 Route::post('/product-cart-post', [HomeController::class, 'productcartpost'])->name('productcartpost');
+Route::get('/product-cart-total', [HomeController::class, 'productcarttotal'])->name('productcarttotal');
+Route::post('/product-cart-total-post', [HomeController::class, 'productcarttotalpost'])->name('productcarttotalpost');
 Route::get('/barber-detail/{id}', [HomeController::class, 'barberdetail'])->name('barberdetail');
 Route::get('/barber-book/{id}', [HomeController::class, 'barberbook'])->name('barberbook')->middleware('auth');
 Route::post('/barber-bookinsert', [HomeController::class, 'barberbookinsert'])->name('barberbookinsert')->middleware('auth');
-
-
 
 //Customer
 Route::get('/customer', [CustomerDescriptionController::class, 'customer'])->name('customer')->middleware('auth');
@@ -45,11 +43,10 @@ Route::get('/customer-profile-inti', [CustomerDescriptionController::class, 'cus
 Route::post('/customer-profile-inti-insert', [CustomerDescriptionController::class, 'customerprofileintiinsert'])->name('customerprofileintiinsert')->middleware('auth');
 Route::get('/customer-profile-inti-view', [CustomerDescriptionController::class, 'customerprofileintiview'])->name('customerprofileintiview')->middleware('auth');
 Route::post('/customer-profile-inti-edit', [CustomerDescriptionController::class, 'customerprofileintiedit'])->name('customerprofileintiedit')->middleware('auth');
+Route::get('/customer-product', [CustomerDescriptionController::class, 'customerproduct'])->name('customerproduct')->middleware('auth');
 
 //Barber
-
 Route::get('/barber-profile-detail', [BarberController::class, 'barberprofiledetail'])->name('barberprofiledetail')->middleware('auth');
-
 Route::get('/barber-profile', [BarberDescriptionController::class, 'barberprofile'])->name('barberprofile')->middleware('auth');
 Route::get('/barber', [BarberDescriptionController::class, 'barber'])->name('barber')->middleware('auth');
 Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberprofileinti'])->name('barberprofileinti')->middleware('auth');
@@ -60,16 +57,13 @@ Route::get('/barber-change-status-proceed/{id}', [BarberDescriptionController::c
 Route::get('/barber-change-status-pending/{id}', [BarberDescriptionController::class, 'barberchangestatuspending'])->name('barberchangestatuspending')->middleware('auth');
 Route::get('/barber-change-status-reject/{id}', [BarberDescriptionController::class, 'barberchangestatusreject'])->name('barberchangestatusreject')->middleware('auth');
 
-
-
-
-
-
 //Admin
 Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
 Route::get('/admin/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete');
 Route::get('/admin-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual');
-
+Route::get('/admin-produk-status-accepted/{id}', [AdminController::class, 'adminstatusproceed'])->name('adminstatusproceed');
+Route::get('/admin-produk-status-pending/{id}', [AdminController::class, 'adminstatuspending'])->name('adminstatuspending');
+Route::get('/admin-produk-status-reject/{id}', [AdminController::class, 'adminstatusreject'])->name('adminstatusreject');
 
 // Tipe Produk
 Route::get('/admin-tipeproduk', [TipeProdukController::class, 'admintipeproduk'])->name('admintipeproduk');
@@ -78,30 +72,14 @@ Route::post('/admin-inserttipeproduk', [TipeProdukController::class, 'admininser
 Route::get('/admin/detele-tipe/{id}', [TipeProdukController::class, 'admindeletetipe'])->name('admindeletetipe');
 
 // Produk
-Route::get('/admin-produk', [ProdukController::class, 'adminproduk'])->name('adminproduk');
-Route::get('/admin-tambahproduk', [ProdukController::class, 'admintambahproduk'])->name('admintambahproduk');
-Route::post('/admin-insertproduk', [ProdukController::class, 'admininsertproduk'])->name('admininsertproduk');
-Route::get('/admin/detele-produk/{id}', [ProdukController::class, 'admindeleteproduk'])->name('admindeleteproduk');
-
-
-
-
-
-
-// Route::post('/barber-profile-detail-update', [BarberController::class, 'barberprofiledetailupdate'])->name('barberprofiledetailupdate')->middleware('auth');
-// Route::get('/barber-profile-detail-foto', [BarberController::class, 'barberprofiledetailfoto'])->name('barberprofiledetailfoto')->middleware('auth');
-// Route::post('/barber-profile-detail-foto-update', [BarberController::class, 'barberinsertfoto'])->name('barberinsertfoto')->middleware('auth');
-// Route::get('/barber-profile-detail-certificate', [BarberController::class, 'barberprofiledetailcertificate'])->name('barberprofiledetailcertificate')->middleware('auth');
-// Route::post('/barber-profile-detail-certificate-update', [BarberController::class, 'barberinsertcertificate'])->name('barberinsertcertificate')->middleware('auth');
-
-
-
+Route::get('/admin-produk', [ProductController::class, 'adminproduk'])->name('adminproduk');
+Route::get('/admin-tambahproduk', [ProductController::class, 'admintambahproduk'])->name('admintambahproduk');
+Route::post('/admin-insertproduk', [ProductController::class, 'admininsertproduk'])->name('admininsertproduk');
+Route::get('/admin/detele-produk/{id}', [ProductController::class, 'admindeleteproduk'])->name('admindeleteproduk');
 
 //login
-
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/loginproses', [LoginController::class, 'loginproses'])->name('loginproses');
 Route::get('/logout', [LogoutController::class, 'logout'])->name('logout');
-
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/registeruser', [RegisterController::class, 'registeruser'])->name('registeruser');

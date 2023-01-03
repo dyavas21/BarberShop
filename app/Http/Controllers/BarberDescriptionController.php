@@ -81,11 +81,12 @@ class BarberDescriptionController extends Controller
         $id = Auth::user()->id_user;
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
+        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
        
         // Barber::where(function ($data) {
         //     $data->where('barber_id', '=', $id);
         // });
-        return view('barber.profile-inti', compact('dataBarber', 'dataUser'));
+        return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc'));
     }
 
 
