@@ -26,20 +26,14 @@ class HomeController extends Controller
     public function about()
     {
         $title = 'About';
-        $id2 = Auth::user()->id_user;
-        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
-        $dataUser = User::where('id_user', '=', $id2)->first();
-        return view('sub-content.about', compact('title', 'dataCustomer', 'dataUser'));
+        return view('sub-content.about', compact('title'));
     }
 
 
     public function contact()
     {
         $title = 'Contact';
-        $id2 = Auth::user()->id_user;
-        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
-        $dataUser = User::where('id_user', '=', $id2)->first();
-        return view('sub-content.contact', compact('title', 'dataCustomer', 'dataUser'));
+        return view('sub-content.contact', compact('title'));
     }
 
     public function index()

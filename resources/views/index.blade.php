@@ -94,7 +94,7 @@
                   echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
                 } --}}
                 
-            <a href="/visit" class="hero-btn">Visit Us To Know More</a>
+            <a href="/about" class="hero-btn">Visit Us To Know More</a>
         </div>
       </div>
     </section>
