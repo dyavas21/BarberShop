@@ -33,35 +33,13 @@ class LoginController extends Controller
             if($role == 2){
                 return redirect('barber');
             }
-
-    // switch ($role) {
-    //   case 'admin':
-    //      return redirect('/admin');
-    //      break;
-    //   case 'seller':
-    //      return redirect('/seller_dashboard');
-    //      break; 
-
-    //   default:
-    //      return redirect('/home'); 
-    //      break;
-
-            // if($request->$role!='barber'){
-            //     return redirect('/barber');
-            // }
-
-            // if request->has('.....')
-           
-
-            // return redirect('/barber');
         }
-
         return redirect('login');
     }
 
     public function logout(){
         Auth::logout();
-        return redirect('index');
+        return redirect('indexwithoutlogin');
     }
 
 

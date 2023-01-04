@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>index</title>
+    <title>{{ $title }}</title>
     <link rel="stylesheet" href="/assets/css/style.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
@@ -44,33 +44,41 @@
                         <a class="nav-link" aria-current="page" href="/contact">Contact</a>
                       </li>
                       <li class="nav-item">
+                        @if (auth()->check())
+                        @if (Auth()->user()->role_id == 1)
                         <a class="nav-link" aria-current="page" href="/product">Product</a>
+                        @elseif(Auth()->user()->role_id == 2)
+                        <a class="nav-link" aria-current="page" href="/">Product</a>
+                        @endif
+                        @else
+                        <a class="nav-link" aria-current="page" href="/product">Product</a>
+                        @endif
                       </li>
-                       @guest
-                      <li class="nav-item">
+                       @if (auth()->check())
+                       <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ Auth::user()->fname }}
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-dark">
+                          @if (Auth()->user()->role_id == 1)
+                          <li>
+                              <a class="dropdown-item" href="/customer">Profile</a>
+                          </li>
+                          @elseif(Auth()->user()->role_id == 2)
+                          <li>
+                              <a class="dropdown-item" href="/barber">Profile</a>
+                          </li>
+                          @endif
+                          <li>
+                              <a class="dropdown-item" href="/logout">Logout</a>
+                          </li>                       
+                        </ul>
+                      </li>
+                       @else
+                       <li class="nav-item">
                         <a class="nav-link" aria-current="page" href="/login">Login</a>
                       </li>
-                      @else
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        {{ Auth::user()->fname }}
-                      </a>
-                      <ul class="dropdown-menu dropdown-menu-dark">
-                        @if ($dataUser->role_id == 1)
-                        <li>
-                            <a class="dropdown-item" href="/customer">Profile</a>
-                        </li>
-                        @elseif($dataUser->role_id == 2)
-                        <li>
-                            <a class="dropdown-item" href="/barber">Profile</a>
-                        </li>
-                        @endif
-                        <li>
-                            <a class="dropdown-item" href="/logout">Logout</a>
-                        </li>                       
-                      </ul>
-                    </li>
-                    @endguest
+                       @endif
                   </ul>
               </div>
             </div>
@@ -205,7 +213,15 @@
                                 <div class="card-body">
                                 <h5 class="card-title">{{ $item->fname }}</h5>
                                 <p class="card-text">{{ $item->descriptionBarber->description }}</p>
+                                @if (auth()->check())
+                                @if (Auth()->user()->role_id == 1)
                                 <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                @elseif(Auth()->user()->role_id == 2)
+                                <a href="/" class="btn btn-primary">Detail</a>
+                                @endif
+                                @else
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                @endif
                                 </div>
                             </div>
                         </div>

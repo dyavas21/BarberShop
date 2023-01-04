@@ -26,6 +26,14 @@ class RegisterController extends Controller
 
     public function registeruser(Request $request){
 
+        $request->validate([
+            'role_id' => 'required',
+            'fname' => 'required|max:50',
+            'lname' =>'required|max:50',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:3'
+        ]);
+        
         $data = User::create([
             'role_id' => $request->role_id,
             'fname' => $request->fname,

@@ -103,7 +103,7 @@
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                       <div>
                           <h6 class="my-2">Upload your invoice</h6>
-                          <input type="file" class="form-control" aria-label="file example" name="invoice" required>
+                          <input type="file" class="form-control" required aria-label="file example" name="invoice" required>
                           <div class="invalid-feedback">Example invalid form file feedback</div>
                       </div>
                     </li>

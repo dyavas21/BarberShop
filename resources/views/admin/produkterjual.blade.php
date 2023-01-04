@@ -219,9 +219,9 @@
                                     </button>
                                     <ul class="dropdown-menu">
                                       {{-- <li><a class="dropdown-item" action href="{{ url('barber-change-status-proceed/'.$item->status_id) }}">Proceed</a></li> --}}
-                                      <li><a class="dropdown-item" href="admin-produk-status-accepted/{{ $order->id }}">Proceed</a></li>
-                                      <li><a class="dropdown-item" href="admin-produk-status-reject/{{ $order->id }}">Cancel</a></li>
-                                      <li><a class="dropdown-item" href="admin-produk-status-pending/{{ $order->id }}">Pending</a></li>
+                                      <li><a class="dropdown-item" href="/adminajadeh-produk-status-accepted/{{ $order->id }}">Proceed</a></li>
+                                      <li><a class="dropdown-item" href="/adminajadeh-produk-status-reject/{{ $order->id }}">Cancel</a></li>
+                                      <li><a class="dropdown-item" href="/adminajadeh-produk-status-pending/{{ $order->id }}">Pending</a></li>
                                     </ul>                                            
                                   </div>
                                 </td>        

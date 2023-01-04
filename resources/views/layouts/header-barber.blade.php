@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="">
         <meta name="author" content="">
-        <title>Dashboard - Barber Admin</title>
+        <title>{{ $title }}</title>
         <link rel="stylesheet" href="assets/css/style.css" />
         <link href="/assets/css/admin-styles.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
@@ -73,7 +73,7 @@
                                 <a class="nav-link" href="/barber">Dashboard</a>   
                                 <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>  
                             @else 
-                                <a class="nav-link" href="/logged">Home</a>  
+                                <a class="nav-link" href="/">Home</a>  
                                 <a class="nav-link" href="/barber">Dashboard</a> 
                                 <a class="nav-link" href="/barber-profile">Profile Lengkap</a>
                                 <a class="nav-link" href="/barber-profile-inti-view">Edit Profile</a>
@@ -95,7 +95,7 @@
                 <footer class="footer mt-auto footer-light">
                     <div class="container-fluid">
                         <div class="row">
-                            <div class="col-md-6 small">Copyright &#xA9; Your Website 2020</div>
+                            <div class="col-md-6 small">Copyright &#xA9; DBarbershop 2022</div>
                             <div class="col-md-6 text-md-right small">
                                 <a href="#!">Privacy Policy</a>
                                 &#xB7;
@@ -129,6 +129,14 @@
         <script src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js" crossorigin="anonymous"></script>
         <script src="assets/js/date-range-picker-demo.js"></script>
         <script src="assets/js/sb-customizer.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" integrity="sha512-vKMx8UnXk60zUwyUnUPM3HbQo8QfmNx7+ltw8Pm5zLusl1XIfwcxo8DbWCqMGKaWeNxWA8yrx5v3SaVpMvR3CA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        @if(Session::has('success'))
+        <script>
+             toastr.success("{{ Session::get('success') }}")
+        </script>
+        @endif
         
         <sb-customizer project="sb-admin-pro"></sb-customizer>
     </body>

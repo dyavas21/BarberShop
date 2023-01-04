@@ -38,29 +38,29 @@
                                         class="card-header justify-content-center"
                                     >
                                         <h3 class="font-weight-light my-4">
-                                            Login
+                                            Admin Login
                                         </h3>
                                     </div>
                                     <div class="card-body">
                                         <!-- Login form-->
                                         <form
                                             method="post"
-                                            action="/loginproses"
+                                            action="/admin-login-proses"
                                         >
                                             @csrf
                                             <!-- Form Group (email address)-->
                                             <div class="form-group">
                                                 <label
                                                     class="small mb-1"
-                                                    for="email"
-                                                    >Email</label
+                                                    for="username"
+                                                    >Username</label
                                                 >
                                                 <input
                                                     class="form-control py-4"
                                                     id="inputEmailAddress"
-                                                    type="email"
-                                                    placeholder="Enter email address"
-                                                    name="email"
+                                                    type="text"
+                                                    placeholder="Enter username"
+                                                    name="username"
                                                     required
                                                 />
                                             </div>
@@ -101,14 +101,6 @@
                                                 <div class="small">
                                                     <a href="/"
                                                         >Go back to homepage?</a
-                                                    >
-                                                </div>
-                                            </div>
-                                            <div class="col">
-                                                <div class="small">
-                                                    <a href="/register"
-                                                        >Need an account? Sign
-                                                        up!</a
                                                     >
                                                 </div>
                                             </div>

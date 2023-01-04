@@ -63,7 +63,8 @@
                             <input
                               class="form-control py-4" 
                               placeholder="Enter first name"
-                              id="fname" type="text" class="form-control @error('name') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus
+                              required
+                              id="fname" type="text" class="form-control @error('fname') is-invalid @enderror" name="fname" value="{{ old('fname') }}" required autocomplete="fname" autofocus
                             />
                             @error('fname')
                             <span class="invalid-feedback" role="alert">
@@ -79,6 +80,7 @@
                               >Last Name</label
                             >
                             <input
+                              required
                               class="form-control py-4"
                               placeholder="Enter last name"
                               id="lname" type="text" class="form-control @error('lname') is-invalid @enderror" name="lname" value="{{ old('lname') }}" required autocomplete="lname" autofocus
@@ -97,6 +99,7 @@
                           >Email</label
                         >
                         <input
+                          required
                           class="form-control py-4"
                           aria-describedby="emailHelp"
                           placeholder="Enter email address"
@@ -117,6 +120,7 @@
                               >Password</label
                             >
                             <input
+                              required
                               class="form-control py-4"
                               placeholder="Enter password"
                               id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password"
@@ -135,6 +139,7 @@
                               >Confirm Password</label
                             >
                             <input
+                              required
                               class="form-control py-4"
                               placeholder="Confirm password"
                               id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password"

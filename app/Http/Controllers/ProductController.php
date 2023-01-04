@@ -17,14 +17,16 @@ class ProductController extends Controller
      */
     public function adminproduk()
     {
+        $title = 'Produk';
         $dataproduk = Product::all();
-        return view('admin.produk', compact('dataproduk'));
+        return view('admin.produk', compact('dataproduk', 'title'));
     }
 
     public function admintambahproduk()
     {   
+        $title = 'Tambah Produk';
         $datatipe = TipeProduk::all();
-        return view('admin.tambahproduk', compact('datatipe'));
+        return view('admin.tambahproduk', compact('datatipe', 'title'));
     }
 
     public function admininsertproduk(Request $request)
@@ -42,13 +44,13 @@ class ProductController extends Controller
             $data->gambar = $request->file('gambar')->getClientOriginalName();
             $data->save();
         }
-        return redirect()->route('adminproduk');
+        return redirect()->route('adminproduk')->with('success', 'Produk Berhasil Dibuat');
     }
 
     public function admindeleteproduk($id){
         $data = Product::find($id);
         $data->delete();
-        return redirect()->route('adminproduk');
+        return redirect()->route('adminproduk')->with('success', 'Produk Berhasil Dihapus');
     }
 
     /**

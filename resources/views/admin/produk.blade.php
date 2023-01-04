@@ -99,7 +99,7 @@
                 </div>
             </div>  --}}
 
-            <a href="/admin-tambahproduk" class="btn btn-success mt-5 mb-5">Tambah Produk</a>
+            <a href="/adminajadeh-tambahproduk" class="btn btn-success mt-5 mb-5">Tambah Produk</a>
 
             <!-- Example DataTable for Dashboard Demo-->
             <div class="card mb-4">
@@ -144,7 +144,7 @@
                                     <img src="{{ asset('gambarproduk/'.$row->gambar ) }}" alt="" style="width: 40px">    
                                 </td>                            
                                 <td>
-                                    <a class="btn btn-danger" href="/admin/detele-produk/{{ $row->id_produk }}">Delete</a>
+                                    <a class="btn btn-danger" href="/adminajadeh/detele-produk/{{ $row->id_produk }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach

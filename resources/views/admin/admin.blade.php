@@ -137,7 +137,7 @@
                                     <td>{{ $row->roleuser->nama_role }}</td>
                                     <td>{{ $row->created_at->format('d M Y') }}</td>
                                     <td>
-                                        <a class="btn btn-danger" href="/admin/detele/{{ $row->id_user }}">Delete</a>
+                                        <a class="btn btn-danger" href="/adminajadeh/detele/{{ $row->id_user }}">Delete</a>
                                     </td>
                                 </tr>                        
                             @endforeach

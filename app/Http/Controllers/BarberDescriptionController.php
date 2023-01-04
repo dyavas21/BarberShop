@@ -20,13 +20,14 @@ class BarberDescriptionController extends Controller
     
     public function barber()
     {   
+        $title = 'Barber';
         $id = Auth::user()->id_user;
         $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
         $dataBarber = Barber::where('barber_id', '=', $id)->get();
         $dataPemesanan = Pemesanan::where('pemesanan_id_barber', '=', $id)->get();
 
-        return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan'));
+        return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan', 'title'));
     }
 
     public function barberchangestatusproceed($id)
@@ -38,7 +39,7 @@ class BarberDescriptionController extends Controller
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('barber');
+        return redirect()->route('barber')->with('success', 'Status Berhasil Diupdate');
     }
 
     public function barberchangestatusreject($id)
@@ -50,7 +51,7 @@ class BarberDescriptionController extends Controller
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('barber');
+        return redirect()->route('barber')->with('success', 'Status Berhasil Diupdate');
     }
 
     public function barberchangestatuspending($id)
@@ -62,58 +63,44 @@ class BarberDescriptionController extends Controller
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('barber');
+        return redirect()->route('barber')->with('success', 'Status Berhasil Diupdate');
     }
 
     public function barberprofile()
     {
+        $title = 'Profile Detail';
         $id = Auth::user()->id_user;
         $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
-      
-        
-        return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser'));
+        return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
     }
 
     public function barberprofileinti()
     {
+        $title = 'Lengkapi Profile';
         $id = Auth::user()->id_user;
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
         $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
-       
-        // Barber::where(function ($data) {
-        //     $data->where('barber_id', '=', $id);
-        // });
-        return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc'));
+        return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc', 'title'));
     }
 
 
     public function barberprofileintiview()
     {   
-        // $id1 = Auth::user()->id;
-        // $data = User::find($id1);
-        // $data2 = BarberDescription::find($id1);
-        
+        $title = 'Edit Profile';
         $id = Auth::user()->id_user;
         $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
-        // BarberDescription::where(function ($data) {
-        //     $data->where('barber_desc_id', '=', $id);
-        // });
-        // $data2 = User::find($id);
-
-        return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser'));
+        return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
     }
 
 
     public function barberprofileintiinsert(Request $request)
     {   
-
         $id = Auth::user()->id_user;
-
         $datafinal = BarberDescription::create([
             'barber_desc_id' => $id,
             'address' => $request->address,
@@ -134,7 +121,7 @@ class BarberDescriptionController extends Controller
             $datafinal->certificate = $request->file('certificate')->getClientOriginalName();
             $datafinal->save();
         }
-        return redirect()->route('barber');
+        return redirect()->route('barber')->with('success', 'Profile Berhasil Diisi');
     }
 
     public function barberprofileintiedit(Request $request)
@@ -154,26 +141,35 @@ class BarberDescriptionController extends Controller
             'lname' => $request->lname,
         ]);
 
-        $dataBarberDesc->update([
-            'address' => $request->address,
-            'age' => $request->age,
-            'gender' => $request->gender,
-            'phone' => $request->phone,
-            'description' => $request->description,
-            'certificate' => $request->certificate,
-            'gambarbarber' => $request->gambarbarber,
-            'harga' => $request->harga,
-        ]);
-
         if($request->hasFile('gambarbarber', 'certificate')){
             $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
             $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
+            $dataBarberDesc->update([
+                'address' => $request->address,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'description' => $request->description,
+                'certificate' => $request->certificate,
+                'gambarbarber' => $request->gambarbarber,
+                'harga' => $request->harga,
+            ]);
             $dataBarberDesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $dataBarberDesc->certificate = $request->file('certificate')->getClientOriginalName();
             $dataBarberDesc->save();
+        }else{
+            $dataBarberDesc->update([
+                'address' => $request->address,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'description' => $request->description,
+                'harga' => $request->harga,
+            ]);
+            $dataBarberDesc->save();
         }
 
-        return redirect()->route('barber');
+        return redirect()->route('barber')->with('success', 'Profile Berhasil Diupdate');
     }
     
     public function index()

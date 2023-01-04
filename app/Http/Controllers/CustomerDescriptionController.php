@@ -23,32 +23,35 @@ class CustomerDescriptionController extends Controller
     
     public function customer()
     {   
+        $title = 'Customer';
         $id = Auth::user()->id_user;
         $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
         $dataCustomer = Customer::where('customer_id', '=', $id)->get();
         $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
 
-        return view('customer.customer', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan'));
+        return view('customer.customer', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'title'));
     }
 
     public function customerprofileinti()
     {
+        $title = 'Customer Profile';
         $id = Auth::user()->id_user;
         $dataCustomer = Customer::where('customer_id', '=', $id)->first();
         $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
-        return view('customer.profile-inti', compact('dataCustomer', 'dataUser', 'dataCustomerDesc'));
+        return view('customer.profile-inti', compact('dataCustomer', 'dataUser', 'dataCustomerDesc', 'title'));
         
     }
 
     public function customerprofileintiview(Request $request)
     {   
+        $title = 'Edit Profile';
         $id = Auth::user()->id_user;
         $dataUser = User::where('id_user', '=', $id)->first();
         $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
         $dataCustomer = Customer::where('customer_id', '=', $id)->first();
-        return view('customer.profile-inti-view', compact('dataCustomer', 'dataCustomerDesc', 'dataUser'));
+        return view('customer.profile-inti-view', compact('dataCustomer', 'dataCustomerDesc', 'dataUser', 'title'));
     }
 
     public function customerprofileintiinsert(Request $request)
@@ -71,7 +74,7 @@ class CustomerDescriptionController extends Controller
             $datafinal->photo = $request->file('photo')->getClientOriginalName();
             $datafinal->save();
         }
-        return redirect()->route('customer');
+        return redirect()->route('customer')->with('success', 'Profile Berhasil Ditambahkan');
     }
 
     public function customerprofileintiedit(Request $request)
@@ -91,25 +94,36 @@ class CustomerDescriptionController extends Controller
             'lname' => $request->lname,
         ]);
 
-        $datadesc->update([
-            'address' => $request->address,
-            'age' => $request->age,
-            'gender' => $request->gender,
-            'phone' => $request->phone,
-            'photo' => $request->photo,
-        ]);
-
         if($request->hasFile('photo')){
             $request->file('photo')->move('photo/', $request->file('photo')->getClientOriginalName());
+
+            $datadesc->update([
+                'address' => $request->address,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'photo' => $request->photo,
+            ]);
+
             $datadesc->photo = $request->file('photo')->getClientOriginalName();
             $datadesc->save();
         }
-
-        return redirect()->route('customer');
+        else{
+            $datadesc->update([
+                'address' => $request->address,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+            ]);
+            
+            $datadesc->save();
+        }
+        return redirect()->route('customer')->with('success', 'Profile Berhasil Diupdate');
     }
 
     public function customerproduct()
     {
+        $title = 'Produk Dibeli';
         $id = Auth::user()->id_user;
         $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
         $dataUser = User::where('id_user', '=', $id)->first();
@@ -119,7 +133,7 @@ class CustomerDescriptionController extends Controller
         $invoice = Invoice::where('customer_id', '=', $id)->get();
         $orders = Order::where('order_id_cust', '=', $id)->get();
 
-        return view('customer.product', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'invoice', 'orders'));
+        return view('customer.product', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'invoice', 'orders', 'title'));
     }
 
 

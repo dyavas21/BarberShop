@@ -35,11 +35,11 @@
                                 <div class="col-lg-6">                                                       
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" name="age" class="form-control"  id="age">
+                                        <input type="number" name="age" required class="form-control"  id="age">
                                     </div>  
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control form-control" name="gender" id="gender">                            
+                                        <select class="form-control form-control" required name="gender" id="gender">                            
                                             <option>Pilih</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
@@ -49,17 +49,17 @@
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" class="form-control" id="phone">
+                                        <input type="tel" name="phone" required class="form-control" id="phone">
                                     </div>                      
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" name="address" class="form-control" id="alamat" >                       
+                                <input type="text" name="address" required class="form-control" id="alamat" >                       
                             </div>
                             <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
-                                <input type="file" name="photo" class="form-control" id="photo">
+                                <input type="file" name="photo" required class="form-control" id="photo">
                                 <label class="input-group-text" for="photo">Upload</label>
                             </div>   
                             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>

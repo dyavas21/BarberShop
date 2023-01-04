@@ -103,7 +103,7 @@
             <div class="card mb-4">
                 <div class="card-header">Tipe Produk</div>
                 <div class="card-body">
-                    <form action="/admin-insertproduk" method="POST" enctype="multipart/form-data">
+                    <form action="/adminajadeh-insertproduk" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <label for="tipe_id">Tipe Produk</label>
@@ -113,13 +113,13 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="form-group"><label for="namaproduk">Nama Produk</label><input class="form-control" id="namaproduk" name="nama_produk" type="text"></div>  
-                        <div class="form-group"><label for="harga">Harga Produk</label><input class="form-control" id="harga" name="harga" type="number"></div>  
-                        <div class="form-group"><label for="stok">Jumlah Stok Produk</label><input class="form-control" id="stok" name="stok" type="number"></div> 
+                        <div class="form-group"><label for="namaproduk">Nama Produk</label><input class="form-control" id="namaproduk" name="nama_produk" required type="text"></div>  
+                        <div class="form-group"><label for="harga">Harga Produk</label><input class="form-control" id="harga" name="harga" required type="number"></div>  
+                        <div class="form-group"><label for="stok">Jumlah Stok Produk</label><input class="form-control" id="stok" name="stok" required type="number"></div> 
 
                         <label for="gambar" class="form-label">Upload Gambar Produk</label>
                         <div class="input-group mb-3">
-                            <input type="file" name="gambar" class="form-control" id="gambar">
+                            <input type="file" name="gambar" class="form-control" required id="gambar">
                             <label class="input-group-text" for="gambar">Upload</label>
                         </div> 
                         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>

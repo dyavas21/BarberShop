@@ -14,8 +14,9 @@ class TipeProdukController extends Controller
      */
     public function admintipeproduk()
     {
+        $title = 'Tipe Produk';
         $data = TipeProduk::all();
-        return view('admin.tipeproduk', compact('data'));
+        return view('admin.tipeproduk', compact('data', 'title'));
     }
 
     /**
@@ -25,20 +26,22 @@ class TipeProdukController extends Controller
      */
     public function admintambahtipe()
     {
-        return view('admin.tambahtipe');
+        $title = 'Tambah Tipe';
+        return view('admin.tambahtipe', compact('title'));
     }
 
     public function admininserttipeproduk(Request $request)
     {
         $data = TipeProduk::create($request->all());
-        return redirect()->route('admintipeproduk');
+        return redirect()->route('admintipeproduk')->with('success', 'Tipe Berhasil Ditambahkan');
     }
 
 
-    public function admindeletetipe($id){
+    public function admindeletetipe($id)
+    {
         $data = TipeProduk::find($id);
         $data->delete();
-        return redirect()->route('admintipeproduk');
+        return redirect()->route('admintipeproduk')->with('success', 'Tipe Berhasil Dihapus');
     }
 
     /**

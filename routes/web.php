@@ -26,14 +26,15 @@ use App\Http\Controllers\CustomerDescriptionController;
 */
 
 //Home
-Route::get('/logged', [HomeController::class, 'indexwithlogin'])->name('indexwithlogin')->middleware('auth');;
-Route::get('/', [HomeController::class, 'indexwithoutlogin'])->name('indexwithoutlogin');
-Route::get('/product', [HomeController::class, 'product'])->name('product');
-Route::get('/product-cart', [HomeController::class, 'productcart'])->name('productcart');
+Route::get('/', [HomeController::class, 'index'])->name('index');
+Route::get('/about', [HomeController::class, 'about'])->name('about');
+Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/product', [HomeController::class, 'product'])->name('product')->middleware('auth');
+Route::get('/product-cart', [HomeController::class, 'productcart'])->name('productcart')->middleware('auth');
 Route::post('/product-cart-post', [HomeController::class, 'productcartpost'])->name('productcartpost');
-Route::get('/product-cart-total', [HomeController::class, 'productcarttotal'])->name('productcarttotal');
+Route::get('/product-cart-total', [HomeController::class, 'productcarttotal'])->name('productcarttotal')->middleware('auth');
 Route::post('/product-cart-total-post', [HomeController::class, 'productcarttotalpost'])->name('productcarttotalpost');
-Route::get('/barber-detail/{id}', [HomeController::class, 'barberdetail'])->name('barberdetail');
+Route::get('/barber-detail/{id}', [HomeController::class, 'barberdetail'])->name('barberdetail')->middleware('auth');
 Route::get('/barber-book/{id}', [HomeController::class, 'barberbook'])->name('barberbook')->middleware('auth');
 Route::post('/barber-bookinsert', [HomeController::class, 'barberbookinsert'])->name('barberbookinsert')->middleware('auth');
 
@@ -46,7 +47,6 @@ Route::post('/customer-profile-inti-edit', [CustomerDescriptionController::class
 Route::get('/customer-product', [CustomerDescriptionController::class, 'customerproduct'])->name('customerproduct')->middleware('auth');
 
 //Barber
-Route::get('/barber-profile-detail', [BarberController::class, 'barberprofiledetail'])->name('barberprofiledetail')->middleware('auth');
 Route::get('/barber-profile', [BarberDescriptionController::class, 'barberprofile'])->name('barberprofile')->middleware('auth');
 Route::get('/barber', [BarberDescriptionController::class, 'barber'])->name('barber')->middleware('auth');
 Route::get('/barber-profile-inti', [BarberDescriptionController::class, 'barberprofileinti'])->name('barberprofileinti')->middleware('auth');
@@ -58,24 +58,26 @@ Route::get('/barber-change-status-pending/{id}', [BarberDescriptionController::c
 Route::get('/barber-change-status-reject/{id}', [BarberDescriptionController::class, 'barberchangestatusreject'])->name('barberchangestatusreject')->middleware('auth');
 
 //Admin
-Route::get('/admin', [AdminController::class, 'admin'])->name('admin');
-Route::get('/admin/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete');
-Route::get('/admin-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual');
-Route::get('/admin-produk-status-accepted/{id}', [AdminController::class, 'adminstatusproceed'])->name('adminstatusproceed');
-Route::get('/admin-produk-status-pending/{id}', [AdminController::class, 'adminstatuspending'])->name('adminstatuspending');
-Route::get('/admin-produk-status-reject/{id}', [AdminController::class, 'adminstatusreject'])->name('adminstatusreject');
+Route::get('/admin-login', [AdminController::class, 'adminlogin'])->name('adminlogin');
+Route::post('/admin-login-proses', [AdminController::class, 'adminloginproses'])->name('adminloginproses');
+Route::get('/adminajadeh', [AdminController::class, 'admin'])->name('admin');
+Route::get('/adminajadeh/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete');
+Route::get('/adminajadeh-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual');
+Route::get('/adminajadeh-produk-status-accepted/{id}', [AdminController::class, 'adminstatusproceed'])->name('adminstatusproceed');
+Route::get('/adminajadeh-produk-status-pending/{id}', [AdminController::class, 'adminstatuspending'])->name('adminstatuspending');
+Route::get('/adminajadeh-produk-status-reject/{id}', [AdminController::class, 'adminstatusreject'])->name('adminstatusreject');
 
-// Tipe Produk
-Route::get('/admin-tipeproduk', [TipeProdukController::class, 'admintipeproduk'])->name('admintipeproduk');
-Route::get('/admin-tambahtipe', [TipeProdukController::class, 'admintambahtipe'])->name('admintambahtipe');
-Route::post('/admin-inserttipeproduk', [TipeProdukController::class, 'admininserttipeproduk'])->name('admininserttipeproduk');
-Route::get('/admin/detele-tipe/{id}', [TipeProdukController::class, 'admindeletetipe'])->name('admindeletetipe');
+//Admin Tipe Produk
+Route::get('/adminajadeh-tipeproduk', [TipeProdukController::class, 'admintipeproduk'])->name('admintipeproduk');
+Route::get('/adminajadeh-tambahtipe', [TipeProdukController::class, 'admintambahtipe'])->name('admintambahtipe');
+Route::post('/adminajadeh-inserttipeproduk', [TipeProdukController::class, 'admininserttipeproduk'])->name('admininserttipeproduk');
+Route::get('/adminajadeh/detele-tipe/{id}', [TipeProdukController::class, 'admindeletetipe'])->name('admindeletetipe');
 
-// Produk
-Route::get('/admin-produk', [ProductController::class, 'adminproduk'])->name('adminproduk');
-Route::get('/admin-tambahproduk', [ProductController::class, 'admintambahproduk'])->name('admintambahproduk');
-Route::post('/admin-insertproduk', [ProductController::class, 'admininsertproduk'])->name('admininsertproduk');
-Route::get('/admin/detele-produk/{id}', [ProductController::class, 'admindeleteproduk'])->name('admindeleteproduk');
+//Admin Produk
+Route::get('/adminajadeh-produk', [ProductController::class, 'adminproduk'])->name('adminproduk');
+Route::get('/adminajadeh-tambahproduk', [ProductController::class, 'admintambahproduk'])->name('admintambahproduk');
+Route::post('/adminajadeh-insertproduk', [ProductController::class, 'admininsertproduk'])->name('admininsertproduk');
+Route::get('/adminajadeh/detele-produk/{id}', [ProductController::class, 'admindeleteproduk'])->name('admindeleteproduk');
 
 //login
 Route::get('/login', [LoginController::class, 'login'])->name('login');

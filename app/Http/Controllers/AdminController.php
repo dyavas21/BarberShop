@@ -20,82 +20,77 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function adminlogin(){
+        return view('admin-login');
+    }
+
+    public function adminloginproses(Request $request){
+        if(Auth::attempt($request->only('username', 'password'))){
+            return redirect('admin');
+        }
+        return redirect('adminlogin');
+    }
+
+    public function logoutadmin(){
+        Auth::logout();
+        return redirect('indexwithoutlogin');
+    }
+
     public function admin()
     {
-        // $data = User::all();
-        // dd($data);
+        $title = 'Admin';
         $dataUser = User::all();
-
         $dataBarber = Barber::all();
-
         $dataCustomer = Customer::all();
-
         $dataBarberDesc = BarberDescription::all();
-
         $dataCustomerDesc = CustomerDescription::all();
-
         $dataProduk = Product::all();
-
-        return view('admin.admin',compact('dataUser', 'dataBarber', 'dataCustomer', 'dataBarberDesc', 'dataCustomerDesc', 'dataProduk'));
+        $dataOrder = Order::all();
+        return view('admin.admin',compact('dataUser', 'dataBarber', 'dataCustomer', 'dataBarberDesc', 'dataCustomerDesc', 'dataProduk', 'dataOrder', 'title'));
     }
 
     public function admindelete($id)
     {
         $datadataUser = User::find($id);
         $datadataUser->delete();
-        return redirect()->route('admin');
+        return redirect()->route('admin')->with('success', 'Data Berhasil Dihapus');
     }
 
     public function produkterjual()
     {
+        $title = 'Produk Terjual';
         $orders = Order::with('products')->get();
-
-        // $id = Auth::user()->id_user;
-        // $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        // $dataUser = User::where('id_user', '=', $id)->first();
-        // $dataCustomer = Customer::where('customer_id', '=', $id)->get();
-        // $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
-
-        // $invoice = Invoice::where('customer_id', '=', $id)->get();
-        // $orders = Order::where('order_id_cust', '=', $id)->get();
-
-        return view('admin.produkterjual', compact('orders'));
+        return view('admin.produkterjual', compact('orders', 'title'));
     }
 
     public function adminstatusproceed($id)
     {   
         $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
-        
         $status_id = 2;
-
         Order::where('id', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('produkterjual');
+        return redirect()->route('produkterjual')->with('success', 'Status Berhasil Diupdate');
     }
 
     public function adminstatusreject($id)
     {   
         $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
-        
         $status_id = 3;
-
         Order::where('id', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('produkterjual');
+        return redirect()->route('produkterjual')->with('success', 'Status Berhasil Diupdate');
     }
 
     public function adminstatuspending($id)
     {   
         $dataPemesanan = Order::select('status_id')->where('id', $id)->first();
-        
         $status_id = 1;
-
         Order::where('id', $id)->update([
             'status_id'=> $status_id
         ]);
-        return redirect()->route('produkterjual');
+        return redirect()->route('produkterjual')->with('success', 'Status Berhasil Diupdate');
     }
 
     /**

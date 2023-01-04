@@ -103,9 +103,9 @@
             <div class="card mb-4">
                 <div class="card-header">Tipe Produk</div>
                 <div class="card-body">
-                    <form action="/admin-inserttipeproduk" method="POST">
+                    <form action="/adminajadeh-inserttipeproduk" method="POST">
                         @csrf
-                        <div class="form-group"><label for="tipeproduk">Tipe Produk</label><input class="form-control" id="tipeproduk" name="nama" type="text"></div>        
+                        <div class="form-group"><label for="tipeproduk">Tipe Produk</label><input class="form-control" id="tipeproduk" name="nama" required type="text"></div>        
                         <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Submit</button>
                     </form>
                 </div>

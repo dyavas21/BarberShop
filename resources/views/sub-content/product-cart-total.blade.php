@@ -102,13 +102,15 @@
                 <input type="text" class="form-control" name="harga_total" id="final_harga" value="{{ $total }}">
             <label for="invoice" class="form-label mt-4">Upload Bukti Invoice Anda</label>
             <div class="input-group mb-3">
-                <input type="file" name="invoice" class="form-control" id="invoice">
+                <input type="file" name="invoice" class="form-control" required id="invoice">
                 {{-- <label class="input-group-text" for="inputGroupFile02">Upload</label> --}}
             </div>  
           </div>
       </div>
-      <div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+      <div class="d-flex flex-row-reverse">
+            <div class="">
+              <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+            </div>
       </div>
   </form>
 

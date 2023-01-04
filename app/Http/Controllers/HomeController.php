@@ -23,44 +23,57 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-
-    public function indexwithlogin()
+    public function about()
     {
-        $id = Auth::user()->id_user;
-        $dataUser = User::find($id);
-        $dataBarberfind = Barber::find($id);
+        $title = 'About';
+        $id2 = Auth::user()->id_user;
+        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+        $dataUser = User::where('id_user', '=', $id2)->first();
+        return view('sub-content.about', compact('title', 'dataCustomer', 'dataUser'));
+    }
+
+
+    public function contact()
+    {
+        $title = 'Contact';
+        $id2 = Auth::user()->id_user;
+        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+        $dataUser = User::where('id_user', '=', $id2)->first();
+        return view('sub-content.contact', compact('title', 'dataCustomer', 'dataUser'));
+    }
+
+    public function index()
+    {
+        $title = 'Home';
         $dataBarber= Barber::all();
         $dataBarberDesc = BarberDescription::all();
         $dataProduk = Product::all();
-        return view('index', compact('dataBarber', 'dataBarberDesc', 'dataProduk', 'dataUser', 'dataBarberfind'));
+        return view('index', compact('dataBarber', 'dataBarberDesc', 'dataProduk', 'title'));
     }
 
-    public function indexwithoutlogin()
-    {
-        $dataBarber = Barber::all();
-        $dataBarberDesc = BarberDescription::all();
-        $dataProduk = Product::all();
-        return view('index', compact('dataProduk', 'dataBarberDesc', 'dataBarber'));
-    }
+    // public function indexwithoutlogin()
+    // {
+    //     $dataBarber = Barber::all();
+    //     $dataBarberDesc = BarberDescription::all();
+    //     $dataProduk = Product::all();
+    //     return view('index', compact('dataProduk', 'dataBarberDesc', 'dataBarber'));
+    // }
 
     public function barberdetail($id){
+        $title = 'Barber Detail';
         $id2 = Auth::user()->id_user;
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::find($id2);
-
-        if($dataUser->role_id != 1){
-            return view('index');
-        }else{
-            return view('barber-detail', compact('dataBarber', 'dataUser'));
-        } 
+        return view('barber-detail', compact('dataBarber', 'dataUser', 'title'));
     }
 
     public function barberbook($id){
+        $title = 'Barber Book';
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $id2 = Auth::user()->id_user;
         $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
         $dataUser = User::where('id_user', '=', $id2)->first();
-        return view('barber-book', compact('dataCustomer', 'dataBarber', 'dataUser'));
+        return view('barber-book', compact('dataCustomer', 'dataBarber', 'dataUser', 'title'));
     }
 
     public function barberbookinsert(Request $request)
@@ -85,24 +98,26 @@ class HomeController extends Controller
             $datafinal->invoice = $request->file('invoice')->getClientOriginalName();
             $datafinal->save();
         }
-        return redirect()->route('customer');
+        return redirect()->route('customer')->with('success', 'Barber Berhasil Dibook');
     }
 
     public function product(){
+        $title = 'Product';
         $id2 = Auth::user()->id_user;
         $dataUser = User::find($id2);
         $product = Product::all();
-        return view('product', compact('product', 'dataUser'));
+        return view('sub-content.product', compact('product', 'dataUser', 'title'));
     }
 
     public function productcart(){
+        $title = 'Product Cart';
         $id2 = Auth::user()->id_user;
         $dataUser = User::find($id2);
         $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
         // $dataUser = User::where('id_user', '=', $id2)->first();
 
         $products = Product::all();
-        return view('product-cart', compact('products', 'dataUser', 'dataCustomer'));
+        return view('sub-content.product-cart', compact('products', 'dataUser', 'dataCustomer', 'title'));
     }
 
     public function productcartpost(Request $request)
@@ -121,11 +136,12 @@ class HomeController extends Controller
                 $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
             }
         }
-        return redirect()->route('productcarttotal');
+        return redirect()->route('productcarttotal')->with('success', 'Silahkan Lanjutkan Pembayaran');
     }
 
     public function productcarttotal()
     {
+        $title = 'Product Cart Total';
         $id2 = Auth::user()->id_user;
         $dataUser = User::find($id2);
         $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
@@ -134,7 +150,7 @@ class HomeController extends Controller
 
         $ordersnew = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '=', 1)->first();
 
-        return view('product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew'));
+        return view('sub-content.product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew', 'title'));
     }
 
 
@@ -152,7 +168,7 @@ class HomeController extends Controller
             $orderpost->invoice = $request->file('invoice')->getClientOriginalName();
             $orderpost->save();
         }
-        return redirect()->route('customer');
+        return redirect()->route('customer')->with('success', 'Product Berhasil Dibeli');
     }
 
 

@@ -1,6 +1,8 @@
 @extends('layouts.header-admin')
 
+
 @section('content')
+
         <main>
         <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
         </header>
@@ -79,7 +81,7 @@
                 </div>
             </div>  --}}
 
-            <a href="/admin-tambahtipe" class="btn btn-success mt-5 mb-5">Tambah Tipe Produk</a>
+            <a href="/adminajadeh-tambahtipe" class="btn btn-success mt-5 mb-5">Tambah Tipe Produk</a>
 
             <!-- Example DataTable for Dashboard Demo-->
             <div class="card mb-4">
@@ -110,7 +112,7 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $row->nama }}</td>                               
                                 <td>
-                                    <a class="btn btn-danger" href="/admin/detele-tipe/{{ $row->id_tipe_produk }}">Delete</a>
+                                    <a class="btn btn-danger" href="/adminajadeh/detele-tipe/{{ $row->id_tipe_produk }}">Delete</a>
                                 </td>
                             </tr>
                             @endforeach
@@ -121,4 +123,5 @@
             </div>
         </div>
     </main>
+
 @endsection

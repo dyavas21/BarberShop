@@ -58,7 +58,7 @@
                             <img src="{{ asset('photo/'.$dataCustomerDesc->photo ) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                             <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
-                                <input type="file" name="gambarbarber" class="form-control" id="gambarbarber">
+                                <input type="file" name="gambarbarber" class="form-control" id="gambarbarber" value="{{ $dataCustomerDesc->photo  }}">
                                 <label class="input-group-text" for="inputGroupFile02">Upload</label>
                             </div>  
                             <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
