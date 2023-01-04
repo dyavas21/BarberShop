@@ -34,7 +34,7 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="mr-3">
-                                <div class="text-white-75 small">Transaksi Berlangsung</div>
+                                <div class="text-white-75 small">Total Transaksi</div>
                                 <div class="text-lg font-weight-bold">
                                     @if (is_null($dataPemesanan))
                                         0
@@ -170,7 +170,7 @@
                                         <td>{{ $item->barbpem->fname }} {{ $item->barbpem->lname }}</td>
                                         <td>{{ $item->barbdescpem->address }}</td>
                                         <td>{{ $item->barbdescpem->phone }}</td>  
-                                        <td>{{ number_format($item->barbdescpem->harga, 2) }}</td>                                          
+                                        <td>Rp {{ number_format($item->barbdescpem->harga, 2) }}</td>                                          
                                         <td style="text-align:center">
                                             @if ($item->statuspem->id_status == 1)
                                                 <a href="" class="btn btn-sm btn-warning">{{ $item->statuspem->nama_status }}</a>

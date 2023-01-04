@@ -18,7 +18,7 @@
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow navbar-dark bg-dark" id="sidenavAccordion">
             <a class="navbar-brand" href="/barber">Barber Admin</a>
-            <button class="btn btn-icon btn-transparent-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
+            <button class="btn btn-icon btn-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <form class="form-inline mr-auto d-none d-md-block">
                 <div class="input-group input-group-joined input-group-solid">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -108,7 +108,7 @@
         </div>
 
         <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
-        <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
         <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
         <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
         <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
