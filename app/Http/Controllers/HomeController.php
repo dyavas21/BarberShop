@@ -47,7 +47,12 @@ class HomeController extends Controller
         $id2 = Auth::user()->id_user;
         $dataBarber = Barber::where('barber_id', '=', $id)->first();
         $dataUser = User::find($id2);
-        return view('barber-detail', compact('dataBarber', 'dataUser'));
+
+        if($dataUser->role_id != 1){
+            return view('index');
+        }else{
+            return view('barber-detail', compact('dataBarber', 'dataUser'));
+        } 
     }
 
     public function barberbook($id){
