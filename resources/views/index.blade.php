@@ -54,8 +54,8 @@
                         <a class="nav-link" aria-current="page" href="/product">Product</a>
                         @endif
                       </li>
-                       @if (auth()->check())
                        <li class="nav-item dropdown">
+                        @if (auth()->check())
                         <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ Auth::user()->fname }}
                         </a>
@@ -223,15 +223,21 @@
                                 <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
                                 @endif
                                 </div>
-                            </div>
+                            </div>                          
                         </div>
                         @else
                         @endif
                     @endforeach
                 @endforeach
-            </div> 
+            </div>
+            <div class="row mt-3">
+                <div class="d-flex justify-content-center">
+                    {{ $dataBarber->links() }}  
+                </div>
+            </div>
+          
             @endif
-        </div>
+        </div>    
     </section>
 
 
@@ -287,6 +293,11 @@
                 @endforeach    
               </div>
             @endif
+            <div class="row mt-3">
+                <div class="d-flex justify-content-center">
+                    {{ $dataProduk->links() }}  
+                </div>
+            </div>
            </div>
         </div>
     </section>

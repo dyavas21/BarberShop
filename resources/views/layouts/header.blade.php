@@ -60,21 +60,17 @@
                         <a class="nav-link" aria-current="page" href="/product">Product</a>
                         @endif
                       </li>
-                      @guest
-                      <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="/login">Login</a>
-                      </li>
-                      @else
                       <li class="nav-item dropdown">
+                        @if (auth()->check())
                         <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           {{ Auth::user()->fname }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
-                          @if ($dataUser->role_id == 1)
+                          @if (Auth()->user()->role_id == 1)
                           <li>
                               <a class="dropdown-item" href="/customer">Profile</a>
                           </li>
-                          @elseif($dataUser->role_id == 2)
+                          @elseif(Auth()->user()->role_id == 2)
                           <li>
                               <a class="dropdown-item" href="/barber">Profile</a>
                           </li>
@@ -84,12 +80,16 @@
                           </li>                       
                         </ul>
                       </li>
-                    @endguest
+                       @else
+                       <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="/login">Login</a>
+                      </li>
+                       @endif
                   </ul>
               </div>
             </div>
           </nav>
-          <h1></h1>
+          <h1>{{ $title }}</h1>
     </section>
 
    @yield('content')
