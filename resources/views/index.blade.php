@@ -236,7 +236,6 @@
                     {{$dataBarber->appends(['dataProduk' => $dataProduk->currentPage()])->links()}} 
                 </div>
             </div>
-          
             @endif
         </div>    
     </section>
