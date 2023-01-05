@@ -108,20 +108,30 @@
                         <thead>
                             <tr>
                                 <th>No</th>
-                                <th>Full Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Gender</th>
+                                <th>Alamat</th>
+                                <th>Umur</th>
                                 <th>Tanggal Dibuat</th>
+                                <th>Photo</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
                         <tfoot>
                             <tr>
                                 <th>No</th>
-                                <th>Full Name</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
                                 <th>Email</th>
                                 <th>Role</th>
+                                <th>Gender</th>
+                                <th>Alamat</th>
+                                <th>Umur</th>
                                 <th>Tanggal Dibuat</th>
+                                <th>Photo</th>
                                 <th>Actions</th>
                             </tr>
                         </tfoot>
@@ -132,10 +142,35 @@
                             @foreach ($dataUser as $row)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $row->fname }} {{ $row->lname }}</td>
+                                    <td>{{ $row->fname }}</td>
+                                    <td>{{ $row->lname }}</td>                                  
                                     <td>{{ $row->email }}</td>
-                                    <td>{{ $row->roleuser->nama_role }}</td>
+                                    <td>{{ $row->roleuser->nama_role }}</td>                                    
+                                    @if ($row->role_id == 1)
+                                        <td>{{ $row->descc->gender ?? '-' }}</td>
+                                    @elseif ($row->role_id == 2)
+                                    <td>{{ $row->descb->gender ?? '-' }}</td>
+                                    @endif
+                                    @if ($row->role_id == 1)
+                                    <td>{{ $row->descc->address ?? '-' }}</td>
+                                    @elseif ($row->role_id == 2)
+                                    <td>{{ $row->descb->address ?? '-' }}</td>
+                                    @endif
+                                    @if ($row->role_id == 1)
+                                        <td>{{ $row->descc->age ?? '-' }} Tahun</td>
+                                    @elseif ($row->role_id == 2)
+                                    <td>{{ $row->descb->age ?? '-' }} Tahun</td>
+                                    @endif                    
                                     <td>{{ $row->created_at->format('d M Y') }}</td>
+                                    @if ($row->role_id == 1)
+                                    @if ($row->descc == null)
+                                    <td>''</td>
+                                    @else
+                                         <td><img src="{{ asset('photo/'.$row->descc->photo) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."></td>
+                                    @endif
+                                    @elseif ($row->role_id == 2)
+                                    <td><img src="{{ asset('gambarbarber/'.$row->descb->gambarbarber ) ?? '-' }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."></td>
+                                    @endif
                                     <td>
                                         <a class="btn btn-danger" href="/adminajadeh/detele/{{ $row->id_user }}">Delete</a>
                                     </td>

@@ -48,6 +48,15 @@ class User extends Authenticatable
         return $this->belongsTo(Customer::class, 'id', 'id');
     }
 
+    public function descb(){
+        return $this->hasOne(BarberDescription::class, 'barber_desc_id', 'id_user');
+    }
+
+    public function descc(){
+        return $this->hasOne(CustomerDescription::class, 'customer_desc_id', 'id_user');
+    }
+
+
 
     public function setPasswordAttribute($password)
     {

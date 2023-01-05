@@ -141,8 +141,20 @@ class BarberDescriptionController extends Controller
             'lname' => $request->lname,
         ]);
 
-        if($request->hasFile('gambarbarber', 'certificate')){
-            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
+        if($request->hasFile('gambarbarber')){
+            $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());           
+            $dataBarberDesc->update([
+                'address' => $request->address,
+                'age' => $request->age,
+                'gender' => $request->gender,
+                'phone' => $request->phone,
+                'description' => $request->description,                
+                'gambarbarber' => $request->gambarbarber,
+                'harga' => $request->harga,
+            ]);
+            $dataBarberDesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
+            $dataBarberDesc->save();
+        }else if($request->hasFile('certificate')){
             $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
             $dataBarberDesc->update([
                 'address' => $request->address,
@@ -151,13 +163,13 @@ class BarberDescriptionController extends Controller
                 'phone' => $request->phone,
                 'description' => $request->description,
                 'certificate' => $request->certificate,
-                'gambarbarber' => $request->gambarbarber,
                 'harga' => $request->harga,
             ]);
-            $dataBarberDesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $dataBarberDesc->certificate = $request->file('certificate')->getClientOriginalName();
             $dataBarberDesc->save();
-        }else{
+        }
+        
+        else{
             $dataBarberDesc->update([
                 'address' => $request->address,
                 'age' => $request->age,
