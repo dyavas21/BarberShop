@@ -39,9 +39,9 @@ class HomeController extends Controller
     public function index()
     {
         $title = 'Home';
-        $dataBarber= Barber::paginate(4);
+        $dataBarber= Barber::paginate(4, ['*'], 'dataBarber');
         $dataBarberDesc = BarberDescription::all();
-        $dataProduk = Product::paginate(4);
+        $dataProduk = Product::paginate(4, ['*'], 'dataProduk');
         return view('index', compact('dataBarber', 'dataBarberDesc', 'dataProduk', 'title'));
     }
 

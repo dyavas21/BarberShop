@@ -207,7 +207,7 @@
                 @foreach ($dataBarber as $item)
                     @foreach ($dataBarberDesc as $item2)
                         @if ($item->barber_id == $item2->barber_desc_id)
-                        <div class="col">
+                        <div class="col mb-3 d-flex align-items-stretch">
                             <div class="card jarak d-block mx-auto " style="width: 18rem;">
                                 <img src="{{ asset('gambarbarber/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
                                 <div class="card-body">
@@ -232,7 +232,8 @@
             </div>
             <div class="row mt-3">
                 <div class="d-flex justify-content-center">
-                    {{ $dataBarber->links() }}  
+                    {{-- {{ $dataBarber->links() }}   --}}
+                    {{$dataBarber->appends(['dataProduk' => $dataProduk->currentPage()])->links()}} 
                 </div>
             </div>
           
@@ -254,7 +255,7 @@
                     <div class="card h-100 border border-0 ">
                         <div class="card-body text-center {{--facilities-body  --}}">
                             <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >    
-                            <h6>No Product Avaible Right Now</h6>
+                            <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
@@ -263,7 +264,7 @@
                     <div class="card h-100 border border-0">
                         <div class="card-body text-center">
                             <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
-                            <h6>No Product Avaible Right Now</h6>
+                            <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
@@ -272,7 +273,7 @@
                     <div class="card h-100 border border-0">
                         <div class="card-body text-center">
                             <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
-                            <h6>No Product Avaible Right Now</h6>
+                            <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
@@ -281,12 +282,12 @@
             @else
             <div class="row row-cols-auto d-flex justify-content-center">
                 @foreach ($dataProduk as $item)
-                <div class="col">
+                <div class="col mb-3 d-flex align-items-stretch">
                     <div class="card h-100 border border-0">
                         <div class="card-body text-center">
                             <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >    
-                            <h3>{{ $item->tipeproduk->nama }}</h3>
-                            <h6>{{ $item->nama_produk }}</h6>
+                            <h5 class="card-title">{{ $item->tipeproduk->nama }}</h5>
+                            <p class="card-text">{{ $item->nama_produk }}</p>
                         </div>
                       </div>
                 </div>
@@ -295,7 +296,7 @@
             @endif
             <div class="row mt-3">
                 <div class="d-flex justify-content-center">
-                    {{ $dataProduk->links() }}  
+                    {{$dataProduk->appends(['dataBarber' => $dataBarber->currentPage()])->links()}}      
                 </div>
             </div>
            </div>
