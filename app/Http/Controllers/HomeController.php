@@ -54,20 +54,26 @@ class HomeController extends Controller
     // }
 
     public function barberdetail($id){
-        $title = 'Barber Detail';
-        $id2 = Auth::user()->id_user;
-        $dataBarber = Barber::where('barber_id', '=', $id)->first();
-        $dataUser = User::find($id2);
-        return view('barber-detail', compact('dataBarber', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Barber Detail';
+            $id2 = Auth::user()->id_user;
+            $dataBarber = Barber::where('barber_id', '=', $id)->first();
+            $dataUser = User::find($id2);
+            return view('barber-detail', compact('dataBarber', 'dataUser', 'title'));
+        }
+        return abort(403);
     }
 
     public function barberbook($id){
-        $title = 'Barber Book';
-        $dataBarber = Barber::where('barber_id', '=', $id)->first();
-        $id2 = Auth::user()->id_user;
-        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
-        $dataUser = User::where('id_user', '=', $id2)->first();
-        return view('barber-book', compact('dataCustomer', 'dataBarber', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Barber Book';
+            $dataBarber = Barber::where('barber_id', '=', $id)->first();
+            $id2 = Auth::user()->id_user;
+            $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+            $dataUser = User::where('id_user', '=', $id2)->first();
+            return view('barber-book', compact('dataCustomer', 'dataBarber', 'dataUser', 'title'));   
+        }
+        return abort(403);
     }
 
     public function barberbookinsert(Request $request)
@@ -96,22 +102,26 @@ class HomeController extends Controller
     }
 
     public function product(){
-        $title = 'Product';
-        $id2 = Auth::user()->id_user;
-        $dataUser = User::find($id2);
-        $product = Product::all();
-        return view('sub-content.product', compact('product', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Product';
+            $id2 = Auth::user()->id_user;
+            $dataUser = User::find($id2);
+            $product = Product::all();
+            return view('sub-content.product', compact('product', 'dataUser', 'title')); 
+        }
+        return abort(403);
     }
 
     public function productcart(){
-        $title = 'Product Cart';
-        $id2 = Auth::user()->id_user;
-        $dataUser = User::find($id2);
-        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
-        // $dataUser = User::where('id_user', '=', $id2)->first();
-
-        $products = Product::all();
-        return view('sub-content.product-cart', compact('products', 'dataUser', 'dataCustomer', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Product Cart';
+            $id2 = Auth::user()->id_user;
+            $dataUser = User::find($id2);
+            $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+            $products = Product::all();
+            return view('sub-content.product-cart', compact('products', 'dataUser', 'dataCustomer', 'title'));            
+        }
+        return abort(403);
     }
 
     public function productcartpost(Request $request)
@@ -135,16 +145,19 @@ class HomeController extends Controller
 
     public function productcarttotal()
     {
-        $title = 'Product Cart Total';
-        $id2 = Auth::user()->id_user;
-        $dataUser = User::find($id2);
-        $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
-
-        $orders = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '!=', 2)->where('order_id_cust', '=', $id2)->where('status_id', '!=', 3)->get();
-
-        $ordersnew = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '=', 1)->first();
-
-        return view('sub-content.product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Product Cart Total';
+            $id2 = Auth::user()->id_user;
+            $dataUser = User::find($id2);
+            $dataCustomer = Customer::where('customer_id', '=', $id2)->first();
+    
+            $orders = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '!=', 2)->where('order_id_cust', '=', $id2)->where('status_id', '!=', 3)->get();
+    
+            $ordersnew = Order::with('products')->where('order_id_cust', '=', $id2)->where('status_id', '=', 1)->first();
+    
+            return view('sub-content.product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew', 'title'));            
+        }
+        return abort(403);
     }
 
 

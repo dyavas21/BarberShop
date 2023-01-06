@@ -16,18 +16,18 @@ class BarberDescriptionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-    
     public function barber()
     {   
-        $title = 'Barber';
-        $id = Auth::user()->id_user;
-        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        $dataBarber = Barber::where('barber_id', '=', $id)->get();
-        $dataPemesanan = Pemesanan::where('pemesanan_id_barber', '=', $id)->get();
-
-        return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan', 'title'));
+        if(Auth()->user()->role_id == 2) {
+            $title = 'Barber';
+            $id = Auth::user()->id_user;
+            $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            $dataBarber = Barber::where('barber_id', '=', $id)->get();
+            $dataPemesanan = Pemesanan::where('pemesanan_id_barber', '=', $id)->get();
+            return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan', 'title'));
+        }
+        return abort(403);
     }
 
     public function barberchangestatusproceed($id)
@@ -68,33 +68,43 @@ class BarberDescriptionController extends Controller
 
     public function barberprofile()
     {
-        $title = 'Profile Detail';
-        $id = Auth::user()->id_user;
-        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        $dataBarber = Barber::where('barber_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 2) {
+            return abort(403);
+            $title = 'Profile Detail';
+            $id = Auth::user()->id_user;
+            $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+            $dataBarber = Barber::where('barber_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
+        }
+        return abort(403);
     }
 
     public function barberprofileinti()
     {
-        $title = 'Lengkapi Profile';
-        $id = Auth::user()->id_user;
-        $dataBarber = Barber::where('barber_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc', 'title'));
+        if(Auth()->user()->role_id == 2) {
+            $title = 'Lengkapi Profile';
+            $id = Auth::user()->id_user;
+            $dataBarber = Barber::where('barber_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+            return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc', 'title'));
+        }
+        return abort(403);
     }
 
 
     public function barberprofileintiview()
     {   
-        $title = 'Edit Profile';
-        $id = Auth::user()->id_user;
-        $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
-        $dataBarber = Barber::where('barber_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 2) {
+            $title = 'Edit Profile';
+            $id = Auth::user()->id_user;
+            $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
+            $dataBarber = Barber::where('barber_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
+        }
+        return abort(403); 
     }
 
 

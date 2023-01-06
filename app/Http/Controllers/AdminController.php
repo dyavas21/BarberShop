@@ -20,6 +20,8 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
+
     public function adminlogin(){
         return view('admin-login');
     }

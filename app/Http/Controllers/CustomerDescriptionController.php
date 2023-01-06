@@ -23,25 +23,29 @@ class CustomerDescriptionController extends Controller
     
     public function customer()
     {   
-        $title = 'Customer';
-        $id = Auth::user()->id_user;
-        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        $dataCustomer = Customer::where('customer_id', '=', $id)->get();
-        $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
-
-        return view('customer.customer', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Customer';
+            $id = Auth::user()->id_user;
+            $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            $dataCustomer = Customer::where('customer_id', '=', $id)->get();
+            $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
+            return view('customer.customer', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'title'));
+        }
+        return abort(403);
     }
 
     public function customerprofileinti()
     {
-        $title = 'Customer Profile';
-        $id = Auth::user()->id_user;
-        $dataCustomer = Customer::where('customer_id', '=', $id)->first();
-        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        return view('customer.profile-inti', compact('dataCustomer', 'dataUser', 'dataCustomerDesc', 'title'));
-        
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Customer Profile';
+            $id = Auth::user()->id_user;
+            $dataCustomer = Customer::where('customer_id', '=', $id)->first();
+            $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            return view('customer.profile-inti', compact('dataCustomer', 'dataUser', 'dataCustomerDesc', 'title')); 
+        }
+        return abort(403);
     }
 
     public function customerprofileintiview(Request $request)
@@ -56,9 +60,7 @@ class CustomerDescriptionController extends Controller
 
     public function customerprofileintiinsert(Request $request)
     {   
-        
         $id = Auth::user()->id_user;
-
         $datafinal = CustomerDescription::create([
             'customer_desc_id' => $id,
             'address' => $request->address,
@@ -123,17 +125,18 @@ class CustomerDescriptionController extends Controller
 
     public function customerproduct()
     {
-        $title = 'Produk Dibeli';
-        $id = Auth::user()->id_user;
-        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        $dataUser = User::where('id_user', '=', $id)->first();
-        $dataCustomer = Customer::where('customer_id', '=', $id)->get();
-        $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
-
-        $invoice = Invoice::where('customer_id', '=', $id)->get();
-        $orders = Order::where('order_id_cust', '=', $id)->get();
-
-        return view('customer.product', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'invoice', 'orders', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Produk Dibeli';
+            $id = Auth::user()->id_user;
+            $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+            $dataUser = User::where('id_user', '=', $id)->first();
+            $dataCustomer = Customer::where('customer_id', '=', $id)->get();
+            $dataPemesanan = Pemesanan::where('pemesanan_id_cust', '=', $id)->get();
+            $invoice = Invoice::where('customer_id', '=', $id)->get();
+            $orders = Order::where('order_id_cust', '=', $id)->get();
+            return view('customer.product', compact('dataCustomerDesc', 'dataUser', 'dataCustomer', 'dataPemesanan', 'invoice', 'orders', 'title'));
+        }
+        return abort(403);
     }
 
 
