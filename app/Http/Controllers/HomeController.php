@@ -61,7 +61,7 @@ class HomeController extends Controller
             $dataUser = User::find($id2);
             return view('barber-detail', compact('dataBarber', 'dataUser', 'title'));
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function barberbook($id){
@@ -73,7 +73,7 @@ class HomeController extends Controller
             $dataUser = User::where('id_user', '=', $id2)->first();
             return view('barber-book', compact('dataCustomer', 'dataBarber', 'dataUser', 'title'));   
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function barberbookinsert(Request $request)
@@ -109,7 +109,7 @@ class HomeController extends Controller
             $product = Product::all();
             return view('sub-content.product', compact('product', 'dataUser', 'title')); 
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function productcart(){
@@ -121,7 +121,7 @@ class HomeController extends Controller
             $products = Product::all();
             return view('sub-content.product-cart', compact('products', 'dataUser', 'dataCustomer', 'title'));            
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function productcartpost(Request $request)
@@ -157,7 +157,7 @@ class HomeController extends Controller
     
             return view('sub-content.product-cart-total', compact('orders', 'dataUser', 'dataCustomer', 'ordersnew', 'title'));            
         }
-        return abort(403);
+        return view('error.403');
     }
 
 

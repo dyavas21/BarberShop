@@ -50,12 +50,15 @@ class CustomerDescriptionController extends Controller
 
     public function customerprofileintiview(Request $request)
     {   
-        $title = 'Edit Profile';
-        $id = Auth::user()->id_user;
-        $dataUser = User::where('id_user', '=', $id)->first();
-        $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
-        $dataCustomer = Customer::where('customer_id', '=', $id)->first();
-        return view('customer.profile-inti-view', compact('dataCustomer', 'dataCustomerDesc', 'dataUser', 'title'));
+        if(Auth()->user()->role_id == 1) {
+            $title = 'Edit Profile';
+            $id = Auth::user()->id_user;
+            $dataUser = User::where('id_user', '=', $id)->first();
+            $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
+            $dataCustomer = Customer::where('customer_id', '=', $id)->first();
+            return view('customer.profile-inti-view', compact('dataCustomer', 'dataCustomerDesc', 'dataUser', 'title'));
+        }
+        return abort(403);
     }
 
     public function customerprofileintiinsert(Request $request)

@@ -27,7 +27,7 @@ class BarberDescriptionController extends Controller
             $dataPemesanan = Pemesanan::where('pemesanan_id_barber', '=', $id)->get();
             return view('barber.barber', compact('dataBarberDesc', 'dataUser', 'dataBarber', 'dataPemesanan', 'title'));
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function barberchangestatusproceed($id)
@@ -69,7 +69,6 @@ class BarberDescriptionController extends Controller
     public function barberprofile()
     {
         if(Auth()->user()->role_id == 2) {
-            return abort(403);
             $title = 'Profile Detail';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -77,7 +76,7 @@ class BarberDescriptionController extends Controller
             $dataUser = User::where('id_user', '=', $id)->first();
             return view('barber.profile' ,compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
         }
-        return abort(403);
+        return view('error.403');
     }
 
     public function barberprofileinti()
@@ -90,7 +89,7 @@ class BarberDescriptionController extends Controller
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
             return view('barber.profile-inti', compact('dataBarber', 'dataUser', 'dataBarberDesc', 'title'));
         }
-        return abort(403);
+        return view('error.403');
     }
 
 
@@ -104,7 +103,7 @@ class BarberDescriptionController extends Controller
             $dataUser = User::where('id_user', '=', $id)->first();
             return view('barber.profile-inti-view', compact('dataBarberDesc', 'dataBarber', 'dataUser', 'title'));
         }
-        return abort(403); 
+        return view('error.403');
     }
 
 
