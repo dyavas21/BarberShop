@@ -51,16 +51,17 @@ p {
 }
 
 .hero-btn:hover {
-    border: 1px solid #f44336;
-    background: #f44336;
+    border: 1px solid #222D40;
+    background: #222D40;
 }
 
 /* End Header */
 
 /* Beginning Package */
 
-.card-body {
-    /* background: #fff3f3; */
+.page-link  {
+    background: #222D40;
+
 }
 
 .card-body h1 {
@@ -95,7 +96,8 @@ p {
     transition: 0.5s;
 }
 .layer:hover {
-    background: rgba(226, 0, 0, 0.7);
+    /* background: rgba(226, 0, 0, 0.7); */
+    background: #222D40;
 }
 
 .layer h3 {
@@ -167,7 +169,7 @@ p {
 /* Beginning Footer */
 
 .icons .fab {
-    color: #f44336;
+    color: #222D40;
     margin: 0 13px;
     cursor: pointer;
     padding: 18px 0;
@@ -200,9 +202,9 @@ p {
 }
 
 .red-btn {
-    border: 1px solid #f44336;
+    border: 1px solid #222D40;
     background: transparent;
-    color: #f44336;
+    color: #222D40;
 }
 
 .red-btn:hover {
@@ -220,7 +222,7 @@ p {
 
 .contact div .fas {
     font-size: 28px;
-    color: #f44336;
+    color: #222D40;
 }
 
 /* End Contact */

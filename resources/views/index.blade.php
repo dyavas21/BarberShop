@@ -93,8 +93,7 @@
                 {{-- if (isset($_SESSION["useruid"])) {
                   echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
                 } --}}
-                
-            <a href="/about" class="hero-btn">Visit Us To Know More</a>
+            <a href="/about" class="hero-btn red-btn">Visit Us To Know More</a>
         </div>
       </div>
     </section>
@@ -215,12 +214,12 @@
                                 <p class="card-text">{{ $item->descriptionBarber->description }}</p>
                                 @if (auth()->check())
                                 @if (Auth()->user()->role_id == 1)
-                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="hero-btn red-btn">Detail</a>
                                 @elseif(Auth()->user()->role_id == 2)
-                                <a href="/" class="btn btn-primary">Detail</a>
+                                <a href="/" class="hero-btn red-btn">Detail</a>
                                 @endif
                                 @else
-                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="hero-btn red-btn">Detail</a>
                                 @endif
                                 </div>
                             </div>                          
@@ -352,7 +351,7 @@
 
     <section class="cta">
         <h1>Book Now</h1>
-        <a href="/contact" class="hero-btn">CONTACT US</a>
+        <a href="/contact" class="hero-btn red-btn">CONTACT US</a>
     </section>
 
     <section class="footer text-center">
