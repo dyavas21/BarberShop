@@ -58,9 +58,15 @@ class AuthController extends Controller
     $token = $user->createToken('auth_token')->plainTextToken;
 
     return response()->json([
-      'data' => $user,
+      'message' => 'register success',
+      'data' => [
+        'role_id' => $user->role_id,
+        'email' => $user->email,
+        'fname' => $user->fname,
+        'lname' => $user->lname
+      ],
       'access_token' => $token,
-      'token_type' => 'Bearer'
+      'token_type' => 'Bearer',
     ]);
   }
 
@@ -73,14 +79,38 @@ class AuthController extends Controller
     }
 
     $user = User::where('email', $request->email)->firstOrFail();
-
     $token = $user->createToken('auth_token')->plainTextToken;
 
-    return response()->json([
-      'message' => 'Login success',
-      'access_token' => $token,
-      'token_type' => 'Bearer'
-    ]);
+    $role = Auth::user()->roleuser->id_role;
+
+    if ($role == 1) {
+      return response()->json([
+        'message' => 'Login success',
+        'access_token' => $token,
+        'token_type' => 'Bearer',
+        'data' => [
+          'email' => $user->email,
+          'fname' => $user->fname,
+          'lname' => $user->lname,
+          'role_id' => $user->role_id
+        ]
+      ]);
+    }
+
+    if ($role == 2) {
+      return response()->json([
+        'message' => 'Login success',
+        'access_token' => $token,
+        'token_type' => 'Bearer',
+        'data' => [
+          'email' => $user->email,
+          'fname' => $user->fname,
+          'lname' => $user->lname,
+          'role_id' => $user->role_id
+        ]
+      ]);
+    }
+
   }
 
   public function logout(Request $request)
