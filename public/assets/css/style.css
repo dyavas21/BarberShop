@@ -58,12 +58,6 @@ p {
 /* End Header */
 
 /* Beginning Package */
-
-.page-link  {
-    background: #222D40;
-
-}
-
 .card-body h1 {
     font-size: 36px;
     font-weight: 600;
@@ -212,7 +206,17 @@ p {
 }
 
 /* End About */
+.page-item.active .page-link {
+    background-color: #222D40 !important;
+    border-color: #222D40 !important;
+    color: white !important;
+}
 
+.page-link {
+    background-color: white !important;
+    color: #222D40 !important;
+    border-color: #222D40 !important;
+}
 /* Beginning Contact */
 
 .contact h5 {
