@@ -281,15 +281,15 @@
             <div class="row row-cols-auto d-flex justify-content-center">
                 @foreach ($dataProduk as $item)
                 <div class="col mb-3 d-flex align-items-stretch">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0" style="width: 18rem;">
+                        <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >  
+                        <div class="card-body">  
                             <h5 class="card-title">{{ $item->tipeproduk->nama }}</h5>
                             <p class="card-text">{{ $item->nama_produk }}</p>
                         </div>
                       </div>
                 </div>
-                @endforeach    
+                @endforeach   
               </div>
             @endif
             <div class="row mt-3">
