@@ -11,14 +11,10 @@ use Illuminate\Support\Facades\Auth;
 
 class BarberDescriptionController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function barber()
     {   
-        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) 
+        {
             $title = 'Barber';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -33,9 +29,7 @@ class BarberDescriptionController extends Controller
     public function barberchangestatusproceed($id)
     {   
         $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
-        
         $status_id = 2;
-
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
@@ -45,9 +39,7 @@ class BarberDescriptionController extends Controller
     public function barberchangestatusreject($id)
     {   
         $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
-        
         $status_id = 3;
-
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
@@ -57,9 +49,7 @@ class BarberDescriptionController extends Controller
     public function barberchangestatuspending($id)
     {   
         $dataPemesanan = Pemesanan::select('status_id')->where('id_pemesanan', $id)->first();
-        
         $status_id = 1;
-
         Pemesanan::where('id_pemesanan', $id)->update([
             'status_id'=> $status_id
         ]);
@@ -68,7 +58,8 @@ class BarberDescriptionController extends Controller
 
     public function barberprofile()
     {
-        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) 
+        {
             $title = 'Profile Detail';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -81,7 +72,8 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileinti()
     {
-        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) 
+        {
             $title = 'Lengkapi Profile';
             $id = Auth::user()->id_user;
             $dataBarber = Barber::where('barber_id', '=', $id)->first();
@@ -95,7 +87,8 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileintiview()
     {   
-        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) 
+        {
             $title = 'Edit Profile';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -122,8 +115,8 @@ class BarberDescriptionController extends Controller
             'harga' => $request->harga,
         ]);
 
-        // $datafinal = Description::create($request->all());
-        if($request->hasFile('gambarbarber', 'certificate')){
+        if($request->hasFile('gambarbarber', 'certificate'))
+        {
             $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());
             $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
             $datafinal->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
@@ -150,7 +143,8 @@ class BarberDescriptionController extends Controller
             'lname' => $request->lname,
         ]);
 
-        if($request->hasFile('gambarbarber')){
+        if($request->hasFile('gambarbarber'))
+        {
             $request->file('gambarbarber')->move('gambarbarber/', $request->file('gambarbarber')->getClientOriginalName());           
             $dataBarberDesc->update([
                 'address' => $request->address,
@@ -163,7 +157,8 @@ class BarberDescriptionController extends Controller
             ]);
             $dataBarberDesc->gambarbarber = $request->file('gambarbarber')->getClientOriginalName();
             $dataBarberDesc->save();
-        }else if($request->hasFile('certificate')){
+        }else if($request->hasFile('certificate'))
+        {
             $request->file('certificate')->move('certificate/', $request->file('certificate')->getClientOriginalName());
             $dataBarberDesc->update([
                 'address' => $request->address,
@@ -177,7 +172,6 @@ class BarberDescriptionController extends Controller
             $dataBarberDesc->certificate = $request->file('certificate')->getClientOriginalName();
             $dataBarberDesc->save();
         }
-        
         else{
             $dataBarberDesc->update([
                 'address' => $request->address,
@@ -189,78 +183,6 @@ class BarberDescriptionController extends Controller
             ]);
             $dataBarberDesc->save();
         }
-
         return redirect()->route('barber')->with('success', 'Profile Berhasil Diupdate');
-    }
-    
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\BarberDescription  $barberDescription
-     * @return \Illuminate\Http\Response
-     */
-    public function show(BarberDescription $barberDescription)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\BarberDescription  $barberDescription
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(BarberDescription $barberDescription)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\BarberDescription  $barberDescription
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, BarberDescription $barberDescription)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\BarberDescription  $barberDescription
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(BarberDescription $barberDescription)
-    {
-        //
     }
 }
