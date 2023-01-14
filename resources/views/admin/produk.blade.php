@@ -1,29 +1,6 @@
 @extends('layouts.header-admin')
 
 @section('content')
-        <main>
-        <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
-            {{-- <div class="container">
-                <div class="page-header-content pt-4">
-                    <div class="row align-items-center justify-content-between">
-                        <div class="col-auto mt-4">
-                            <h1 class="page-header-title">
-                                <div class="page-header-icon"><i data-feather="activity"></i></div>
-                                Dashboard
-                            </h1>
-                            <div class="page-header-subtitle">Example dashboard overview and content summary</div>
-                        </div>
-                        <div class="col-12 col-xl-auto mt-4">
-                            <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
-                                <i class="mr-2 text-primary" data-feather="calendar"></i>
-                                <span></span>
-                                <i class="ml-1" data-feather="chevron-down"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
-        </header>
         <!-- Main page content-->
         <div class="container mt-n10">
 
@@ -99,11 +76,13 @@
                 </div>
             </div>  --}}
 
-            <a href="/adminajadeh-tambahproduk" class="btn btn-success mt-5 mb-5">Tambah Produk</a>
 
             <!-- Example DataTable for Dashboard Demo-->
             <div class="card mb-4">
                 <div class="card-header">Produk</div>
+                <div class="ml-3">
+                    <a href="/adminajadeh-tambahproduk" class="btn btn-dark mt-3">Tambah Produk</a>
+                </div>
                 <div class="card-body">
                     <div class="datatable">
                         <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -154,5 +133,4 @@
                 </div>
             </div>
         </div>
-    </main>
 @endsection

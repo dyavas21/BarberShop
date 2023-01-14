@@ -61,7 +61,7 @@
         <div class="col">
             <div class="card h-100 border border-0">
                 <div class="card-body text-center facilities-body">
-                    <img src="assets/images/team4.jpeg" class="mx-auto d-block"/>
+                    <img src="assets/images/team4.jpeg" width="" class="mx-auto d-block"/>
                     <h3>Mahatmaditya Favian</h3>
                     <p>2440103546</p>
                     <p style="font-style: italic">Front-End</p>

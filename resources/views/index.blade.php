@@ -93,8 +93,7 @@
                 {{-- if (isset($_SESSION["useruid"])) {
                   echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
                 } --}}
-                
-            <a href="/about" class="hero-btn">Visit Us To Know More</a>
+            <a href="/about" class="hero-btn red-btn">Visit Us To Know More</a>
         </div>
       </div>
     </section>
@@ -192,13 +191,35 @@
             <h1>Our Barber</h1>
             <p>Beberapa jasa barber yang kami siapkan untuk anda</p>
             @if ($dataBarberDesc->first() == null)
-            <div class="col">
-                <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                    <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">No Barber Available Right Now</h5>
-                    {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
-                    {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+            <div class="row row-cols-auto d-flex justify-content-between align-items-center">
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -215,12 +236,12 @@
                                 <p class="card-text">{{ $item->descriptionBarber->description }}</p>
                                 @if (auth()->check())
                                 @if (Auth()->user()->role_id == 1)
-                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="hero-btn red-btn">Detail</a>
                                 @elseif(Auth()->user()->role_id == 2)
-                                <a href="/" class="btn btn-primary">Detail</a>
+                                <a href="/" class="hero-btn red-btn">Detail</a>
                                 @endif
                                 @else
-                                <a href="/barber-detail/{{ $item->barber_id }}" class="btn btn-primary">Detail</a>
+                                <a href="/barber-detail/{{ $item->barber_id }}" class="hero-btn red-btn">Detail</a>
                                 @endif
                                 </div>
                             </div>                          
@@ -251,27 +272,27 @@
             @if ($dataProduk->first() == null)
             <div class="row row-cols-auto d-flex justify-content-between align-items-center">
                 <div class="col">
-                    <div class="card h-100 border border-0 ">
-                        <div class="card-body text-center {{--facilities-body  --}}">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
                 </div> 
                 <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
                 </div> 
                 <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
@@ -282,15 +303,15 @@
             <div class="row row-cols-auto d-flex justify-content-center">
                 @foreach ($dataProduk as $item)
                 <div class="col mb-3 d-flex align-items-stretch">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0" style="width: 18rem;">
+                        <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >  
+                        <div class="card-body">  
                             <h5 class="card-title">{{ $item->tipeproduk->nama }}</h5>
                             <p class="card-text">{{ $item->nama_produk }}</p>
                         </div>
                       </div>
                 </div>
-                @endforeach    
+                @endforeach   
               </div>
             @endif
             <div class="row mt-3">
@@ -352,7 +373,7 @@
 
     <section class="cta">
         <h1>Book Now</h1>
-        <a href="/contact" class="hero-btn">CONTACT US</a>
+        <a href="/contact" class="hero-btn red-btn">CONTACT US</a>
     </section>
 
     <section class="footer text-center">

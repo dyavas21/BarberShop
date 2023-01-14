@@ -558,8 +558,4 @@ class ApiCrudController extends Controller
             'data_product' => $data
         ]);
     }
-
-
-
-
 }

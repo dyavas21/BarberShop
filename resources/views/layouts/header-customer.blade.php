@@ -8,6 +8,10 @@
         <meta name="author" content="">
         <title>{{ $title }}</title>
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
         <link href="/assets/css/admin-styles.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous">
@@ -17,7 +21,7 @@
     </head>
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow navbar-dark bg-dark" id="sidenavAccordion">
-            <a class="navbar-brand" href="/customer">Customer Admin</a>
+            <a class="navbar-brand" href="/customer">Customer</a>
             <button class="btn btn-icon btn-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-caret mr-2 dropdown-user">
@@ -58,7 +62,6 @@
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
                             @if (is_null($dataCustomerDesc))
-                            <a class="nav-link" href="/">Home</a>
                             <a class="nav-link" href="/customer">Dashboard</a>
                             <a class="nav-link" href="/customer-profile-inti">Lengkapi Profile Inti</a>
                         @else 

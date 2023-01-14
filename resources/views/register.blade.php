@@ -10,6 +10,10 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Register</title>
+    <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+    rel="stylesheet"
+  />
     <link href="assets/css/login-style.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="assets/img/favicon.png" />
     <script
@@ -23,7 +27,7 @@
       crossorigin="anonymous"
     ></script>
   </head>
-  <body class="bg-primary">
+  <body class="bg-dark">
     <div id="layoutAuthentication">
       <div id="layoutAuthentication_content">
         <main>
@@ -149,11 +153,11 @@
                       </div>
                       <!-- Form Group (create account submit)-->
                       <div class="form-group mt-4 mb-0">
-                        <input class="btn btn-primary btn-block" type="submit" value="Create Account">
+                        <input class="btn btn-dark btn-block" type="submit" value="Create Account">
                       </div>
                     </form>
                   </div>
-                  <div class="card-footer text-center">
+                  <div class="card-footer text-center ">
                     <div class="small">
                       <a href="/login">Have an account? Go to login</a>
                     </div>

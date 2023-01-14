@@ -68,6 +68,10 @@
                   <label for="phone" class="form-label">No Handphone</label>
                   <input type="tel" name="phone" class="form-control" value="{{ $dataCustomer->descriptionCustomer->phone }}" id="phone" required>
                 </div>
+                <div class="mb-3">
+                  <label for="datePickerId">Tanggal Pemesanan</label>
+                  <input id="datePickerId" class="form-control" name="date_order" type="date" />
+                </div>
                 <hr class="mb-4">
                 <h4 class="mb-3">Manual Transfer</h4>
                 <div class="d-block my-3">
@@ -103,14 +107,13 @@
                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                       <div>
                           <h6 class="my-2">Upload your invoice</h6>
-                          <input type="file" class="form-control" required aria-label="file example" name="invoice" required>
-                          <div class="invalid-feedback">Example invalid form file feedback</div>
+                          <input type="file" class="form-control" required aria-label="file example" name="invoice">
                       </div>
                     </li>
                   </ul>
                 </div>
                 <hr class="mb-4">
-                <button type="submit" class="btn btn-primary btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                <button type="submit" class="btn btn-dark btn-lg btn-block" data-bs-toggle="modal" data-bs-target="#exampleModal">
                   Submit payment
                 </button>
             </form>

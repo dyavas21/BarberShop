@@ -3,7 +3,7 @@
 
 @section('content')
 <main>
-    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <header class="page-header page-header-dark bg-dark pb-10">
         <div class="container">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
@@ -11,8 +11,7 @@
                         <h1 class="page-header-title">
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             Dashboard
-                        </h1>
-                        <div class="page-header-subtitle">Example dashboard overview and content summary</div>
+                        </h1>                       
                     </div>
                     <div class="col-12 col-xl-auto mt-4">
                         <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">

@@ -10,6 +10,10 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Login</title>
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
         <link href="assets/css/login-styles.css" rel="stylesheet" />
         <link rel="icon" type="image/x-icon" href="assets\img\favicon.png" />
         <script
@@ -23,7 +27,7 @@
             crossorigin="anonymous"
         ></script>
     </head>
-    <body class="bg-primary">
+    <body class="bg-dark">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -87,7 +91,7 @@
                                                 class="form-group d-flex align-items-center justify-content-between mt-4 mb-0"
                                             >                                
                                                 <button
-                                                    class="btn btn-primary"
+                                                    class="btn btn-dark"
                                                     type="submit"
                                                 >
                                                     Login

@@ -17,12 +17,6 @@ use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-
     public function about()
     {
         $title = 'About';
@@ -45,16 +39,10 @@ class HomeController extends Controller
         return view('index', compact('dataBarber', 'dataBarberDesc', 'dataProduk', 'title'));
     }
 
-    // public function indexwithoutlogin()
-    // {
-    //     $dataBarber = Barber::all();
-    //     $dataBarberDesc = BarberDescription::all();
-    //     $dataProduk = Product::all();
-    //     return view('index', compact('dataProduk', 'dataBarberDesc', 'dataBarber'));
-    // }
-
-    public function barberdetail($id){
-        if(Auth()->user()->role_id == 1) {
+    public function barberdetail($id)
+    {
+        if(Auth()->user()->role_id == 1)
+        {
             $title = 'Barber Detail';
             $id2 = Auth::user()->id_user;
             $dataBarber = Barber::where('barber_id', '=', $id)->first();
@@ -64,8 +52,10 @@ class HomeController extends Controller
         return view('error.403');
     }
 
-    public function barberbook($id){
-        if(Auth()->user()->role_id == 1) {
+    public function barberbook($id)
+    {
+        if(Auth()->user()->role_id == 1)
+        {
             $title = 'Barber Book';
             $dataBarber = Barber::where('barber_id', '=', $id)->first();
             $id2 = Auth::user()->id_user;
@@ -78,7 +68,6 @@ class HomeController extends Controller
 
     public function barberbookinsert(Request $request)
     {   
-
         $id = Auth::user()->id_user;
 
         $datafinal = Pemesanan::create([
@@ -87,13 +76,15 @@ class HomeController extends Controller
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
+            'date_order' => $request->date_order,
             'address' => $request->address,
             'phone' => $request->phone,
             'invoice' => $request->invoice,
         ]);
 
         // $datafinal = Description::create($request->all());
-        if($request->hasFile('invoice')){
+        if($request->hasFile('invoice'))
+        {
             $request->file('invoice')->move('invoice/', $request->file('invoice')->getClientOriginalName());
             $datafinal->invoice = $request->file('invoice')->getClientOriginalName();
             $datafinal->save();
@@ -101,8 +92,10 @@ class HomeController extends Controller
         return redirect()->route('customer')->with('success', 'Barber Berhasil Dibook');
     }
 
-    public function product(){
-        if(Auth()->user()->role_id == 1) {
+    public function product()
+    {
+        if(Auth()->user()->role_id == 1)
+        {
             $title = 'Product';
             $id2 = Auth::user()->id_user;
             $dataUser = User::find($id2);
@@ -112,8 +105,10 @@ class HomeController extends Controller
         return view('error.403');
     }
 
-    public function productcart(){
-        if(Auth()->user()->role_id == 1) {
+    public function productcart()
+    {
+        if(Auth()->user()->role_id == 1)
+        {
             $title = 'Product Cart';
             $id2 = Auth::user()->id_user;
             $dataUser = User::find($id2);
@@ -126,6 +121,10 @@ class HomeController extends Controller
 
     public function productcartpost(Request $request)
     {
+
+        $produk = Product::all();
+        // $stok = $produk->quantity;
+
         $order = Order::create([
             'order_id_cust' => $request->order_id_cust,
             'fname' => $request->fname,
@@ -135,8 +134,10 @@ class HomeController extends Controller
 
         $products = $request->input('products', []);
         $quantities = $request->input('quantities', []);
-        for ($product=0; $product < count($products); $product++) {
-            if ($products[$product] != '') {
+        for ($product=0; $product < count($products); $product++)
+        {
+            if ($products[$product] != '')
+            {
                 $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
             }
         }
@@ -145,7 +146,8 @@ class HomeController extends Controller
 
     public function productcarttotal()
     {
-        if(Auth()->user()->role_id == 1) {
+        if(Auth()->user()->role_id == 1)
+        {
             $title = 'Product Cart Total';
             $id2 = Auth::user()->id_user;
             $dataUser = User::find($id2);
@@ -170,78 +172,12 @@ class HomeController extends Controller
             'harga_total' => $request->harga_total,
         ]);
 
-        if($request->hasFile('invoice')){
+        if($request->hasFile('invoice'))
+        {
             $request->file('invoice')->move('invoiceproduct/', $request->file('invoice')->getClientOriginalName());
             $orderpost->invoice = $request->file('invoice')->getClientOriginalName();
             $orderpost->save();
         }
         return redirect()->route('customer')->with('success', 'Product Berhasil Dibeli');
-    }
-
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Home $home)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Home $home)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Home $home)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Home  $home
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Home $home)
-    {
-        //
     }
 }
