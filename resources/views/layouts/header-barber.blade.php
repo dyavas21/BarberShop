@@ -9,6 +9,10 @@
         <title>{{ $title }}</title>
         <link rel="stylesheet" href="assets/css/style.css" />
         <link href="/assets/css/admin-styles.css" rel="stylesheet">
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous">
         <link rel="icon" type="image/x-icon" href="assets\img\favicon.png">
@@ -17,7 +21,7 @@
     </head>
     <body class="nav-fixed">
         <nav class="topnav navbar navbar-expand shadow navbar-dark bg-dark" id="sidenavAccordion">
-            <a class="navbar-brand" href="/barber">Barber Admin</a>
+            <a class="navbar-brand" href="/barber">Barber</a>
             <button class="btn btn-icon btn-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
             <form class="form-inline mr-auto d-none d-md-block">
                 <div class="input-group input-group-joined input-group-solid">
@@ -69,7 +73,6 @@
                         <div class="nav accordion" id="accordionSidenav">
                             <div class="sidenav-menu-heading">Core</div>
                             @if (is_null($dataBarberDesc))
-                                <a class="nav-link" href="/">Home</a>   
                                 <a class="nav-link" href="/barber">Dashboard</a>   
                                 <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>  
                             @else 

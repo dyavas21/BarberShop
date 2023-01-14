@@ -15,7 +15,7 @@ class Pemesanan extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id_pemesanan','pemesanan_id_cust', 'pemesanan_id_barber', 'fname', 'lname', 'email', 'address', 'phone', 'invoice'
+        'id_pemesanan','pemesanan_id_cust', 'pemesanan_id_barber', 'fname', 'lname', 'email', 'date_order', 'address', 'phone', 'invoice'
     ];
 
     protected $primaryKey = 'id_pemesanan';

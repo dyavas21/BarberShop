@@ -98,8 +98,10 @@
                 </div>
               </div>
             </div>
-            <label for="harga_total" class="form-label mt-5 mb-3">Total Harga</label>
-                <input type="text" class="form-control" name="harga_total" id="final_harga" value="{{ $total }}">
+            <label for="harga_total" class="form-label">Total Harga</label>
+            <select class="form-select" aria-label="Default select example" name="harga_total">
+              <option value="{{ $total }}" selected>{{ $total }}</option>
+            </select>
             <label for="invoice" class="form-label mt-4">Upload Bukti Invoice Anda</label>
             <div class="input-group mb-3">
                 <input type="file" name="invoice" class="form-control" required id="invoice">
@@ -109,7 +111,7 @@
       </div>
       <div class="d-flex flex-row-reverse">
             <div class="">
-              <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+              <button type="submit" class="btn btn-dark mt-3 ">Submit</button>
             </div>
       </div>
   </form>

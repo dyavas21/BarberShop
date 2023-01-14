@@ -8,6 +8,10 @@
         <meta name="author" content="">
         <title>{{ $title }}</title>
         <link rel="stylesheet" href="assets/css/style.css" />
+        <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap"
+        rel="stylesheet"
+      />
         <link href="/assets/css/admin-styles.css" rel="stylesheet">
         <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous">
         <link href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" rel="stylesheet" crossorigin="anonymous">
@@ -56,10 +60,10 @@
         </nav>
         <div id="layoutSidenav">
             <div id="layoutSidenav_nav">
-                <nav class="sidenav shadow-right sidenav-light">
+                <nav class="sidenav shadow-right sidenav-dark">
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
-                            <div class="sidenav-menu-heading">Core</div>
+                            <div class="sidenav-menu-heading"></div>
                             <a class="nav-link" href="/adminajadeh">
                                 Dashboard                               
                             </a>
@@ -83,10 +87,31 @@
                 </nav>
             </div>
             <div id="layoutSidenav_content">
+                <main>
+                    <header class="page-header page-header-dark bg-dark pb-10">
+                        <div class="container">
+                            <div class="page-header-content pt-4">
+                                <div class="row align-items-center justify-content-between">
+                                    <div class="col-auto mt-4">
+                                        <h1 class="page-header-title">
+                                            <div class="page-header-icon"><i data-feather="activity"></i></div>
+                                            Dashboard
+                                        </h1>
+                                    </div>
+                                    <div class="col-12 col-xl-auto mt-4">
+                                        <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
+                                            <i class="mr-2 text-primary" data-feather="calendar"></i>
+                                            <span></span>
+                                            <i class="ml-1" data-feather="chevron-down"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </header>
+                    @yield('content')
+                </main>
                 
-                @yield('content')
-                
-
                 <footer class="footer mt-auto footer-light">
                     <div class="container-fluid">
                         <div class="row">

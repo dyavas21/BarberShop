@@ -21,7 +21,7 @@
                       </div>
                       <div class="d-block ml-auto">
                         <h6>RP {{ $dataBarber->descriptionBarber->harga }}</h6>
-                        <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-primary">Book</a> 
+                        <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-dark">Book</a> 
                     </div>
                     </div>
                 {{-- <div class="row row-cols-auto">

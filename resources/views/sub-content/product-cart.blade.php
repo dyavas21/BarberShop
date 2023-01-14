@@ -70,7 +70,7 @@
       </div>
       <div class="d-flex flex-row-reverse">
             <div class="">
-              <button type="submit" class="btn btn-primary mt-3 ">Submit</button>
+              <button type="submit" class="btn btn-dark mt-3 ">Submit</button>
             </div>
       </div>
   </form>

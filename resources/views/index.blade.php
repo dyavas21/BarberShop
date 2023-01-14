@@ -191,13 +191,35 @@
             <h1>Our Barber</h1>
             <p>Beberapa jasa barber yang kami siapkan untuk anda</p>
             @if ($dataBarberDesc->first() == null)
-            <div class="col">
-                <div class="card jarak d-block mx-auto " style="width: 18rem;">
-                    <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
-                    <div class="card-body">
-                    <h5 class="card-title">No Barber Available Right Now</h5>
-                    {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
-                    {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+            <div class="row row-cols-auto d-flex justify-content-between align-items-center">
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card jarak d-block mx-auto " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
+                        <div class="card-body">
+                        <h5 class="card-title">No Barber Available Right Now</h5>
+                        {{-- <p class="card-text">{{ $item->descriptionBarber->description }}</p> --}}
+                        {{-- <a href="/barber-profile" class="btn btn-primary">Detail</a> --}}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -250,27 +272,27 @@
             @if ($dataProduk->first() == null)
             <div class="row row-cols-auto d-flex justify-content-between align-items-center">
                 <div class="col">
-                    <div class="card h-100 border border-0 ">
-                        <div class="card-body text-center {{--facilities-body  --}}">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
                 </div> 
                 <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>
                       </div>
                 </div> 
                 <div class="col">
-                    <div class="card h-100 border border-0">
-                        <div class="card-body text-center">
-                            <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60"width="200" height="200" alt="" >    
+                    <div class="card jarak d-block mx-auto border border-0 " style="width: 18rem;">
+                        <img src="https://source.unsplash.com/QAB-WJcbgJk/60x60" width="200" height="200" alt="" >
+                        <div class="card-body">  
                             <h5 class="card-title">No Product Avaible Right Now</h5>
                             {{-- <h6>{{ $item->nama_produk }}</h6> --}}
                         </div>

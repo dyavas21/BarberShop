@@ -18,7 +18,7 @@ class BarberDescriptionController extends Controller
      */
     public function barber()
     {   
-        if(Auth()->user()->role_id == 2) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
             $title = 'Barber';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -68,7 +68,7 @@ class BarberDescriptionController extends Controller
 
     public function barberprofile()
     {
-        if(Auth()->user()->role_id == 2) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
             $title = 'Profile Detail';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();
@@ -81,7 +81,7 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileinti()
     {
-        if(Auth()->user()->role_id == 2) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
             $title = 'Lengkapi Profile';
             $id = Auth::user()->id_user;
             $dataBarber = Barber::where('barber_id', '=', $id)->first();
@@ -95,7 +95,7 @@ class BarberDescriptionController extends Controller
 
     public function barberprofileintiview()
     {   
-        if(Auth()->user()->role_id == 2) {
+        if(Auth()->user()->role_id == 2 && Auth()->user()->role_user == 1) {
             $title = 'Edit Profile';
             $id = Auth::user()->id_user;
             $dataBarberDesc = BarberDescription::where('barber_desc_id', '=', $id)->first();

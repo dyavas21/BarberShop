@@ -60,24 +60,24 @@ Route::get('/barber-change-status-reject/{id}', [BarberDescriptionController::cl
 //Admin
 Route::get('/admin-login', [AdminController::class, 'adminlogin'])->name('adminlogin');
 Route::post('/admin-login-proses', [AdminController::class, 'adminloginproses'])->name('adminloginproses');
-Route::get('/adminajadeh', [AdminController::class, 'admin'])->name('admin');
-Route::get('/adminajadeh/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete');
-Route::get('/adminajadeh-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual');
-Route::get('/adminajadeh-produk-status-accepted/{id}', [AdminController::class, 'adminstatusproceed'])->name('adminstatusproceed');
-Route::get('/adminajadeh-produk-status-pending/{id}', [AdminController::class, 'adminstatuspending'])->name('adminstatuspending');
-Route::get('/adminajadeh-produk-status-reject/{id}', [AdminController::class, 'adminstatusreject'])->name('adminstatusreject');
+Route::get('/adminajadeh', [AdminController::class, 'admin'])->name('admin')->middleware('auth');
+Route::get('/adminajadeh/detele/{id}', [AdminController::class, 'admindelete'])->name('admindelete')->middleware('auth');
+Route::get('/adminajadeh-produkterjual', [AdminController::class, 'produkterjual'])->name('produkterjual')->middleware('auth');
+Route::get('/adminajadeh-produk-status-accepted/{id}', [AdminController::class, 'adminstatusproceed'])->name('adminstatusproceed')->middleware('auth');
+Route::get('/adminajadeh-produk-status-pending/{id}', [AdminController::class, 'adminstatuspending'])->name('adminstatuspending')->middleware('auth');
+Route::get('/adminajadeh-produk-status-reject/{id}', [AdminController::class, 'adminstatusreject'])->name('adminstatusreject')->middleware('auth');
 
 //Admin Tipe Produk
-Route::get('/adminajadeh-tipeproduk', [TipeProdukController::class, 'admintipeproduk'])->name('admintipeproduk');
-Route::get('/adminajadeh-tambahtipe', [TipeProdukController::class, 'admintambahtipe'])->name('admintambahtipe');
+Route::get('/adminajadeh-tipeproduk', [TipeProdukController::class, 'admintipeproduk'])->name('admintipeproduk')->middleware('auth');
+Route::get('/adminajadeh-tambahtipe', [TipeProdukController::class, 'admintambahtipe'])->name('admintambahtipe')->middleware('auth');
 Route::post('/adminajadeh-inserttipeproduk', [TipeProdukController::class, 'admininserttipeproduk'])->name('admininserttipeproduk');
-Route::get('/adminajadeh/detele-tipe/{id}', [TipeProdukController::class, 'admindeletetipe'])->name('admindeletetipe');
+Route::get('/adminajadeh/detele-tipe/{id}', [TipeProdukController::class, 'admindeletetipe'])->name('admindeletetipe')->middleware('auth');
 
 //Admin Produk
-Route::get('/adminajadeh-produk', [ProductController::class, 'adminproduk'])->name('adminproduk');
-Route::get('/adminajadeh-tambahproduk', [ProductController::class, 'admintambahproduk'])->name('admintambahproduk');
+Route::get('/adminajadeh-produk', [ProductController::class, 'adminproduk'])->name('adminproduk')->middleware('auth');
+Route::get('/adminajadeh-tambahproduk', [ProductController::class, 'admintambahproduk'])->name('admintambahproduk')->middleware('auth');
 Route::post('/adminajadeh-insertproduk', [ProductController::class, 'admininsertproduk'])->name('admininsertproduk');
-Route::get('/adminajadeh/detele-produk/{id}', [ProductController::class, 'admindeleteproduk'])->name('admindeleteproduk');
+Route::get('/adminajadeh/detele-produk/{id}', [ProductController::class, 'admindeleteproduk'])->name('admindeleteproduk')->middleware('auth');
 
 //login
 Route::get('/login', [LoginController::class, 'login'])->name('login');

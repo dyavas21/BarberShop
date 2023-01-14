@@ -26,12 +26,18 @@ class LoginController extends Controller
                     
             $role = Auth::user()->roleuser->id_role;
 
-            if($role == 1){
+            $admin = Auth::user()->role_user;
+
+            if($role == 1 && $admin == 1){
                 return redirect('customer');
             }
 
-            if($role == 2){
+            if($role == 2 && $admin == 1){
                 return redirect('barber');
+            }
+
+            if($admin == 2){
+                return redirect('adminajadeh');
             }
         }
         return redirect('login');

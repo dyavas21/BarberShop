@@ -35,11 +35,11 @@
                                 <div class="col-lg-6">                                                       
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
-                                        <input type="number" name="age" required class="form-control"  id="age">
+                                        <input type="number" name="age" required class="form-control"  id="age" required>
                                     </div>  
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
-                                        <select class="form-control form-control" required name="gender" id="gender">                            
+                                        <select class="form-control form-control" required name="gender" id="gender" required>                            
                                             <option>Pilih</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
@@ -49,38 +49,20 @@
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
-                                        <input type="tel" name="phone" required class="form-control" id="phone">
+                                        <input type="tel" name="phone" required class="form-control" id="phone" required>
                                     </div>                      
                                 </div>
                             </div>
                             <div class="mb-3">
                                 <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" name="address" required class="form-control" id="alamat" >                       
+                                <input type="text" name="address" required class="form-control" id="alamat" required>                       
                             </div>
                             <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">
-                                <input type="file" name="photo" required class="form-control" id="photo">
+                                <input type="file" name="photo" required class="form-control" id="photo" required>
                                 <label class="input-group-text" for="photo">Upload</label>
                             </div>   
-                            <button type="submit" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
-                            <!-- Modal -->
-                                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                        Are you sure want to save changes?
-                                        </div>
-                                        <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary" type="submit">Save changes</button>
-                                        </div>
-                                    </div>
-                                    </div>
-                                </div>
+                            <button type="submit" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">Save changes</button>
                         </form>
                     </div>
                   </div>

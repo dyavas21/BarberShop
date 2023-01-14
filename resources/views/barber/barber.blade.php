@@ -3,7 +3,7 @@
 
 @section('content')
 <main>
-    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <header class="page-header page-header-dark bg-dark pb-10">
         <div class="container">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
@@ -148,7 +148,8 @@
                             <tr>
                                 <th>Name Customer</th>
                                 <th>Alamat Customer</th>
-                                <th>No Handphone Customer</th>     
+                                <th>No Handphone Customer</th>    
+                                <th>Tanggal Booking</th>    
                                 <th>Invoice</th>     
                                 <th>Status</th>           
                                 <th>Action</th>                  
@@ -158,7 +159,8 @@
                             <tr>
                                 <th>Name Customer</th>
                                 <th>Alamat Customer</th>
-                                <th>No Handphone Customer</th>     
+                                <th>No Handphone Customer</th>  
+                                <th>Tanggal Booking</th>   
                                 <th>Invoice</th>   
                                 <th>Status</th>   
                                 <th>Action</th>      
@@ -177,7 +179,8 @@
                                     <tr>                            
                                         <td>{{ $item->fname }} {{ $item->lname }}</td>
                                         <td>{{ $item->address }}</td>
-                                        <td>{{ $item->phone }}</td>  
+                                        <td>{{ $item->phone }}</td>
+                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>            
                                         {{-- <td>{{ $item->barbdescpem->harga  }}</td> --}}
                                         <td> <img width="100" height="100" src="{{ asset('invoice/'.$item->invoice ) }}"></td>   
                                         <td style="text-align:center">

@@ -23,7 +23,7 @@ class CustomerDescriptionController extends Controller
     
     public function customer()
     {   
-        if(Auth()->user()->role_id == 1) {
+        if(Auth()->user()->role_id == 1 && Auth()->user()->role_user == 1) {
             $title = 'Customer';
             $id = Auth::user()->id_user;
             $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();
@@ -37,7 +37,7 @@ class CustomerDescriptionController extends Controller
 
     public function customerprofileinti()
     {
-        if(Auth()->user()->role_id == 1) {
+        if(Auth()->user()->role_id == 1 && Auth()->user()->role_user == 1) {
             $title = 'Customer Profile';
             $id = Auth::user()->id_user;
             $dataCustomer = Customer::where('customer_id', '=', $id)->first();
@@ -128,7 +128,7 @@ class CustomerDescriptionController extends Controller
 
     public function customerproduct()
     {
-        if(Auth()->user()->role_id == 1) {
+        if(Auth()->user()->role_id == 1 && Auth()->user()->role_user == 1) {
             $title = 'Produk Dibeli';
             $id = Auth::user()->id_user;
             $dataCustomerDesc = CustomerDescription::where('customer_desc_id', '=', $id)->first();

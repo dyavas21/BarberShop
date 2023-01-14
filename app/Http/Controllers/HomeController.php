@@ -87,6 +87,7 @@ class HomeController extends Controller
             'fname' => $request->fname,
             'lname' => $request->lname,
             'email' => $request->email,
+            'date_order' => $request->date_order,
             'address' => $request->address,
             'phone' => $request->phone,
             'invoice' => $request->invoice,
@@ -126,6 +127,10 @@ class HomeController extends Controller
 
     public function productcartpost(Request $request)
     {
+
+        $produk = Product::all();
+        // $stok = $produk->quantity;
+
         $order = Order::create([
             'order_id_cust' => $request->order_id_cust,
             'fname' => $request->fname,
@@ -140,6 +145,12 @@ class HomeController extends Controller
                 $order->products()->attach($products[$product], ['quantity' => $quantities[$product]]);
             }
         }
+
+        // $produk->update([
+        //     'fname' => $request->fname,
+        //     'lname' => $request->lname,
+        // ]);
+
         return redirect()->route('productcarttotal')->with('success', 'Silahkan Lanjutkan Pembayaran');
     }
 

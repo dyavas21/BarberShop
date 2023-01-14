@@ -30,7 +30,7 @@
         @endforeach
       </div>
       <div class="d-flex flex-row-reverse">
-        <a href="/product-cart" class="btn btn-primary">Beli Produk</a>
+        <a href="/product-cart" class="btn btn-dark">Beli Produk</a>
       </div>
     </div>
 

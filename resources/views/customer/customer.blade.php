@@ -3,7 +3,7 @@
 
 @section('content')
 <main>
-    <header class="page-header page-header-dark bg-gradient-primary-to-secondary pb-10">
+    <header class="page-header page-header-dark bg-dark pb-10">
         <div class="container">
             <div class="page-header-content pt-4">
                 <div class="row align-items-center justify-content-between">
@@ -12,7 +12,6 @@
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             Dashboard
                         </h1>
-                        <div class="page-header-subtitle">Example dashboard overview and content summary</div>
                     </div>
                     <div class="col-12 col-xl-auto mt-4">
                         <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
@@ -149,7 +148,8 @@
                                 <th>Name Barber</th>
                                 <th>Alamat Barber</th>
                                 <th>No Handphone</th>     
-                                <th>Harga</th>    
+                                <th>Harga</th>   
+                                <th>Tanggal Booking</th> 
                                 <th>Status</th>    
                             </tr>
                         </thead>
@@ -159,6 +159,7 @@
                                 <th>Alamat Barber</th>
                                 <th>No Handphone</th>   
                                 <th>Harga</th>  
+                                <th>Tanggal Booking</th> 
                                 <th>Status</th>      
                             </tr>
                         </tfoot>
@@ -170,7 +171,8 @@
                                         <td>{{ $item->barbpem->fname }} {{ $item->barbpem->lname }}</td>
                                         <td>{{ $item->barbdescpem->address }}</td>
                                         <td>{{ $item->barbdescpem->phone }}</td>  
-                                        <td>Rp {{ number_format($item->barbdescpem->harga, 2) }}</td>                                          
+                                        <td>Rp {{ number_format($item->barbdescpem->harga, 2) }}</td>  
+                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>                                          
                                         <td style="text-align:center">
                                             @if ($item->statuspem->id_status == 1)
                                                 <a href="" class="btn btn-sm btn-warning">{{ $item->statuspem->nama_status }}</a>
