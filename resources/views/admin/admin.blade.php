@@ -119,19 +119,19 @@
                             @foreach ($dataUser as $row)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $row->fname }}</td>
-                                    <td>{{ $row->lname }}</td>                                  
+                                    <td>{{ ucfirst($row->fname) }}</td>
+                                    <td>{{ucfirst( $row->lname) }}</td>                                  
                                     <td>{{ $row->email }}</td>
                                     <td>{{ $row->roleuser->nama_role }}</td>                                    
                                     @if ($row->role_id == 1)
-                                        <td>{{ $row->descc->gender ?? '-' }}</td>
+                                        <td>{{ ucfirst($row->descc->gender ?? '-') }}</td>
                                     @elseif ($row->role_id == 2)
-                                    <td>{{ $row->descb->gender ?? '-' }}</td>
+                                    <td>{{ ucfirst($row->descb->gender ?? '-') }}</td>
                                     @endif
                                     @if ($row->role_id == 1)
-                                    <td>{{ $row->descc->address ?? '-' }}</td>
+                                    <td>{{ ucwords($row->descc->address ?? '-') }}</td>
                                     @elseif ($row->role_id == 2)
-                                    <td>{{ $row->descb->address ?? '-' }}</td>
+                                    <td>{{ ucwords($row->descb->address ?? '-') }}</td>
                                     @endif
                                     @if ($row->role_id == 1)
                                         <td>{{ $row->descc->age ?? '-' }} Tahun</td>

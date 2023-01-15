@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('phone');
             $table->string('invoice');
             $table->date('date_order');
+            $table->time('time_order');
             $table->unsignedBigInteger('status_id')->default('1');
             $table->timestamps();
             $table->foreign('pemesanan_id_cust')

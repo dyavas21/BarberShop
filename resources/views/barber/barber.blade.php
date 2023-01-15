@@ -12,14 +12,6 @@
                             <div class="page-header-icon"><i data-feather="activity"></i></div>
                             Dashboard
                         </h1>
-                        <div class="page-header-subtitle">Example dashboard overview and content summary</div>
-                    </div>
-                    <div class="col-12 col-xl-auto mt-4">
-                        <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
-                            <i class="mr-2 text-primary" data-feather="calendar"></i>
-                            <span></span>
-                            <i class="ml-1" data-feather="chevron-down"></i>
-                        </button>
                     </div>
                 </div>
             </div>
@@ -149,7 +141,8 @@
                                 <th>Name Customer</th>
                                 <th>Alamat Customer</th>
                                 <th>No Handphone Customer</th>    
-                                <th>Tanggal Booking</th>    
+                                <th>Tanggal Booking</th> 
+                                <th>Jam Booking</th>    
                                 <th>Invoice</th>     
                                 <th>Status</th>           
                                 <th>Action</th>                  
@@ -160,28 +153,24 @@
                                 <th>Name Customer</th>
                                 <th>Alamat Customer</th>
                                 <th>No Handphone Customer</th>  
-                                <th>Tanggal Booking</th>   
+                                <th>Tanggal Booking</th>  
+                                <th>Jam Booking</th>  
                                 <th>Invoice</th>   
                                 <th>Status</th>   
                                 <th>Action</th>      
                             </tr>
                         </tfoot>
                         <tbody>
-                {{-- 
-                        $data = BarberDescription::where('barber_desc_id', '=', $id)->first();
-                        $data2 = User::where('id_user', '=', $id)->first();
-                        $data3 = Barber::where('barber_id', '=', $id)->first();
-                        $data4 = Pemesanan::where('pemesanan_id_barber', '=', $id)->first(); --}}
                             @if ($dataPemesanan == null)
-                    
+
                             @else
                                 @foreach ($dataPemesanan as $item)
                                     <tr>                            
-                                        <td>{{ $item->fname }} {{ $item->lname }}</td>
-                                        <td>{{ $item->address }}</td>
+                                        <td>{{ ucfirst($item->fname) }} {{ ucfirst($item->lname) }}</td>
+                                        <td>{{ ucwords($item->address) }}</td>
                                         <td>{{ $item->phone }}</td>
-                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>            
-                                        {{-- <td>{{ $item->barbdescpem->harga  }}</td> --}}
+                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>         
+                                        <td>{{ date('H:i', strtotime($item->time_order)); }}</td> 
                                         <td> <img width="100" height="100" src="{{ asset('invoice/'.$item->invoice ) }}"></td>   
                                         <td style="text-align:center">
                                             @if ($item->status_id == 1)
@@ -191,15 +180,13 @@
                                             @elseif($item->status_id == 3)
                                                 <a href="" class="btn btn-sm btn-danger">{{ $item->statuspem->nama_status }}</a>
                                             @endif
-                                            {{-- <div class="btn btn-warning ">{{ $item->statuspem->nama_status }}</div> --}}
                                         </td>                            
                                         <td>
                                             <div class="btn-group">
                                             <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                               Change Status
                                             </button>
-                                            <ul class="dropdown-menu">
-                                              {{-- <li><a class="dropdown-item" action href="{{ url('barber-change-status-proceed/'.$item->status_id) }}">Proceed</a></li> --}}
+                                            <ul class="dropdown-menu">                                             
                                               <li><a class="dropdown-item" href="barber-change-status-proceed/{{ $item->id_pemesanan }}">Proceed</a></li>
                                               <li><a class="dropdown-item" href="barber-change-status-reject/{{ $item->id_pemesanan }}">Cancel</a></li>
                                               <li><a class="dropdown-item" href="barber-change-status-pending/{{ $item->id_pemesanan }}">Pending</a></li>
@@ -209,19 +196,6 @@
                                     </tr>    
                                 @endforeach                  
                             @endif
-                        {{-- @foreach ($data3 as $item3)
-                            @foreach ($data4 as $item4)
-                                @if ($item3->barber_id == $item4->pemesanan_id_barber)
-                                <tr>
-                                    <td>{{ $item3->pemesananBarber->fname }} {{ $item3->pemesananBarber->lname }}</td>
-                                    <td>{{ $item3->pemesananBarber->address }}</td>
-                                    <td>{{ $item3->pemesananBarber->phone }}</td>                              
-                                </tr>  
-                                @else
-
-                                @endif
-                            @endforeach
-                        @endforeach      --}}
                         </tbody>
                     </table>
                 </div>

@@ -4,7 +4,7 @@
 
 <section class="barber-profile mt-5 mb-5">
   <div class="container">
-    <form action="/product-cart-total-post" method="POST">
+    <form action="/product-cart-total-post" method="POST" enctype="multipart/form-data">
       @csrf
       <div class="card">
           <div class="card-header">
@@ -14,15 +14,13 @@
             <div class="row">
               <div class="col-md-6 mb-3">
                 <label for="customer_id" class="form-label">ID Customer</label>
-                <select class="form-select" aria-label="Default select example" name="customer_id">
-                  <option value="{{ $dataCustomer->customer_id }}" selected>{{ $dataCustomer->customer_id }}</option>
-                </select>
+                <input disabled type="text" class="form-control" value="{{ $dataCustomer->customer_id }}" id="customer_id" required>
+                <input hidden type="text" class="form-control" name="customer_id" value="{{ $dataCustomer->customer_id }}" id="customer_id" >
               </div>
               <div class="col-md-6 mb-3">
                 <label for="order_id" class="form-label">ID Order</label>
-                <select class="form-select" aria-label="Default select example" name="order_id">
-                  <option value="{{ $ordersnew->id }}" selected>{{ $ordersnew->id }}</option>
-                </select>
+                <input disabled type="text" class="form-control" value="{{ $ordersnew->id }}" id="order_id" required>
+                <input hidden type="text" class="form-control" name="order_id" value="{{ $ordersnew->id }}" id="order_id" >
               </div>
             </div>
   
@@ -99,9 +97,8 @@
               </div>
             </div>
             <label for="harga_total" class="form-label">Total Harga</label>
-            <select class="form-select" aria-label="Default select example" name="harga_total">
-              <option value="{{ $total }}" selected>{{ $total }}</option>
-            </select>
+            <input disabled type="text" class="form-control" value="Rp {{ number_format($total, 2) }}" id="harga_total" required>
+            <input hidden type="text" class="form-control" name="harga_total" value="{{ $total }}" id="harga_total" >
             <label for="invoice" class="form-label mt-4">Upload Bukti Invoice Anda</label>
             <div class="input-group mb-3">
                 <input type="file" name="invoice" class="form-control" required id="invoice">

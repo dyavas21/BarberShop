@@ -22,13 +22,13 @@
     <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/font-awesome.css">
     <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8d774616-db7c-4e02-96cc-529007c6d5bb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="070a569b-cc91-4bfb-b8a5-d4d70be1bd43";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
   <body>
     <section class="header">
         <nav class="navbar navbar-expand-lg navbar-dark shadow-5-strong">
             <div class="container mt-3">
-              <a class="navbar-brand" href="#">D'Barbershop</a>
+              <a class="navbar-brand" href="/">D'Barbershop</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -57,7 +57,7 @@
                        <li class="nav-item dropdown">
                         @if (auth()->check())
                         <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ Auth::user()->fname }}
+                          {{ ucfirst(Auth::user()->fname) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                           @if (Auth()->user()->role_id == 1)
@@ -83,24 +83,14 @@
               </div>
             </div>
           </nav>
-          {{-- @php
-          dd($dataBarber);
-      @endphp --}}
       <div class="text-box text-center">
         <div class="position-absolute top-50 start-50 translate-middle">
             <h1>Get a Good Cut.</h1>
-            <p>Because hair is the crown of every person.</p> 
-                {{-- if (isset($_SESSION["useruid"])) {
-                  echo "<p> Hello there, " . $_SESSION["useruid"] . "</p>";
-                } --}}
+            <p style="color: white">Because hair is the crown of every person.</p> 
             <a href="/about" class="hero-btn red-btn">Visit Us To Know More</a>
         </div>
       </div>
     </section>
-
-    {{-- @php
-        dd($dataUser->role_id);
-    @endphp --}}
 
     <section class="package text-center pt-5">
        <div class="container">
@@ -232,8 +222,8 @@
                             <div class="card jarak d-block mx-auto " style="width: 18rem;">
                                 <img src="{{ asset('gambarbarber/'.$item->descriptionBarber->gambarbarber ) }}" height="100" width="100" class="card-img-top rounded-circle mt-2" alt="...">
                                 <div class="card-body">
-                                <h5 class="card-title">{{ $item->fname }}</h5>
-                                <p class="card-text">{{ $item->descriptionBarber->description }}</p>
+                                <h5 class="card-title">{{ ucfirst($item->fname) }} {{ ucfirst($item->lname) }}</h5>
+                                <p class="card-text">{{ ucfirst($item->descriptionBarber->description) }}</p>
                                 @if (auth()->check())
                                 @if (Auth()->user()->role_id == 1)
                                 <a href="/barber-detail/{{ $item->barber_id }}" class="hero-btn red-btn">Detail</a>
@@ -306,8 +296,8 @@
                     <div class="card jarak d-block mx-auto border border-0" style="width: 18rem;">
                         <img src="{{ asset('gambarproduk/'.$item->gambar ) }}" width="200" height="200" alt="" >  
                         <div class="card-body">  
-                            <h5 class="card-title">{{ $item->tipeproduk->nama }}</h5>
-                            <p class="card-text">{{ $item->nama_produk }}</p>
+                            <h5 class="card-title">{{ ucfirst($item->tipeproduk->nama) }}</h5>
+                            <p class="card-text">{{ ucfirst($item->nama_produk) }}</p>
                         </div>
                       </div>
                 </div>
@@ -388,7 +378,7 @@
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-twitter"></i>
                 </div>
-            <p>Copyright ©2022 - D'Barbershop. All Rights Reserved.</p>
+            <p>Copyright ©2023 - D'Barbershop. All Rights Reserved.</p>
         </div>
     </section>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> --}}

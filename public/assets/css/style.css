@@ -263,3 +263,29 @@ p {
 }
 
 /* End Barber */
+
+#time-picker {
+    position: relative;
+  }
+  
+  #time-input {
+    padding: 7px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 100%;
+  }
+  
+  #time-options {
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    display: none;
+  }
+  
+  #time-options div {
+    padding: 10px;
+  }
+  

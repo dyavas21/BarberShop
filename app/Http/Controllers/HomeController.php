@@ -77,6 +77,7 @@ class HomeController extends Controller
             'lname' => $request->lname,
             'email' => $request->email,
             'date_order' => $request->date_order,
+            'time_order' => $request->time_order,
             'address' => $request->address,
             'phone' => $request->phone,
             'invoice' => $request->invoice,

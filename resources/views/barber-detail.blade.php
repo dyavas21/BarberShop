@@ -4,7 +4,7 @@
 
 <section class="team text-center mt-5 mb-5">
     <div class="container mt-5">
-        <h1>Profile Barber {{ $dataBarber->fname }}</h1>
+        <h1>Profile Barber {{ucfirst( $dataBarber->fname) }}</h1>
         <p>
        Berikut informasi mengenai barber yang anda pilih.
         </p>
@@ -14,13 +14,13 @@
                 <div class=" d-flex justify-content-between lh-condensed">
                     <img src="{{ asset('gambarbarber/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
                       <div class="d-block me-auto">
-                          <h6>{{ $dataBarber->fname }} {{ $dataBarber->lname }}</h6>
-                            <h6 class="text-muted my-0">{{ $dataBarber->descriptionBarber->gender }}</small>    
+                          <h6>{{ ucfirst($dataBarber->fname) }} {{ ucfirst($dataBarber->lname) }}</h6>
+                            <h6 class="text-muted my-0">{{ ucfirst($dataBarber->descriptionBarber->gender) }}</small>    
                             <h6 class="text-muted my-0">{{ $dataBarber->descriptionBarber->phone }}</small>    
-                            <h6 class="text-muted my-0">{{ $dataBarber->descriptionBarber->address }}</small>                             
+                            <h6 class="text-muted my-0">{{ ucwords($dataBarber->descriptionBarber->address) }}</small>                             
                       </div>
                       <div class="d-block ml-auto">
-                        <h6>RP {{ $dataBarber->descriptionBarber->harga }}</h6>
+                        <h6>RP {{ number_format($dataBarber->descriptionBarber->harga, 2) }}</h6>
                         <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-dark">Book</a> 
                     </div>
                     </div>
@@ -65,7 +65,7 @@
         <div class="card">
             <h5 class="card-header">Deskripsi</h5>
             <div class="card-body">
-                <h6>{{ $dataBarber->descriptionBarber->description }}</h6>
+                <h6>{{ ucfirst($dataBarber->descriptionBarber->description) }}</h6>
             </div>
         </div>
     </div>

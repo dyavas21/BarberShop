@@ -13,13 +13,6 @@
                             Dashboard
                         </h1>
                     </div>
-                    <div class="col-12 col-xl-auto mt-4">
-                        <button class="btn btn-white btn-sm line-height-normal p-3" id="reportrange">
-                            <i class="mr-2 text-primary" data-feather="calendar"></i>
-                            <span></span>
-                            <i class="ml-1" data-feather="chevron-down"></i>
-                        </button>
-                    </div>
                 </div>
             </div>
         </div>
@@ -149,7 +142,8 @@
                                 <th>Alamat Barber</th>
                                 <th>No Handphone</th>     
                                 <th>Harga</th>   
-                                <th>Tanggal Booking</th> 
+                                <th>Tanggal Booking</th>
+                                <th>Jam Booking</th>  
                                 <th>Status</th>    
                             </tr>
                         </thead>
@@ -160,6 +154,7 @@
                                 <th>No Handphone</th>   
                                 <th>Harga</th>  
                                 <th>Tanggal Booking</th> 
+                                <th>Jam Booking</th> 
                                 <th>Status</th>      
                             </tr>
                         </tfoot>
@@ -168,11 +163,12 @@
                             @else
                                 @foreach ($dataPemesanan as $item)
                                     <tr>                            
-                                        <td>{{ $item->barbpem->fname }} {{ $item->barbpem->lname }}</td>
-                                        <td>{{ $item->barbdescpem->address }}</td>
+                                        <td>{{ ucfirst($item->barbpem->fname) }} {{ ucfirst($item->barbpem->lname) }}</td>
+                                        <td>{{ ucwords($item->barbdescpem->address) }}</td>
                                         <td>{{ $item->barbdescpem->phone }}</td>  
                                         <td>Rp {{ number_format($item->barbdescpem->harga, 2) }}</td>  
-                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>                                          
+                                        <td>{{ date('d M Y', strtotime($item->date_order)); }}</td>          
+                                        <td>{{ date('H:i', strtotime($item->time_order)); }}</td>                                    
                                         <td style="text-align:center">
                                             @if ($item->statuspem->id_status == 1)
                                                 <a href="" class="btn btn-sm btn-warning">{{ $item->statuspem->nama_status }}</a>

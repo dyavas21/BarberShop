@@ -23,14 +23,14 @@
         <nav class="topnav navbar navbar-expand shadow navbar-dark bg-dark" id="sidenavAccordion">
             <a class="navbar-brand" href="/barber">Barber</a>
             <button class="btn btn-icon btn-dark order-1 order-lg-0 mr-lg-2" id="sidebarToggle" href="#"><i data-feather="menu"></i></button>
-            <form class="form-inline mr-auto d-none d-md-block">
+            {{-- <form class="form-inline mr-auto d-none d-md-block">
                 <div class="input-group input-group-joined input-group-solid">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                     <div class="input-group-append">
                         <div class="input-group-text"><i data-feather="search"></i></div>
                     </div>
                 </div>
-            </form>
+            </form> --}}
             <ul class="navbar-nav align-items-center ml-auto">
                 <li class="nav-item dropdown no-caret mr-2 dropdown-user">
                     @if (is_null($dataBarberDesc))
@@ -49,7 +49,7 @@
                             <div class="dropdown-user-details">
                                 {{-- http://127.0.0.1:8000/barber1/team3.jpeg 
                                 http://127.0.0.1:8000/team3.jpeg  --}}
-                                <div class="dropdown-user-details-name">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                                <div class="dropdown-user-details-name">{{ ucfirst($dataUser->fname) }} {{ ucfirst($dataUser->lname) }}</div>
                                 <div class="dropdown-user-details-email">{{ $dataUser->email }}</div>
                             </div>
                         </h6>
@@ -71,7 +71,6 @@
                 <nav class="sidenav shadow-right sidenav-dark bg-dark">
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
-                            <div class="sidenav-menu-heading">Core</div>
                             @if (is_null($dataBarberDesc))
                                 <a class="nav-link" href="/barber">Dashboard</a>   
                                 <a class="nav-link" href="/barber-profile-inti">Lengkapi Profile Inti</a>  
@@ -86,7 +85,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                            <div class="sidenav-footer-title">{{ ucfirst($dataUser->fname) }} {{ ucfirst($dataUser->lname) }}</div>
                         </div>
                     </div>
                 </nav>

@@ -38,7 +38,7 @@
                             <img class="dropdown-user-img" src="{{ asset('photo/'.$dataCustomerDesc->photo ) }}">                        
                             @endif
                             <div class="dropdown-user-details">
-                                <div class="dropdown-user-details-name">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                                <div class="dropdown-user-details-name">{{ ucfirst($dataUser->fname ) }} {{ ucfirst($dataUser->lname) }}</div>
                                 <div class="dropdown-user-details-email">{{ $dataUser->email }}</div>
                             </div>
                         </h6>
@@ -60,7 +60,6 @@
                 <nav class="sidenav shadow-right sidenav-dark bg-dark">
                     <div class="sidenav-menu">
                         <div class="nav accordion" id="accordionSidenav">
-                            <div class="sidenav-menu-heading">Core</div>
                             @if (is_null($dataCustomerDesc))
                             <a class="nav-link" href="/customer">Dashboard</a>
                             <a class="nav-link" href="/customer-profile-inti">Lengkapi Profile Inti</a>
@@ -75,7 +74,7 @@
                     <div class="sidenav-footer">
                         <div class="sidenav-footer-content">
                             <div class="sidenav-footer-subtitle">Logged in as:</div>
-                            <div class="sidenav-footer-title">{{ $dataUser->fname }} {{ $dataUser->lname }}</div>
+                            <div class="sidenav-footer-title">{{ ucfirst($dataUser->fname ) }} {{ ucfirst($dataUser->lname) }}</div>
                         </div>
                     </div>
                 </nav>

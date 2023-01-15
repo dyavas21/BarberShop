@@ -21,12 +21,13 @@
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/font-awesome.css">
     <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
+    
 
 
     {{-- <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css"> --}}
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="8d774616-db7c-4e02-96cc-529007c6d5bb";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
+    <script type="text/javascript">window.$crisp=[];window.CRISP_WEBSITE_ID="070a569b-cc91-4bfb-b8a5-d4d70be1bd43";(function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();</script>
   </head>
   <body>
 
@@ -107,7 +108,7 @@
                     <i class="fab fa-instagram"></i>
                     <i class="fab fa-twitter"></i>
                 </div>
-            <p>Copyright &#xA9; DBarbershop 2022</p>
+            <p>Copyright &#xA9; D'Barbershop 2023</p>
         </div>
     </section>
     <script>
@@ -118,6 +119,10 @@
       // datePickerId.max = new Date().toISOString().split("T")[0];
       datePickerId.max = date.toISOString().split("T")[0];
 
+      // $("#time-input").timepicker({
+      // minTime: '07:00',
+      // maxTime: '20:00'
+      // });
     </script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script> --}}
     <script src="https://kit.fontawesome.com/ac8d43ee9f.js" crossorigin="anonymous"></script>
