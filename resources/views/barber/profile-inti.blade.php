@@ -20,15 +20,13 @@
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
                                     <label for="fname">First Name</label>
-                                    <select class="form-control form-control-solid" name="fname" id="fname">                            
-                                        <option>{{ $dataUser->fname }}</option>
-                                    </select>
+                                    <input type="text" disabled value="{{ ucfirst($dataUser->fname) }}" class="form-control" required id="fname">
+                                    <input type="text" hidden value="{{ $dataUser->fname }}" name="fname" class="form-control" id="fname">
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="lname">Last Name</label>
-                                    <select class="form-control form-control-solid" name="lname" id="fname">                            
-                                        <option>{{ $dataUser->lname }}</option>
-                                    </select>
+                                    <input type="text" disabled value="{{ ucfirst($dataUser->lname) }}" class="form-control" required id="lname">
+                                    <input type="text" hidden value="{{ $dataUser->lname }}" name="lname" class="form-control" id="lname">
                                 </div>
                             </div>
                             <div class="row row-cols-auto">

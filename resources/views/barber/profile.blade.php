@@ -11,15 +11,13 @@
                     <div class="col-lg-2 d-flex flex-row">
                       <img src="{{ asset('gambarbarber/'.$dataBarberDesc->gambarbarber)}}" height="100" class="rounded-circle d-block mx-auto barber-profile" alt="...">
                     </div>
-                    <div class="col-lg-4 d-flex flex-row">
+                    <div class="col-lg-6 d-flex flex-row">
                         <div class="mb-3">
                             <h4>{{ ucfirst($dataBarber->fname) }} {{ ucfirst($dataBarber->lname) }}</h4>
                             <h6>Tukang Cukur Profesional</h6>    
                             <h6>{{ ucwords($dataBarberDesc->address) }}</h6>    
                             <h6>Rp {{ number_format($dataBarberDesc->harga, 2) }}</h6>                        
                         </div>
-                    </div>
-                    <div class="col-lg-6 d-flex flex-row-reverse">
                     </div>
                 </div>
             </div>

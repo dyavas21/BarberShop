@@ -64,7 +64,7 @@
                       <li class="nav-item dropdown">
                         @if (auth()->check())
                         <a class="nav-link dropdown-toggle" href="/login" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          {{ Auth::user()->fname }}
+                          {{ ucfirst(Auth::user()->fname) }}
                         </a>
                         <ul class="dropdown-menu dropdown-menu-dark">
                           @if (Auth()->user()->role_id == 1)

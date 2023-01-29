@@ -10,14 +10,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Barber extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'fname',
-    //     'lname',
-    //     'email',
-    // ];
+
     protected $primaryKey = 'id_barber';
+
     protected $fillable = [
-        'id_barber','barber_id', 'fname', 'lname'
+        'id_barber','
+        barber_id', 
+        'fname', 
+        'lname',
     ];
  
     public function descriptionBarber(){

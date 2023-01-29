@@ -117,6 +117,7 @@
                             $no = 1;                               
                         @endphp
                             @foreach ($dataUser as $row)
+                            @if ($row->role_user == 1)
                                 <tr>
                                     <td>{{ $no++ }}</td>
                                     <td>{{ ucfirst($row->fname) }}</td>
@@ -141,17 +142,22 @@
                                     <td>{{ $row->created_at->format('d M Y') }}</td>
                                     @if ($row->role_id == 1)
                                     @if ($row->descc == null)
-                                    <td>''</td>
+                                    <td>-</td>
                                     @else
                                          <td><img src="{{ asset('photo/'.$row->descc->photo) }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."></td>
                                     @endif
                                     @elseif ($row->role_id == 2)
+                                    @if ($row->descb == null)
+                                    <td>-</td>
+                                    @else
                                     <td><img src="{{ asset('gambarbarber/'.$row->descb->gambarbarber ) ?? '-' }}" height="100" width="100" class="rounded-circle d-block mx-auto barber-profile" alt="..."></td>
+                                    @endif                                    
                                     @endif
                                     <td>
                                         <a class="btn btn-danger" href="/adminajadeh/detele/{{ $row->id_user }}">Delete</a>
                                     </td>
-                                </tr>                        
+                                </tr> 
+                                @endif                       
                             @endforeach
                         </tbody>
                     </table>

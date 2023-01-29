@@ -196,7 +196,7 @@
                                         </ul>
                                     </td>
                                     <td>Rp {{ number_format($order->detailinvoice->harga_total, 2) }}</td>
-                                    <td> <img src="{{ asset('invoice/'.$order->detailinvoice->invoice ) }}" alt="" style="width: 40px"></td>
+                                    <td> <img src="{{ asset('invoiceproduct/'.$order->detailinvoice->invoice ) }}" alt="" style="width: 40px"></td>
                                     <td style="text-align:center">
                                         @if ($order->status_id == 1)
                                             <a href="" class="btn btn-sm btn-warning">Pending</a>

@@ -20,15 +20,13 @@
                             <div class="row row-cols-auto">
                                 <div class="col-lg-6 mb-3">
                                     <label for="fname">First Name</label>
-                                    <select class="form-control form-control-solid" name="fname" id="fname">                            
-                                        <option value="{{ $dataCustomer->fname }}">{{ $dataCustomer->fname }}</option>
-                                    </select>
+                                    <input type="text" disabled value="{{ ucfirst($dataCustomer->fname) }}" required class="form-control"  id="fname" required>
+                                    <input type="text" hidden value="{{ $dataCustomer->fname }}" name="fname" required class="form-control"  id="fname" >
                                 </div>
                                 <div class="col-lg-6 mb-3">
                                     <label for="lname">Last Name</label>
-                                    <select class="form-control form-control-solid" name="lname" id="lname">                            
-                                        <option value="{{ $dataCustomer->lname }}">{{ $dataCustomer->lname }}</option>
-                                    </select>  
+                                    <input type="text" disabled value="{{ ucfirst($dataCustomer->lname) }}" required class="form-control"  id="lname" required>
+                                    <input type="text" hidden value="{{ $dataCustomer->lname }}" name="lname" required class="form-control"  id="lname" >
                                 </div>
                             </div>
                             <div class="row row-cols-auto">
@@ -36,7 +34,9 @@
                                     <div class="mb-3">
                                         <label for="age" class="form-label">Umur</label>
                                         <input type="number" name="age" required class="form-control"  id="age" required>
-                                    </div>  
+                                    </div>                                     
+                                </div>
+                                <div class="col-lg-6">
                                     <div class="form-group">
                                         <label for="gender">Gender</label>
                                         <select class="form-control form-control" required name="gender" id="gender" required>                            
@@ -44,18 +44,20 @@
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option> 
                                         </select>
-                                    </div>                                      
-                                </div>
+                                    </div>  
+                                </div> 
                                 <div class="col-lg-6">                        
                                     <div class="mb-3">
                                         <label for="phone" class="form-label">No Handphone</label>
                                         <input type="tel" name="phone" required class="form-control" id="phone" required>
                                     </div>                      
                                 </div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="alamat" class="form-label">Alamat</label>
-                                <input type="text" name="address" required class="form-control" id="alamat" required>                       
+                                <div class="col-lg-6">
+                                    <div class="mb-3">
+                                        <label for="alamat" class="form-label">Alamat</label>
+                                        <input type="text" name="address" required class="form-control" id="alamat" required>                       
+                                    </div>
+                                </div>
                             </div>
                             <label for="photo" class="form-label">Upload Foto Anda</label>
                             <div class="input-group mb-3">

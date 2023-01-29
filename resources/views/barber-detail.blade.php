@@ -11,39 +11,38 @@
         <div class="card">
             <h5 class="card-header">Profile</h5>
             <div class="card-body">
-                <div class=" d-flex justify-content-between lh-condensed">
+                {{-- <div class=" d-flex justify-content-between lh-condensed">
                     <img src="{{ asset('gambarbarber/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="80" width="80" class="rounded-circle d-block me-auto barber-profile" alt="...">
                       <div class="d-block me-auto">
                           <h6>{{ ucfirst($dataBarber->fname) }} {{ ucfirst($dataBarber->lname) }}</h6>
-                            <h6 class="text-muted my-0">{{ ucfirst($dataBarber->descriptionBarber->gender) }}</small>    
-                            <h6 class="text-muted my-0">{{ $dataBarber->descriptionBarber->phone }}</small>    
-                            <h6 class="text-muted my-0">{{ ucwords($dataBarber->descriptionBarber->address) }}</small>                             
+                            <h6 class="text-muted">{{ ucfirst($dataBarber->descriptionBarber->gender) }}</small>    
+                            <h6 class="text-muted">{{ $dataBarber->descriptionBarber->phone }}</small>    
+                            <h6 class="text-muted">{{ ucwords($dataBarber->descriptionBarber->address) }}</small>                             
                       </div>
                       <div class="d-block ml-auto">
                         <h6>RP {{ number_format($dataBarber->descriptionBarber->harga, 2) }}</h6>
                         <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-dark">Book</a> 
                     </div>
-                    </div>
-                {{-- <div class="row row-cols-auto">
-                    <div class="col-lg-2 d-flex flex-row">
-                      <img src="{{ asset('barber1/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="200" width="200" class="rounded-circle d-block mx-auto barber-profile" alt="...">
-                    </div>
-                    <div class="col-lg-4 d-block me-auto">
-                        <div class="mb-3">
-                            <h4>{{ $dataBarber->fname }} {{ $dataBarber->lname }}</h4>
-                            <h6>{{ $dataBarber->descriptionBarber->gender }}</h6>    
-                            <h6>{{ $dataBarber->descriptionBarber->phone }}</h6>    
-                            <h6>{{ $dataBarber->descriptionBarber->address }}</h6> 
-                            <h6>Rp {{ $dataBarber->descriptionBarber->harga }}</h6>                       
-                        </div>
-                    </div>
-                    <div class="col-lg-6 d-flex flex-row-reverse">
-                        <div class="mb-3">
-                            <h4>Rating 4.9</h4>  
-                                <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-primary">Book</a>                                                                     
-                        </div>
-                    </div>
                 </div> --}}
+                <div class="row row-cols-auto">
+                  <div class="col-lg-4 d-flex flex-row">
+                    <img src="{{ asset('gambarbarber/'.$dataBarber->descriptionBarber->gambarbarber)}}" height="120" width="120" class="rounded-circle d-block me-auto barber-profile" alt="...">
+                  </div>
+                  <div class="col-lg-4 d-flex flex-row">
+                      <div class="mb-3">
+                        <h6>{{ ucfirst($dataBarber->fname) }} {{ ucfirst($dataBarber->lname) }}</h6>
+                        <h6 class="text-muted">{{ ucfirst($dataBarber->descriptionBarber->gender) }}</small>    
+                        <h6 class="text-muted">{{ $dataBarber->descriptionBarber->phone }}</small>    
+                        <h6 class="text-muted">{{ ucwords($dataBarber->descriptionBarber->address) }}</small>                        
+                      </div>
+                  </div>
+                  <div class="col-lg-4 d-flex flex-row-reverse">
+                    <div class="mb-3">
+                        <h6>RP {{ number_format($dataBarber->descriptionBarber->harga, 2) }}</h6>
+                        <a href="/barber-book/{{ $dataBarber->barber_id }}" class="btn btn-dark">Book</a>              
+                    </div>
+                </div>
+              </div>
             </div>
         </div>
     </div>

@@ -59,6 +59,26 @@
                           </div>
                         </div>
                         <div class="col-md-6">
+                          <!-- Form Group (email address)            -->
+                     <div class="form-group">
+                       <label class="small mb-1" for="email"
+                         >Email</label
+                       >
+                       <input
+                         required
+                         class="form-control py-4"
+                         aria-describedby="emailHelp"
+                         placeholder="Enter email address"
+                         id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
+                       />
+                       @error('email')
+                         <span class="invalid-feedback" role="alert">
+                             <strong>{{ $message }}</strong>
+                         </span>
+                       @enderror
+                     </div>
+                       </div>
+                        <div class="col-md-6">
                           <!-- Form Group (first name)-->
                           <div class="form-group">
                             <label class="small mb-1" for="fname"
@@ -95,26 +115,9 @@
                               </span>
                             @enderror
                           </div>
-                        </div>
+                        </div>                    
                       </div>
-                      <!-- Form Group (email address)            -->
-                      <div class="form-group">
-                        <label class="small mb-1" for="email"
-                          >Email</label
-                        >
-                        <input
-                          required
-                          class="form-control py-4"
-                          aria-describedby="emailHelp"
-                          placeholder="Enter email address"
-                          id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email"
-                        />
-                        @error('email')
-                          <span class="invalid-feedback" role="alert">
-                              <strong>{{ $message }}</strong>
-                          </span>
-                        @enderror
-                      </div>
+                     
                       <!-- Form Row    -->
                       <div class="form-row">
                         <div class="col-md-6">
